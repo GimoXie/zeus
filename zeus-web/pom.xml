@@ -21,6 +21,10 @@
             <groupId>io.gimo</groupId>
             <artifactId>zeus-common</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.gimo</groupId>
+            <artifactId>zeus-service</artifactId>
+        </dependency>
         <!-- spring boot -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
