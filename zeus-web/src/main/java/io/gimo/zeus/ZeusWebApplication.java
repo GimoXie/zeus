@@ -2,11 +2,20 @@ package io.gimo.zeus;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+
 
 @SpringBootApplication
-public class ZeusWebApplication {
+public class ZeusWebApplication extends SpringBootServletInitializer {
+
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(ZeusWebApplication.class);
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(ZeusWebApplication.class, args);
 	}
+
 }

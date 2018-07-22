@@ -1,0 +1,55 @@
+druid:
+  driver-class-name: com.mysql.jdbc.Driver
+  url: jdbc:mysql://localhost:3306/db_blog
+  username: root
+  password: root
+  initialSize: 1
+  minIdle: 3
+  maxActive: 20
+  maxWait: 60000
+  timeBetweenEvictionRunsMillis: 60000
+  minEvictableIdleTimeMillis: 30000
+  validationQuery: select 'x'
+  testWhileIdle: true
+  testOnBorrow: false
+  testOnReturn: false
+  poolPreparedStatements: true
+  maxPoolPreparedStatementPerConnectionSize: 20
+  filters: stat,wall,slf4j
+  connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+  useGlobalDataSourceStat: true
+
+mybatis:
+  config-location: classpath:mybatis/config.xml
+  type-aliases-package: io.gimo.zeus.db
+  mapper-locations: classpath:mybatis/**/*Mapper.xml
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+#   dbcp2:
+#     min-idle: 5
+#     initial-size: 5
+#     max-total: 5
+#     max-wait-millis: 200
+  freemarker:
+    charset: UTF-8
+    content-type: text/html;charset=UTF-8
+    expose-session-attributes: true
+    settings:
+      auto_import: include/spring.ftl as spring
+    suffix: .html
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  messages:
+    always-use-message-format: false
+    basename: i18n/messages
+    encoding: UTF-8
+    fallback-to-system-locale: true
+
+logging:
+  config: classpath:logback.xml
+

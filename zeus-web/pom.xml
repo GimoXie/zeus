@@ -9,7 +9,6 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>zeus-web</artifactId>
-    <version>1.0.0</version>
     <packaging>war</packaging>
 
     <name>zeus-web</name>
@@ -17,10 +16,6 @@
 
     <dependencies>
         <!-- 项目内模块依赖 -->
-        <dependency>
-            <groupId>io.gimo</groupId>
-            <artifactId>zeus-common</artifactId>
-        </dependency>
         <dependency>
             <groupId>io.gimo</groupId>
             <artifactId>zeus-service</artifactId>
@@ -32,19 +27,25 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-freemarker</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <!-- 代码直接调用log4j会被桥接到slf4j -->
-        <!--<dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <scope>runtime</scope>
-        </dependency>-->
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>io.gimo.zeus.ZeusWebApplication</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
