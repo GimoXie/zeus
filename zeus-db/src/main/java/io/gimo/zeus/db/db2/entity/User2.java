@@ -1,6 +1,6 @@
-package io.gimo.zeus.db.entity;
+package io.gimo.zeus.db.db2.entity;
 
-public class User {
+public class User2 {
     private String username;
     private String password;
 

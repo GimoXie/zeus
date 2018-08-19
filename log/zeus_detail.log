@@ -1,0 +1,52 @@
+18-08-19.23:01:02.506 [main            ] INFO  ZeusWebApplication      - Starting ZeusWebApplication on DESKTOP-0LBIGHJ with PID 19208 (started by gimoxie in D:\project - java\zeus)
+18-08-19.23:01:02.511 [main            ] INFO  ZeusWebApplication      - No active profile set, falling back to default profiles: default
+18-08-19.23:01:02.556 [main            ] INFO  AnnotationConfigServletWebServerApplicationContext  - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@48c35007: startup date [Sun Aug 19 23:01:02 CST 2018]; root of context hierarchy
+18-08-19.23:01:03.661 [main            ] ERROR AprLifecycleListener    - An incompatible version [1.2.10] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+18-08-19.23:01:03.762 [main            ] INFO  TomcatWebServer         - Tomcat initialized with port(s): 8080 (http)
+18-08-19.23:01:03.775 [main            ] ERROR AprLifecycleListener    - An incompatible version [1.2.10] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+18-08-19.23:01:03.775 [main            ] INFO  Http11NioProtocol       - Initializing ProtocolHandler ["http-nio-8080"]
+18-08-19.23:01:03.785 [main            ] INFO  StandardService         - Starting service [Tomcat]
+18-08-19.23:01:03.785 [main            ] INFO  StandardEngine          - Starting Servlet Engine: Apache Tomcat/8.5.31
+18-08-19.23:01:03.790 [localhost-startStop-1] ERROR AprLifecycleListener    - An incompatible version [1.2.10] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+18-08-19.23:01:03.879 [localhost-startStop-1] INFO  [/]                     - Initializing Spring embedded WebApplicationContext
+18-08-19.23:01:03.879 [localhost-startStop-1] INFO  ContextLoader           - Root WebApplicationContext: initialization completed in 1323 ms
+18-08-19.23:01:04.007 [localhost-startStop-1] INFO  ServletRegistrationBean  - Servlet dispatcherServlet mapped to [/]
+18-08-19.23:01:04.012 [localhost-startStop-1] INFO  FilterRegistrationBean  - Mapping filter: 'characterEncodingFilter' to: [/*]
+18-08-19.23:01:04.013 [localhost-startStop-1] INFO  FilterRegistrationBean  - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+18-08-19.23:01:04.013 [localhost-startStop-1] INFO  FilterRegistrationBean  - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+18-08-19.23:01:04.013 [localhost-startStop-1] INFO  FilterRegistrationBean  - Mapping filter: 'requestContextFilter' to: [/*]
+18-08-19.23:01:04.371 [main            ] INFO  SimpleUrlHandlerMapping  - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18-08-19.23:01:04.572 [main            ] INFO  RequestMappingHandlerAdapter  - Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@48c35007: startup date [Sun Aug 19 23:01:02 CST 2018]; root of context hierarchy
+18-08-19.23:01:04.629 [main            ] INFO  RequestMappingHandlerMapping  - Mapped "{[/login],methods=[GET]}" onto public java.lang.String io.gimo.zeus.web.controller.PageController.toLogin()
+18-08-19.23:01:04.630 [main            ] INFO  RequestMappingHandlerMapping  - Mapped "{[/testDataSource1]}" onto public java.util.List<io.gimo.zeus.db.db1.entity.User> io.gimo.zeus.web.controller.TestController.testDataSource1()
+18-08-19.23:01:04.630 [main            ] INFO  RequestMappingHandlerMapping  - Mapped "{[/testDataSource2]}" onto public java.util.List<io.gimo.zeus.db.db2.entity.User2> io.gimo.zeus.web.controller.TestController.testDataSource2()
+18-08-19.23:01:04.634 [main            ] INFO  RequestMappingHandlerMapping  - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+18-08-19.23:01:04.635 [main            ] INFO  RequestMappingHandlerMapping  - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+18-08-19.23:01:04.668 [main            ] INFO  SimpleUrlHandlerMapping  - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18-08-19.23:01:04.668 [main            ] INFO  SimpleUrlHandlerMapping  - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18-08-19.23:01:04.871 [main            ] INFO  FreeMarkerConfigurer    - ClassTemplateLoader for Spring macros added to FreeMarker configuration
+18-08-19.23:01:05.046 [main            ] INFO  AnnotationMBeanExporter  - Registering beans for JMX exposure on startup
+18-08-19.23:01:05.047 [main            ] INFO  AnnotationMBeanExporter  - Bean with name 'db1DataSource' has been autodetected for JMX exposure
+18-08-19.23:01:05.047 [main            ] INFO  AnnotationMBeanExporter  - Bean with name 'db2DataSource' has been autodetected for JMX exposure
+18-08-19.23:01:05.053 [main            ] INFO  AnnotationMBeanExporter  - Located MBean 'db1DataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=db1DataSource,type=DruidDataSource]
+18-08-19.23:01:05.055 [main            ] INFO  AnnotationMBeanExporter  - Located MBean 'db2DataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=db2DataSource,type=DruidDataSource]
+18-08-19.23:01:05.065 [main            ] INFO  Http11NioProtocol       - Starting ProtocolHandler ["http-nio-8080"]
+18-08-19.23:01:05.081 [main            ] INFO  NioSelectorPool         - Using a shared selector for servlet write/read
+18-08-19.23:01:05.107 [main            ] INFO  TomcatWebServer         - Tomcat started on port(s): 8080 (http) with context path ''
+18-08-19.23:01:05.112 [main            ] INFO  ZeusWebApplication      - Started ZeusWebApplication in 3.046 seconds (JVM running for 4.817)
+18-08-19.23:01:09.081 [http-nio-8080-exec-1] ERROR AprLifecycleListener    - An incompatible version [1.2.10] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+18-08-19.23:01:09.100 [http-nio-8080-exec-1] INFO  [/]                     - Initializing Spring FrameworkServlet 'dispatcherServlet'
+18-08-19.23:01:09.101 [http-nio-8080-exec-1] INFO  DispatcherServlet       - FrameworkServlet 'dispatcherServlet': initialization started
+18-08-19.23:01:09.121 [http-nio-8080-exec-1] INFO  DispatcherServlet       - FrameworkServlet 'dispatcherServlet': initialization completed in 20 ms
+18-08-19.23:01:09.216 [http-nio-8080-exec-1] INFO  DruidDataSource         - {dataSource-1} inited
+18-08-19.23:01:09.367 [http-nio-8080-exec-1] DEBUG test                    - ==>  Preparing: select * from t_user 
+18-08-19.23:01:09.384 [http-nio-8080-exec-1] DEBUG test                    - ==> Parameters: 
+18-08-19.23:01:09.396 [http-nio-8080-exec-1] TRACE test                    - <==    Columns: id, username, password, state, createTime, bloggerId
+18-08-19.23:01:09.396 [http-nio-8080-exec-1] TRACE test                    - <==        Row: 1, gimo-1, fe2837814b0db6467a34c5d327bf8813636f85835bbde159e5f3ed24b84079a1, null, 2014-07-17 12:59:08.0, 1
+18-08-19.23:01:09.397 [http-nio-8080-exec-1] DEBUG test                    - <==      Total: 1
+18-08-19.23:01:11.844 [http-nio-8080-exec-3] INFO  DruidDataSource         - {dataSource-2} inited
+18-08-19.23:01:11.853 [http-nio-8080-exec-3] DEBUG test2                   - ==>  Preparing: select * from t_user 
+18-08-19.23:01:11.854 [http-nio-8080-exec-3] DEBUG test2                   - ==> Parameters: 
+18-08-19.23:01:11.856 [http-nio-8080-exec-3] TRACE test2                   - <==    Columns: id, username, password, state, createTime, bloggerId
+18-08-19.23:01:11.856 [http-nio-8080-exec-3] TRACE test2                   - <==        Row: 1, gimo-2, fe2837814b0db6467a34c5d327bf8813636f85835bbde159e5f3ed24b84079a1, null, 2014-07-17 12:59:08.0, 1
+18-08-19.23:01:11.857 [http-nio-8080-exec-3] DEBUG test2                   - <==      Total: 1

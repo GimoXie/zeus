@@ -1,6 +1,7 @@
 package io.gimo.zeus.web.controller;
 
-import io.gimo.zeus.db.entity.User;
+import io.gimo.zeus.db.db1.entity.User;
+import io.gimo.zeus.db.db2.entity.User2;
 import io.gimo.zeus.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,8 +16,14 @@ public class TestController {
     private TestService testService;
 
 
-    @RequestMapping("/test")
-    public List<User> test() {
-        return testService.test();
+    @RequestMapping("/testDataSource1")
+    public List<User> testDataSource1() {
+        return testService.testDataSource1();
     }
+
+    @RequestMapping("/testDataSource2")
+    public List<User2> testDataSource2() {
+        return testService.testDataSource2();
+    }
+
 }

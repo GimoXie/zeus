@@ -13,10 +13,10 @@ import org.springframework.context.annotation.Primary;
 import javax.sql.DataSource;
 import java.sql.SQLException;
 
-@Configuration
+//@Configuration
 public class DruidConfig {
 
-    @Bean
+    /*@Bean
     public ServletRegistrationBean druidServlet() {
         ServletRegistrationBean<StatViewServlet> servletRegistrationBean = new ServletRegistrationBean<>(new StatViewServlet(), "/druid/*");
         servletRegistrationBean.addInitParameter("allow", "127.0.0.1");
@@ -194,5 +194,5 @@ public class DruidConfig {
         public void setConnectionProperties(String connectionProperties) {
             this.connectionProperties = connectionProperties;
         }
-    }
+    }*/
 }

@@ -1,8 +1,4 @@
 druid:
-  driver-class-name: com.mysql.jdbc.Driver
-  url: jdbc:mysql://localhost:3306/db_blog
-  username: root
-  password: root
   initialSize: 1
   minIdle: 3
   maxActive: 20
@@ -19,19 +15,25 @@ druid:
   connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
   useGlobalDataSourceStat: true
 
-mybatis:
-  config-location: classpath:mybatis/config.xml
-  type-aliases-package: io.gimo.zeus.db
-  mapper-locations: classpath:mybatis/**/*Mapper.xml
-
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-#   dbcp2:
-#     min-idle: 5
-#     initial-size: 5
-#     max-total: 5
-#     max-wait-millis: 200
+    db1:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/db1
+      username: root
+      password: root
+      config-location: classpath:db1/mybatis/config.xml
+      type-aliases-package: io.gimo.zeus.db.db1.entity
+      mapper-locations: classpath:db1/mybatis/**/*Mapper.xml
+    db2:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/db2
+      username: root
+      password: root
+      config-location: classpath:db2/mybatis/config.xml
+      type-aliases-package: io.gimo.zeus.db.db2.entity
+      mapper-locations: classpath:db2/mybatis/**/*Mapper.xml
   freemarker:
     charset: UTF-8
     content-type: text/html;charset=UTF-8
