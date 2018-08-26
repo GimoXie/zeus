@@ -34,13 +34,24 @@ spring:
       config-location: classpath:db2/mybatis/config.xml
       type-aliases-package: io.gimo.zeus.db.db2.entity
       mapper-locations: classpath:db2/mybatis/**/*Mapper.xml
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    timeout: 0
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
   freemarker:
+    suffix: .html
     charset: UTF-8
     content-type: text/html;charset=UTF-8
     expose-session-attributes: true
     settings:
       auto_import: include/spring.ftl as spring
-    suffix: .html
   http:
     encoding:
       charset: UTF-8

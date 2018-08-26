@@ -1,5 +1,6 @@
 package io.gimo.zeus.web.controller;
 
+import io.gimo.zeus.cache.redis.template.IRedisService;
 import io.gimo.zeus.db.db1.entity.User;
 import io.gimo.zeus.db.db2.entity.User2;
 import io.gimo.zeus.service.TestService;
@@ -14,10 +15,12 @@ import java.util.List;
 public class TestController {
     @Autowired
     private TestService testService;
-
+    @Autowired
+    private IRedisService redisService;
 
     @RequestMapping("/testDataSource1")
     public List<User> testDataSource1() {
+        redisService.set("1","1");
         return testService.testDataSource1();
     }
 

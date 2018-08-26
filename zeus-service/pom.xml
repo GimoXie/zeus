@@ -15,11 +15,11 @@
         <!-- 项目内模块依赖 -->
         <dependency>
             <groupId>io.gimo</groupId>
-            <artifactId>zeus-common</artifactId>
+            <artifactId>zeus-db</artifactId>
         </dependency>
         <dependency>
             <groupId>io.gimo</groupId>
-            <artifactId>zeus-db</artifactId>
+            <artifactId>zeus-cache</artifactId>
         </dependency>
 
     </dependencies>
