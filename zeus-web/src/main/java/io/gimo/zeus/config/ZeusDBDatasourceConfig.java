@@ -6,34 +6,38 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
 
 @Configuration
-@ConfigurationProperties(prefix = "spring.datasource.db1")
-@MapperScan(basePackages = "io.gimo.zeus.db.dao.db1", sqlSessionFactoryRef = "db1SqlSessionFactory")
-public class DB1DatasourceConfig extends BaseDataSourceConfig {
+@ConfigurationProperties(prefix = "spring.datasource.zeusdb")
+@MapperScan(basePackages = "io.gimo.zeus.db.dao.zeusdb", sqlSessionFactoryRef = "zeusdbSqlSessionFactory")
+public class ZeusDBDatasourceConfig extends BaseDataSourceConfig {
 
-    public DB1DatasourceConfig(MybatisConfig mybatisConfig) {
+    public ZeusDBDatasourceConfig(MybatisConfig mybatisConfig) {
         super(mybatisConfig);
     }
 
-    @Bean("db1DataSource")
+    @Bean("zeusdbDataSource")
+    @Primary
     @Override
     public DataSource createDataSource() throws Exception {
         return super.createDataSource();
     }
 
-    @Bean("db1TxManager")
+    @Bean("zeusdbTxManager")
+    @Primary
     @Override
-    public PlatformTransactionManager createTxManager(@Qualifier("db1DataSource") DataSource dataSource) {
+    public PlatformTransactionManager createTxManager(@Qualifier("zeusdbDataSource") DataSource dataSource) {
         return super.createTxManager(dataSource);
     }
 
-    @Bean("db1SqlSessionFactory")
+    @Bean("zeusdbSqlSessionFactory")
+    @Primary
     @Override
-    public SqlSessionFactory createSqlSessionFactory(@Qualifier("db1DataSource") DataSource dataSource) throws Exception {
+    public SqlSessionFactory createSqlSessionFactory(@Qualifier("zeusdbDataSource") DataSource dataSource) throws Exception {
         return super.createSqlSessionFactory(dataSource);
     }
 }

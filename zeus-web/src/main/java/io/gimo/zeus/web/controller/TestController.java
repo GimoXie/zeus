@@ -1,8 +1,8 @@
 package io.gimo.zeus.web.controller;
 
 import io.gimo.zeus.cache.redis.template.IRedisService;
-import io.gimo.zeus.db.db1.entity.User;
-import io.gimo.zeus.db.db2.entity.User2;
+import io.gimo.zeus.db.po.db1.User;
+import io.gimo.zeus.db.po.db2.User2;
 import io.gimo.zeus.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

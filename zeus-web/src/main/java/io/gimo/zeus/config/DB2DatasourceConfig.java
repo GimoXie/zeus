@@ -12,7 +12,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @ConfigurationProperties(prefix = "spring.datasource.db2")
-@MapperScan(basePackages = "io.gimo.zeus.db.db2", sqlSessionFactoryRef = "db2SqlSessionFactory")
+@MapperScan(basePackages = "io.gimo.zeus.db.dao.db2", sqlSessionFactoryRef = "db2SqlSessionFactory")
 public class DB2DatasourceConfig extends BaseDataSourceConfig {
 
     public DB2DatasourceConfig(MybatisConfig mybatisConfig) {
