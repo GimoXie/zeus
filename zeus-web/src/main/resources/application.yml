@@ -1,3 +1,11 @@
+## mybatis config
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-prefix: dao.
+  configuration-properties:
+    dialectClass: io.gimo.zeus.db.plugin.dialect.MySql5Dialect
+## druid config
 druid:
   initialSize: 1
   minIdle: 3
@@ -14,7 +22,7 @@ druid:
   filters: stat,wall,slf4j
   connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
   useGlobalDataSourceStat: true
-
+## spring config
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
@@ -70,7 +78,6 @@ spring:
     basename: i18n/messages
     encoding: UTF-8
     fallback-to-system-locale: true
-
+## log config
 logging:
   config: classpath:logback.xml
-

@@ -2,6 +2,8 @@ package io.gimo.zeus.config;
 
 import com.alibaba.druid.pool.DruidDataSourceFactory;
 import com.google.common.base.Strings;
+import io.gimo.zeus.db.plugin.interceptor.PaginationResultSetHandlerInterceptor;
+import io.gimo.zeus.db.plugin.interceptor.PaginationStatementHandlerInterceptor;
 import org.apache.ibatis.session.Configuration;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.boot.autoconfigure.MybatisProperties;
@@ -46,7 +48,10 @@ public class MybatisConfig {
         if (mybatisProperties.getConfiguration() != null) {
             BeanUtils.copyProperties(mybatisProperties.getConfiguration(), configuration);
         }
+        configuration.addInterceptor(new PaginationStatementHandlerInterceptor());
+        configuration.addInterceptor(new PaginationResultSetHandlerInterceptor());
         sqlSessionFactoryBean.setConfiguration(configuration);
+        sqlSessionFactoryBean.setConfigurationProperties(mybatisProperties.getConfigurationProperties());
         return sqlSessionFactoryBean;
     }
 
