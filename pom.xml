@@ -38,7 +38,6 @@
         <page-helper.version>1.2.5</page-helper.version>
         <jedis.version>2.9.0</jedis.version>
         <lombok.version>1.18.2</lombok.version>
-        <dozer.version>5.5.1</dozer.version>
         <!-- plugin version -->
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
         <mybatis-generator-maven-plugin.verion>1.3.7</mybatis-generator-maven-plugin.verion>
@@ -123,11 +122,6 @@
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>net.sf.dozer</groupId>
-                <artifactId>dozer</artifactId>
-                <version>${dozer.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
