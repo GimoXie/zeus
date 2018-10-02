@@ -1,0 +1,254 @@
+18-09-16.17:28:03.457 [main            ] INFO  ZeusWebApplication      - Starting ZeusWebApplication on DESKTOP-0LBIGHJ with PID 8452 (started by gimoxie in D:\project - java\zeus)
+18-09-16.17:28:03.469 [main            ] INFO  ZeusWebApplication      - No active profile set, falling back to default profiles: default
+18-09-16.17:28:03.549 [main            ] INFO  AnnotationConfigServletWebServerApplicationContext  - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@664a9613: startup date [Sun Sep 16 17:28:03 CST 2018]; root of context hierarchy
+18-09-16.17:28:05.011 [main            ] INFO  RepositoryConfigurationDelegate  - Multiple Spring Data modules found, entering strict repository configuration mode!
+18-09-16.17:28:05.559 [main            ] INFO  PostProcessorRegistrationDelegate$BeanPostProcessorChecker  - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$d8a8512e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+18-09-16.17:28:05.997 [main            ] ERROR AprLifecycleListener    - An incompatible version [1.2.10] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+18-09-16.17:28:06.121 [main            ] INFO  TomcatWebServer         - Tomcat initialized with port(s): 8080 (http)
+18-09-16.17:28:06.136 [main            ] ERROR AprLifecycleListener    - An incompatible version [1.2.10] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+18-09-16.17:28:06.136 [main            ] INFO  Http11NioProtocol       - Initializing ProtocolHandler ["http-nio-8080"]
+18-09-16.17:28:06.172 [main            ] INFO  StandardService         - Starting service [Tomcat]
+18-09-16.17:28:06.173 [main            ] INFO  StandardEngine          - Starting Servlet Engine: Apache Tomcat/8.5.31
+18-09-16.17:28:06.190 [localhost-startStop-1] ERROR AprLifecycleListener    - An incompatible version [1.2.10] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+18-09-16.17:28:06.306 [localhost-startStop-1] INFO  [/]                     - Initializing Spring embedded WebApplicationContext
+18-09-16.17:28:06.306 [localhost-startStop-1] INFO  ContextLoader           - Root WebApplicationContext: initialization completed in 2757 ms
+18-09-16.17:28:06.494 [localhost-startStop-1] INFO  ServletRegistrationBean  - Servlet dispatcherServlet mapped to [/]
+18-09-16.17:28:06.500 [localhost-startStop-1] INFO  FilterRegistrationBean  - Mapping filter: 'characterEncodingFilter' to: [/*]
+18-09-16.17:28:06.501 [localhost-startStop-1] INFO  FilterRegistrationBean  - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+18-09-16.17:28:06.501 [localhost-startStop-1] INFO  FilterRegistrationBean  - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+18-09-16.17:28:06.501 [localhost-startStop-1] INFO  FilterRegistrationBean  - Mapping filter: 'requestContextFilter' to: [/*]
+18-09-16.17:28:07.210 [main            ] INFO  RedisConfig             - JedisConnectionFactory bean init success.
+18-09-16.17:28:07.449 [main            ] INFO  SimpleUrlHandlerMapping  - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18-09-16.17:28:07.800 [main            ] INFO  RequestMappingHandlerAdapter  - Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@664a9613: startup date [Sun Sep 16 17:28:03 CST 2018]; root of context hierarchy
+18-09-16.17:28:07.857 [main            ] INFO  RequestMappingHandlerMapping  - Mapped "{[/index],methods=[GET]}" onto public java.lang.String io.gimo.zeus.web.controller.PageController.toIndex()
+18-09-16.17:28:07.857 [main            ] INFO  RequestMappingHandlerMapping  - Mapped "{[/dashboard],methods=[GET]}" onto public java.lang.String io.gimo.zeus.web.controller.PageController.toDashboard()
+18-09-16.17:28:07.858 [main            ] INFO  RequestMappingHandlerMapping  - Mapped "{[/login],methods=[GET]}" onto public java.lang.String io.gimo.zeus.web.controller.PageController.toLogin()
+18-09-16.17:28:07.858 [main            ] INFO  RequestMappingHandlerMapping  - Mapped "{[/testDataSource1]}" onto public java.util.List<io.gimo.zeus.db.po.db1.User> io.gimo.zeus.web.controller.TestController.testDataSource1()
+18-09-16.17:28:07.858 [main            ] INFO  RequestMappingHandlerMapping  - Mapped "{[/testDataSource2]}" onto public java.util.List<io.gimo.zeus.db.po.db2.User2> io.gimo.zeus.web.controller.TestController.testDataSource2()
+18-09-16.17:28:07.863 [main            ] INFO  RequestMappingHandlerMapping  - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+18-09-16.17:28:07.864 [main            ] INFO  RequestMappingHandlerMapping  - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+18-09-16.17:28:07.901 [main            ] INFO  SimpleUrlHandlerMapping  - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18-09-16.17:28:07.901 [main            ] INFO  SimpleUrlHandlerMapping  - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18-09-16.17:28:08.354 [main            ] INFO  FreeMarkerConfigurer    - ClassTemplateLoader for Spring macros added to FreeMarker configuration
+18-09-16.17:28:08.551 [main            ] INFO  AnnotationMBeanExporter  - Registering beans for JMX exposure on startup
+18-09-16.17:28:08.552 [main            ] INFO  AnnotationMBeanExporter  - Bean with name 'db1DataSource' has been autodetected for JMX exposure
+18-09-16.17:28:08.552 [main            ] INFO  AnnotationMBeanExporter  - Bean with name 'db2DataSource' has been autodetected for JMX exposure
+18-09-16.17:28:08.552 [main            ] INFO  AnnotationMBeanExporter  - Bean with name 'zeusdbDataSource' has been autodetected for JMX exposure
+18-09-16.17:28:08.557 [main            ] INFO  AnnotationMBeanExporter  - Located MBean 'zeusdbDataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=zeusdbDataSource,type=DruidDataSource]
+18-09-16.17:28:08.571 [main            ] INFO  AnnotationMBeanExporter  - Located MBean 'db1DataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=db1DataSource,type=DruidDataSource]
+18-09-16.17:28:08.571 [main            ] INFO  AnnotationMBeanExporter  - Located MBean 'db2DataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=db2DataSource,type=DruidDataSource]
+18-09-16.17:28:08.583 [main            ] INFO  Http11NioProtocol       - Starting ProtocolHandler ["http-nio-8080"]
+18-09-16.17:28:08.595 [main            ] INFO  NioSelectorPool         - Using a shared selector for servlet write/read
+18-09-16.17:28:08.637 [main            ] INFO  TomcatWebServer         - Tomcat started on port(s): 8080 (http) with context path ''
+18-09-16.17:28:08.655 [main            ] INFO  ZeusWebApplication      - Started ZeusWebApplication in 6.072 seconds (JVM running for 9.239)
+18-09-16.17:28:33.873 [http-nio-8080-exec-1] ERROR AprLifecycleListener    - An incompatible version [1.2.10] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+18-09-16.17:28:33.889 [http-nio-8080-exec-1] INFO  [/]                     - Initializing Spring FrameworkServlet 'dispatcherServlet'
+18-09-16.17:28:33.890 [http-nio-8080-exec-1] INFO  DispatcherServlet       - FrameworkServlet 'dispatcherServlet': initialization started
+18-09-16.17:28:33.925 [http-nio-8080-exec-1] INFO  DispatcherServlet       - FrameworkServlet 'dispatcherServlet': initialization completed in 35 ms
+18-09-16.17:28:34.232 [http-nio-8080-exec-2] ERROR AprLifecycleListener    - An incompatible version [1.2.10] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+18-09-16.17:28:34.233 [http-nio-8080-exec-4] ERROR AprLifecycleListener    - An incompatible version [1.2.10] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+18-09-16.17:28:34.240 [http-nio-8080-exec-5] ERROR AprLifecycleListener    - An incompatible version [1.2.10] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+18-09-16.17:28:34.240 [http-nio-8080-exec-6] ERROR AprLifecycleListener    - An incompatible version [1.2.10] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+18-09-16.17:28:34.242 [http-nio-8080-exec-7] ERROR AprLifecycleListener    - An incompatible version [1.2.10] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+18-09-16.17:37:33.712 [main            ] INFO  ZeusWebApplication      - Starting ZeusWebApplication on DESKTOP-0LBIGHJ with PID 4172 (started by gimoxie in D:\project - java\zeus)
+18-09-16.17:37:33.717 [main            ] INFO  ZeusWebApplication      - No active profile set, falling back to default profiles: default
+18-09-16.17:37:33.782 [main            ] INFO  AnnotationConfigServletWebServerApplicationContext  - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@1536602f: startup date [Sun Sep 16 17:37:33 CST 2018]; root of context hierarchy
+18-09-16.17:37:34.421 [main            ] INFO  RepositoryConfigurationDelegate  - Multiple Spring Data modules found, entering strict repository configuration mode!
+18-09-16.17:37:34.864 [main            ] INFO  PostProcessorRegistrationDelegate$BeanPostProcessorChecker  - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$f9c51a08] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+18-09-16.17:37:35.078 [main            ] ERROR AprLifecycleListener    - An incompatible version [1.2.10] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+18-09-16.17:37:35.163 [main            ] INFO  TomcatWebServer         - Tomcat initialized with port(s): 8080 (http)
+18-09-16.17:37:35.178 [main            ] ERROR AprLifecycleListener    - An incompatible version [1.2.10] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+18-09-16.17:37:35.179 [main            ] INFO  Http11NioProtocol       - Initializing ProtocolHandler ["http-nio-8080"]
+18-09-16.17:37:35.190 [main            ] INFO  StandardService         - Starting service [Tomcat]
+18-09-16.17:37:35.190 [main            ] INFO  StandardEngine          - Starting Servlet Engine: Apache Tomcat/8.5.31
+18-09-16.17:37:35.195 [localhost-startStop-1] ERROR AprLifecycleListener    - An incompatible version [1.2.10] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+18-09-16.17:37:35.304 [localhost-startStop-1] INFO  [/]                     - Initializing Spring embedded WebApplicationContext
+18-09-16.17:37:35.304 [localhost-startStop-1] INFO  ContextLoader           - Root WebApplicationContext: initialization completed in 1522 ms
+18-09-16.17:37:35.442 [localhost-startStop-1] INFO  ServletRegistrationBean  - Servlet dispatcherServlet mapped to [/]
+18-09-16.17:37:35.447 [localhost-startStop-1] INFO  FilterRegistrationBean  - Mapping filter: 'characterEncodingFilter' to: [/*]
+18-09-16.17:37:35.447 [localhost-startStop-1] INFO  FilterRegistrationBean  - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+18-09-16.17:37:35.447 [localhost-startStop-1] INFO  FilterRegistrationBean  - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+18-09-16.17:37:35.447 [localhost-startStop-1] INFO  FilterRegistrationBean  - Mapping filter: 'requestContextFilter' to: [/*]
+18-09-16.17:37:35.816 [main            ] INFO  RedisConfig             - JedisConnectionFactory bean init success.
+18-09-16.17:37:36.049 [main            ] INFO  SimpleUrlHandlerMapping  - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18-09-16.17:37:36.314 [main            ] INFO  RequestMappingHandlerAdapter  - Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@1536602f: startup date [Sun Sep 16 17:37:33 CST 2018]; root of context hierarchy
+18-09-16.17:37:36.367 [main            ] INFO  RequestMappingHandlerMapping  - Mapped "{[/index],methods=[GET]}" onto public java.lang.String io.gimo.zeus.web.controller.PageController.toIndex()
+18-09-16.17:37:36.368 [main            ] INFO  RequestMappingHandlerMapping  - Mapped "{[/login],methods=[GET]}" onto public java.lang.String io.gimo.zeus.web.controller.PageController.toLogin()
+18-09-16.17:37:36.368 [main            ] INFO  RequestMappingHandlerMapping  - Mapped "{[/dashboard],methods=[GET]}" onto public java.lang.String io.gimo.zeus.web.controller.PageController.toDashboard()
+18-09-16.17:37:36.368 [main            ] INFO  RequestMappingHandlerMapping  - Mapped "{[/testDataSource2]}" onto public java.util.List<io.gimo.zeus.db.po.db2.User2> io.gimo.zeus.web.controller.TestController.testDataSource2()
+18-09-16.17:37:36.369 [main            ] INFO  RequestMappingHandlerMapping  - Mapped "{[/testDataSource1]}" onto public java.util.List<io.gimo.zeus.db.po.db1.User> io.gimo.zeus.web.controller.TestController.testDataSource1()
+18-09-16.17:37:36.374 [main            ] INFO  RequestMappingHandlerMapping  - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+18-09-16.17:37:36.375 [main            ] INFO  RequestMappingHandlerMapping  - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+18-09-16.17:37:36.405 [main            ] INFO  SimpleUrlHandlerMapping  - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18-09-16.17:37:36.406 [main            ] INFO  SimpleUrlHandlerMapping  - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18-09-16.17:37:36.702 [main            ] INFO  FreeMarkerConfigurer    - ClassTemplateLoader for Spring macros added to FreeMarker configuration
+18-09-16.17:37:36.853 [main            ] INFO  AnnotationMBeanExporter  - Registering beans for JMX exposure on startup
+18-09-16.17:37:36.854 [main            ] INFO  AnnotationMBeanExporter  - Bean with name 'db1DataSource' has been autodetected for JMX exposure
+18-09-16.17:37:36.854 [main            ] INFO  AnnotationMBeanExporter  - Bean with name 'db2DataSource' has been autodetected for JMX exposure
+18-09-16.17:37:36.854 [main            ] INFO  AnnotationMBeanExporter  - Bean with name 'zeusdbDataSource' has been autodetected for JMX exposure
+18-09-16.17:37:36.861 [main            ] INFO  AnnotationMBeanExporter  - Located MBean 'zeusdbDataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=zeusdbDataSource,type=DruidDataSource]
+18-09-16.17:37:36.864 [main            ] INFO  AnnotationMBeanExporter  - Located MBean 'db1DataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=db1DataSource,type=DruidDataSource]
+18-09-16.17:37:36.864 [main            ] INFO  AnnotationMBeanExporter  - Located MBean 'db2DataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=db2DataSource,type=DruidDataSource]
+18-09-16.17:37:36.876 [main            ] INFO  Http11NioProtocol       - Starting ProtocolHandler ["http-nio-8080"]
+18-09-16.17:37:36.890 [main            ] INFO  NioSelectorPool         - Using a shared selector for servlet write/read
+18-09-16.17:37:36.914 [main            ] INFO  TomcatWebServer         - Tomcat started on port(s): 8080 (http) with context path ''
+18-09-16.17:37:36.920 [main            ] INFO  ZeusWebApplication      - Started ZeusWebApplication in 3.738 seconds (JVM running for 5.107)
+18-09-16.17:43:20.958 [http-nio-8080-exec-1] ERROR AprLifecycleListener    - An incompatible version [1.2.10] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+18-09-16.17:43:20.974 [http-nio-8080-exec-1] INFO  [/]                     - Initializing Spring FrameworkServlet 'dispatcherServlet'
+18-09-16.17:43:20.974 [http-nio-8080-exec-1] INFO  DispatcherServlet       - FrameworkServlet 'dispatcherServlet': initialization started
+18-09-16.17:43:21.001 [http-nio-8080-exec-1] INFO  DispatcherServlet       - FrameworkServlet 'dispatcherServlet': initialization completed in 27 ms
+18-09-16.17:43:21.247 [http-nio-8080-exec-3] ERROR AprLifecycleListener    - An incompatible version [1.2.10] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+18-09-16.17:43:21.520 [http-nio-8080-exec-5] ERROR AprLifecycleListener    - An incompatible version [1.2.10] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+18-09-16.17:43:21.522 [http-nio-8080-exec-7] ERROR AprLifecycleListener    - An incompatible version [1.2.10] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+18-09-16.17:43:21.525 [http-nio-8080-exec-8] ERROR AprLifecycleListener    - An incompatible version [1.2.10] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+18-09-16.17:43:47.127 [main            ] INFO  ZeusWebApplication      - Starting ZeusWebApplication on DESKTOP-0LBIGHJ with PID 19320 (started by gimoxie in D:\project - java\zeus)
+18-09-16.17:43:47.134 [main            ] INFO  ZeusWebApplication      - No active profile set, falling back to default profiles: default
+18-09-16.17:43:47.200 [main            ] INFO  AnnotationConfigServletWebServerApplicationContext  - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@165b2f7f: startup date [Sun Sep 16 17:43:47 CST 2018]; root of context hierarchy
+18-09-16.17:43:47.930 [main            ] INFO  RepositoryConfigurationDelegate  - Multiple Spring Data modules found, entering strict repository configuration mode!
+18-09-16.17:43:48.359 [main            ] INFO  PostProcessorRegistrationDelegate$BeanPostProcessorChecker  - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$a5def9a7] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+18-09-16.17:43:48.561 [main            ] ERROR AprLifecycleListener    - An incompatible version [1.2.10] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+18-09-16.17:43:48.656 [main            ] INFO  TomcatWebServer         - Tomcat initialized with port(s): 8080 (http)
+18-09-16.17:43:48.671 [main            ] ERROR AprLifecycleListener    - An incompatible version [1.2.10] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+18-09-16.17:43:48.672 [main            ] INFO  Http11NioProtocol       - Initializing ProtocolHandler ["http-nio-8080"]
+18-09-16.17:43:48.684 [main            ] INFO  StandardService         - Starting service [Tomcat]
+18-09-16.17:43:48.684 [main            ] INFO  StandardEngine          - Starting Servlet Engine: Apache Tomcat/8.5.31
+18-09-16.17:43:48.690 [localhost-startStop-1] ERROR AprLifecycleListener    - An incompatible version [1.2.10] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+18-09-16.17:43:48.798 [localhost-startStop-1] INFO  [/]                     - Initializing Spring embedded WebApplicationContext
+18-09-16.17:43:48.799 [localhost-startStop-1] INFO  ContextLoader           - Root WebApplicationContext: initialization completed in 1599 ms
+18-09-16.17:43:48.943 [localhost-startStop-1] INFO  ServletRegistrationBean  - Servlet dispatcherServlet mapped to [/]
+18-09-16.17:43:48.948 [localhost-startStop-1] INFO  FilterRegistrationBean  - Mapping filter: 'characterEncodingFilter' to: [/*]
+18-09-16.17:43:48.948 [localhost-startStop-1] INFO  FilterRegistrationBean  - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+18-09-16.17:43:48.948 [localhost-startStop-1] INFO  FilterRegistrationBean  - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+18-09-16.17:43:48.948 [localhost-startStop-1] INFO  FilterRegistrationBean  - Mapping filter: 'requestContextFilter' to: [/*]
+18-09-16.17:43:49.306 [main            ] INFO  RedisConfig             - JedisConnectionFactory bean init success.
+18-09-16.17:43:49.479 [main            ] INFO  SimpleUrlHandlerMapping  - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18-09-16.17:43:49.734 [main            ] INFO  RequestMappingHandlerAdapter  - Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@165b2f7f: startup date [Sun Sep 16 17:43:47 CST 2018]; root of context hierarchy
+18-09-16.17:43:49.787 [main            ] INFO  RequestMappingHandlerMapping  - Mapped "{[/index],methods=[GET]}" onto public java.lang.String io.gimo.zeus.web.controller.PageController.toIndex()
+18-09-16.17:43:49.788 [main            ] INFO  RequestMappingHandlerMapping  - Mapped "{[/login],methods=[GET]}" onto public java.lang.String io.gimo.zeus.web.controller.PageController.toLogin()
+18-09-16.17:43:49.789 [main            ] INFO  RequestMappingHandlerMapping  - Mapped "{[/dashboard],methods=[GET]}" onto public java.lang.String io.gimo.zeus.web.controller.PageController.toDashboard()
+18-09-16.17:43:49.789 [main            ] INFO  RequestMappingHandlerMapping  - Mapped "{[/testDataSource2]}" onto public java.util.List<io.gimo.zeus.db.po.db2.User2> io.gimo.zeus.web.controller.TestController.testDataSource2()
+18-09-16.17:43:49.789 [main            ] INFO  RequestMappingHandlerMapping  - Mapped "{[/testDataSource1]}" onto public java.util.List<io.gimo.zeus.db.po.db1.User> io.gimo.zeus.web.controller.TestController.testDataSource1()
+18-09-16.17:43:49.795 [main            ] INFO  RequestMappingHandlerMapping  - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+18-09-16.17:43:49.795 [main            ] INFO  RequestMappingHandlerMapping  - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+18-09-16.17:43:49.826 [main            ] INFO  SimpleUrlHandlerMapping  - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18-09-16.17:43:49.826 [main            ] INFO  SimpleUrlHandlerMapping  - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18-09-16.17:43:50.160 [main            ] INFO  FreeMarkerConfigurer    - ClassTemplateLoader for Spring macros added to FreeMarker configuration
+18-09-16.17:43:50.317 [main            ] INFO  AnnotationMBeanExporter  - Registering beans for JMX exposure on startup
+18-09-16.17:43:50.318 [main            ] INFO  AnnotationMBeanExporter  - Bean with name 'db1DataSource' has been autodetected for JMX exposure
+18-09-16.17:43:50.318 [main            ] INFO  AnnotationMBeanExporter  - Bean with name 'db2DataSource' has been autodetected for JMX exposure
+18-09-16.17:43:50.318 [main            ] INFO  AnnotationMBeanExporter  - Bean with name 'zeusdbDataSource' has been autodetected for JMX exposure
+18-09-16.17:43:50.324 [main            ] INFO  AnnotationMBeanExporter  - Located MBean 'zeusdbDataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=zeusdbDataSource,type=DruidDataSource]
+18-09-16.17:43:50.326 [main            ] INFO  AnnotationMBeanExporter  - Located MBean 'db1DataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=db1DataSource,type=DruidDataSource]
+18-09-16.17:43:50.327 [main            ] INFO  AnnotationMBeanExporter  - Located MBean 'db2DataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=db2DataSource,type=DruidDataSource]
+18-09-16.17:43:50.336 [main            ] INFO  Http11NioProtocol       - Starting ProtocolHandler ["http-nio-8080"]
+18-09-16.17:43:50.348 [main            ] INFO  NioSelectorPool         - Using a shared selector for servlet write/read
+18-09-16.17:43:50.368 [main            ] INFO  TomcatWebServer         - Tomcat started on port(s): 8080 (http) with context path ''
+18-09-16.17:43:50.372 [main            ] INFO  ZeusWebApplication      - Started ZeusWebApplication in 3.745 seconds (JVM running for 5.081)
+18-09-16.17:43:53.327 [http-nio-8080-exec-1] ERROR AprLifecycleListener    - An incompatible version [1.2.10] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+18-09-16.17:43:53.341 [http-nio-8080-exec-1] INFO  [/]                     - Initializing Spring FrameworkServlet 'dispatcherServlet'
+18-09-16.17:43:53.341 [http-nio-8080-exec-1] INFO  DispatcherServlet       - FrameworkServlet 'dispatcherServlet': initialization started
+18-09-16.17:43:53.360 [http-nio-8080-exec-1] INFO  DispatcherServlet       - FrameworkServlet 'dispatcherServlet': initialization completed in 19 ms
+18-09-16.17:43:53.762 [http-nio-8080-exec-4] ERROR AprLifecycleListener    - An incompatible version [1.2.10] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+18-09-16.17:43:53.763 [http-nio-8080-exec-6] ERROR AprLifecycleListener    - An incompatible version [1.2.10] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+18-09-16.17:43:53.766 [http-nio-8080-exec-5] ERROR AprLifecycleListener    - An incompatible version [1.2.10] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+18-09-16.17:43:53.768 [http-nio-8080-exec-7] ERROR AprLifecycleListener    - An incompatible version [1.2.10] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+18-09-16.17:43:53.769 [http-nio-8080-exec-8] ERROR AprLifecycleListener    - An incompatible version [1.2.10] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+18-09-16.18:27:07.750 [main            ] INFO  ZeusWebApplication      - Starting ZeusWebApplication on DESKTOP-0LBIGHJ with PID 15724 (started by gimoxie in D:\project - java\zeus)
+18-09-16.18:27:07.754 [main            ] INFO  ZeusWebApplication      - No active profile set, falling back to default profiles: default
+18-09-16.18:27:07.812 [main            ] INFO  AnnotationConfigServletWebServerApplicationContext  - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@65a4798f: startup date [Sun Sep 16 18:27:07 CST 2018]; root of context hierarchy
+18-09-16.18:27:08.476 [main            ] INFO  RepositoryConfigurationDelegate  - Multiple Spring Data modules found, entering strict repository configuration mode!
+18-09-16.18:27:08.861 [main            ] INFO  PostProcessorRegistrationDelegate$BeanPostProcessorChecker  - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$21f532cb] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+18-09-16.18:27:09.068 [main            ] ERROR AprLifecycleListener    - An incompatible version [1.2.10] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+18-09-16.18:27:09.155 [main            ] INFO  TomcatWebServer         - Tomcat initialized with port(s): 8080 (http)
+18-09-16.18:27:09.168 [main            ] ERROR AprLifecycleListener    - An incompatible version [1.2.10] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+18-09-16.18:27:09.169 [main            ] INFO  Http11NioProtocol       - Initializing ProtocolHandler ["http-nio-8080"]
+18-09-16.18:27:09.180 [main            ] INFO  StandardService         - Starting service [Tomcat]
+18-09-16.18:27:09.180 [main            ] INFO  StandardEngine          - Starting Servlet Engine: Apache Tomcat/8.5.31
+18-09-16.18:27:09.185 [localhost-startStop-1] ERROR AprLifecycleListener    - An incompatible version [1.2.10] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+18-09-16.18:27:09.285 [localhost-startStop-1] INFO  [/]                     - Initializing Spring embedded WebApplicationContext
+18-09-16.18:27:09.285 [localhost-startStop-1] INFO  ContextLoader           - Root WebApplicationContext: initialization completed in 1473 ms
+18-09-16.18:27:09.420 [localhost-startStop-1] INFO  ServletRegistrationBean  - Servlet dispatcherServlet mapped to [/]
+18-09-16.18:27:09.425 [localhost-startStop-1] INFO  FilterRegistrationBean  - Mapping filter: 'characterEncodingFilter' to: [/*]
+18-09-16.18:27:09.425 [localhost-startStop-1] INFO  FilterRegistrationBean  - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+18-09-16.18:27:09.425 [localhost-startStop-1] INFO  FilterRegistrationBean  - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+18-09-16.18:27:09.425 [localhost-startStop-1] INFO  FilterRegistrationBean  - Mapping filter: 'requestContextFilter' to: [/*]
+18-09-16.18:27:09.779 [main            ] INFO  RedisConfig             - JedisConnectionFactory bean init success.
+18-09-16.18:27:09.942 [main            ] INFO  SimpleUrlHandlerMapping  - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18-09-16.18:27:10.261 [main            ] INFO  RequestMappingHandlerAdapter  - Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@65a4798f: startup date [Sun Sep 16 18:27:07 CST 2018]; root of context hierarchy
+18-09-16.18:27:10.315 [main            ] INFO  RequestMappingHandlerMapping  - Mapped "{[/login],methods=[GET]}" onto public java.lang.String io.gimo.zeus.web.controller.PageController.toLogin()
+18-09-16.18:27:10.315 [main            ] INFO  RequestMappingHandlerMapping  - Mapped "{[/dashboard],methods=[GET]}" onto public java.lang.String io.gimo.zeus.web.controller.PageController.toDashboard()
+18-09-16.18:27:10.315 [main            ] INFO  RequestMappingHandlerMapping  - Mapped "{[/index],methods=[GET]}" onto public java.lang.String io.gimo.zeus.web.controller.PageController.toIndex()
+18-09-16.18:27:10.316 [main            ] INFO  RequestMappingHandlerMapping  - Mapped "{[/testDataSource2]}" onto public java.util.List<io.gimo.zeus.db.po.db2.User2> io.gimo.zeus.web.controller.TestController.testDataSource2()
+18-09-16.18:27:10.316 [main            ] INFO  RequestMappingHandlerMapping  - Mapped "{[/testDataSource1]}" onto public java.util.List<io.gimo.zeus.db.po.db1.User> io.gimo.zeus.web.controller.TestController.testDataSource1()
+18-09-16.18:27:10.322 [main            ] INFO  RequestMappingHandlerMapping  - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+18-09-16.18:27:10.322 [main            ] INFO  RequestMappingHandlerMapping  - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+18-09-16.18:27:10.353 [main            ] INFO  SimpleUrlHandlerMapping  - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18-09-16.18:27:10.353 [main            ] INFO  SimpleUrlHandlerMapping  - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18-09-16.18:27:10.669 [main            ] INFO  FreeMarkerConfigurer    - ClassTemplateLoader for Spring macros added to FreeMarker configuration
+18-09-16.18:27:10.811 [main            ] INFO  AnnotationMBeanExporter  - Registering beans for JMX exposure on startup
+18-09-16.18:27:10.812 [main            ] INFO  AnnotationMBeanExporter  - Bean with name 'db1DataSource' has been autodetected for JMX exposure
+18-09-16.18:27:10.812 [main            ] INFO  AnnotationMBeanExporter  - Bean with name 'db2DataSource' has been autodetected for JMX exposure
+18-09-16.18:27:10.812 [main            ] INFO  AnnotationMBeanExporter  - Bean with name 'zeusdbDataSource' has been autodetected for JMX exposure
+18-09-16.18:27:10.819 [main            ] INFO  AnnotationMBeanExporter  - Located MBean 'zeusdbDataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=zeusdbDataSource,type=DruidDataSource]
+18-09-16.18:27:10.821 [main            ] INFO  AnnotationMBeanExporter  - Located MBean 'db1DataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=db1DataSource,type=DruidDataSource]
+18-09-16.18:27:10.822 [main            ] INFO  AnnotationMBeanExporter  - Located MBean 'db2DataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=db2DataSource,type=DruidDataSource]
+18-09-16.18:27:10.831 [main            ] INFO  Http11NioProtocol       - Starting ProtocolHandler ["http-nio-8080"]
+18-09-16.18:27:10.843 [main            ] INFO  NioSelectorPool         - Using a shared selector for servlet write/read
+18-09-16.18:27:10.862 [main            ] INFO  TomcatWebServer         - Tomcat started on port(s): 8080 (http) with context path ''
+18-09-16.18:27:10.866 [main            ] INFO  ZeusWebApplication      - Started ZeusWebApplication in 3.617 seconds (JVM running for 4.929)
+18-09-16.18:27:22.077 [http-nio-8080-exec-1] ERROR AprLifecycleListener    - An incompatible version [1.2.10] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+18-09-16.18:27:22.094 [http-nio-8080-exec-1] INFO  [/]                     - Initializing Spring FrameworkServlet 'dispatcherServlet'
+18-09-16.18:27:22.095 [http-nio-8080-exec-1] INFO  DispatcherServlet       - FrameworkServlet 'dispatcherServlet': initialization started
+18-09-16.18:27:22.117 [http-nio-8080-exec-1] INFO  DispatcherServlet       - FrameworkServlet 'dispatcherServlet': initialization completed in 22 ms
+18-09-16.18:28:50.444 [main            ] INFO  ZeusWebApplication      - Starting ZeusWebApplication on DESKTOP-0LBIGHJ with PID 16444 (started by gimoxie in D:\project - java\zeus)
+18-09-16.18:28:50.449 [main            ] INFO  ZeusWebApplication      - No active profile set, falling back to default profiles: default
+18-09-16.18:28:50.515 [main            ] INFO  AnnotationConfigServletWebServerApplicationContext  - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@346939bf: startup date [Sun Sep 16 18:28:50 CST 2018]; root of context hierarchy
+18-09-16.18:28:51.149 [main            ] INFO  RepositoryConfigurationDelegate  - Multiple Spring Data modules found, entering strict repository configuration mode!
+18-09-16.18:28:51.516 [main            ] INFO  PostProcessorRegistrationDelegate$BeanPostProcessorChecker  - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$22ef58f8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+18-09-16.18:28:51.725 [main            ] ERROR AprLifecycleListener    - An incompatible version [1.2.10] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+18-09-16.18:28:51.809 [main            ] INFO  TomcatWebServer         - Tomcat initialized with port(s): 8080 (http)
+18-09-16.18:28:51.822 [main            ] ERROR AprLifecycleListener    - An incompatible version [1.2.10] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+18-09-16.18:28:51.822 [main            ] INFO  Http11NioProtocol       - Initializing ProtocolHandler ["http-nio-8080"]
+18-09-16.18:28:51.833 [main            ] INFO  StandardService         - Starting service [Tomcat]
+18-09-16.18:28:51.833 [main            ] INFO  StandardEngine          - Starting Servlet Engine: Apache Tomcat/8.5.31
+18-09-16.18:28:51.838 [localhost-startStop-1] ERROR AprLifecycleListener    - An incompatible version [1.2.10] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+18-09-16.18:28:51.941 [localhost-startStop-1] INFO  [/]                     - Initializing Spring embedded WebApplicationContext
+18-09-16.18:28:51.941 [localhost-startStop-1] INFO  ContextLoader           - Root WebApplicationContext: initialization completed in 1426 ms
+18-09-16.18:28:52.087 [localhost-startStop-1] INFO  ServletRegistrationBean  - Servlet dispatcherServlet mapped to [/]
+18-09-16.18:28:52.094 [localhost-startStop-1] INFO  FilterRegistrationBean  - Mapping filter: 'characterEncodingFilter' to: [/*]
+18-09-16.18:28:52.094 [localhost-startStop-1] INFO  FilterRegistrationBean  - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+18-09-16.18:28:52.094 [localhost-startStop-1] INFO  FilterRegistrationBean  - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+18-09-16.18:28:52.094 [localhost-startStop-1] INFO  FilterRegistrationBean  - Mapping filter: 'requestContextFilter' to: [/*]
+18-09-16.18:28:52.527 [main            ] INFO  RedisConfig             - JedisConnectionFactory bean init success.
+18-09-16.18:28:52.720 [main            ] INFO  SimpleUrlHandlerMapping  - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18-09-16.18:28:53.010 [main            ] INFO  RequestMappingHandlerAdapter  - Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@346939bf: startup date [Sun Sep 16 18:28:50 CST 2018]; root of context hierarchy
+18-09-16.18:28:53.070 [main            ] INFO  RequestMappingHandlerMapping  - Mapped "{[/index],methods=[GET]}" onto public java.lang.String io.gimo.zeus.web.controller.PageController.toIndex()
+18-09-16.18:28:53.071 [main            ] INFO  RequestMappingHandlerMapping  - Mapped "{[/login],methods=[GET]}" onto public java.lang.String io.gimo.zeus.web.controller.PageController.toLogin()
+18-09-16.18:28:53.071 [main            ] INFO  RequestMappingHandlerMapping  - Mapped "{[/dashboard],methods=[GET]}" onto public java.lang.String io.gimo.zeus.web.controller.PageController.toDashboard()
+18-09-16.18:28:53.072 [main            ] INFO  RequestMappingHandlerMapping  - Mapped "{[/testDataSource2]}" onto public java.util.List<io.gimo.zeus.db.po.db2.User2> io.gimo.zeus.web.controller.TestController.testDataSource2()
+18-09-16.18:28:53.072 [main            ] INFO  RequestMappingHandlerMapping  - Mapped "{[/testDataSource1]}" onto public java.util.List<io.gimo.zeus.db.po.db1.User> io.gimo.zeus.web.controller.TestController.testDataSource1()
+18-09-16.18:28:53.078 [main            ] INFO  RequestMappingHandlerMapping  - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+18-09-16.18:28:53.079 [main            ] INFO  RequestMappingHandlerMapping  - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+18-09-16.18:28:53.117 [main            ] INFO  SimpleUrlHandlerMapping  - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18-09-16.18:28:53.117 [main            ] INFO  SimpleUrlHandlerMapping  - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18-09-16.18:28:53.442 [main            ] INFO  FreeMarkerConfigurer    - ClassTemplateLoader for Spring macros added to FreeMarker configuration
+18-09-16.18:28:53.587 [main            ] INFO  AnnotationMBeanExporter  - Registering beans for JMX exposure on startup
+18-09-16.18:28:53.588 [main            ] INFO  AnnotationMBeanExporter  - Bean with name 'db1DataSource' has been autodetected for JMX exposure
+18-09-16.18:28:53.588 [main            ] INFO  AnnotationMBeanExporter  - Bean with name 'db2DataSource' has been autodetected for JMX exposure
+18-09-16.18:28:53.588 [main            ] INFO  AnnotationMBeanExporter  - Bean with name 'zeusdbDataSource' has been autodetected for JMX exposure
+18-09-16.18:28:53.594 [main            ] INFO  AnnotationMBeanExporter  - Located MBean 'zeusdbDataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=zeusdbDataSource,type=DruidDataSource]
+18-09-16.18:28:53.595 [main            ] INFO  AnnotationMBeanExporter  - Located MBean 'db1DataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=db1DataSource,type=DruidDataSource]
+18-09-16.18:28:53.596 [main            ] INFO  AnnotationMBeanExporter  - Located MBean 'db2DataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=db2DataSource,type=DruidDataSource]
+18-09-16.18:28:53.605 [main            ] INFO  Http11NioProtocol       - Starting ProtocolHandler ["http-nio-8080"]
+18-09-16.18:28:53.617 [main            ] INFO  NioSelectorPool         - Using a shared selector for servlet write/read
+18-09-16.18:28:53.637 [main            ] INFO  TomcatWebServer         - Tomcat started on port(s): 8080 (http) with context path ''
+18-09-16.18:28:53.642 [main            ] INFO  ZeusWebApplication      - Started ZeusWebApplication in 3.702 seconds (JVM running for 5.013)
+18-09-16.18:28:56.838 [http-nio-8080-exec-1] ERROR AprLifecycleListener    - An incompatible version [1.2.10] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+18-09-16.18:28:56.854 [http-nio-8080-exec-1] INFO  [/]                     - Initializing Spring FrameworkServlet 'dispatcherServlet'
+18-09-16.18:28:56.854 [http-nio-8080-exec-1] INFO  DispatcherServlet       - FrameworkServlet 'dispatcherServlet': initialization started
+18-09-16.18:28:56.874 [http-nio-8080-exec-1] INFO  DispatcherServlet       - FrameworkServlet 'dispatcherServlet': initialization completed in 19 ms
+18-09-16.18:28:57.287 [http-nio-8080-exec-4] ERROR AprLifecycleListener    - An incompatible version [1.2.10] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+18-09-16.18:28:57.288 [http-nio-8080-exec-5] ERROR AprLifecycleListener    - An incompatible version [1.2.10] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+18-09-16.18:28:57.292 [http-nio-8080-exec-7] ERROR AprLifecycleListener    - An incompatible version [1.2.10] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+18-09-16.18:28:57.293 [http-nio-8080-exec-8] ERROR AprLifecycleListener    - An incompatible version [1.2.10] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+18-09-16.18:28:57.295 [http-nio-8080-exec-6] ERROR AprLifecycleListener    - An incompatible version [1.2.10] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
