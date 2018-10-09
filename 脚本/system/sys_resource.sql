@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50716
 File Encoding         : 65001
 
-Date: 2018-10-02 08:41:18
+Date: 2018-10-09 22:41:18
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -20,7 +20,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_resource`;
 CREATE TABLE `sys_resource` (
-  `id` bigint(20) unsigned zerofill NOT NULL AUTO_INCREMENT COMMENT '自增长id',
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增长id',
   `is_leaf` bit(1) NOT NULL DEFAULT b'0' COMMENT '是否叶子资源',
   `name` varchar(50) NOT NULL DEFAULT '' COMMENT '资源名称',
   `type` varchar(100) NOT NULL DEFAULT '' COMMENT '资源类型',
