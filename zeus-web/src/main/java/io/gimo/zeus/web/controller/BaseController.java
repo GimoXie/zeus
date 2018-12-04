@@ -12,11 +12,11 @@ public class BaseController {
     protected static final int CODE_SUCCESS = 1;
     protected static final int CODE_FAILURE = 0;
 
-    protected Map<String, Object> generateResult(Integer code, String message, Object data) {
+    protected Map<String, Object> generateResult(Integer code, String message, Object object) {
         Map<String,Object> result = Maps.newHashMap();
         result.put("code", code);
         result.put("message", message);
-        result.put("data", data);
+        result.put("object", object);
         return result;
     }
 

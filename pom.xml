@@ -20,7 +20,7 @@
         <!-- spring包依赖管理 -->
         <groupId>io.spring.platform</groupId>
         <artifactId>platform-bom</artifactId>
-        <version>Cairo-SR2</version>
+        <version>Cairo-SR5</version>
         <relativePath/>
     </parent>
 
@@ -84,13 +84,13 @@
                 <scope>import</scope>
             </dependency>
             <!-- 权限相关 -->
-            <dependency>
+            <!--<dependency>
                 <groupId>org.apache.shiro</groupId>
                 <artifactId>shiro-all</artifactId>
                 <version>${shiro.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
-            </dependency>
+            </dependency>-->
             <!-- 数据库相关依赖 -->
             <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
