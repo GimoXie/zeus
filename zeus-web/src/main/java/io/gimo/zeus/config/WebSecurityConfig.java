@@ -1,25 +1,36 @@
 package io.gimo.zeus.config;
 
+import io.gimo.zeus.service.impl.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
+import javax.annotation.Resource;
+
+@Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Bean
+    public UserDetailsService userDetailsService() {
+        return new UserDetailsServiceImpl();
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         // 参照 https://www.cnblogs.com/yhtboke/p/5764697.html配置
-        http
+        http.csrf().disable()
             // 请求拦截配置
             .authorizeRequests()
                 // 所有用户均可访问的资源
-                .antMatchers("/assets/**", "/app/**", "/login").permitAll()
+                .antMatchers("/assets/**", "/app/**").permitAll()
                 // 不在上述配置中的请求会被鉴权
                 .anyRequest().authenticated()
                 .and()
@@ -54,17 +65,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .invalidateHttpSession(true);
     }
 
-    @Bean
     @Override
-    public UserDetailsService userDetailsService() {
-        UserDetails user =
-                User.withDefaultPasswordEncoder()
-                        .username("user@qq.com")
-                        .password("password")
-                        .roles("USER")
-                        .build();
-
-        return new InMemoryUserDetailsManager(user);
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService()).passwordEncoder(new BCryptPasswordEncoder());
     }
+
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+
+    }
+
 }
 

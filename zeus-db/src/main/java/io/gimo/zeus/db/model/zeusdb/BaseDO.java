@@ -1,11 +1,11 @@
-package io.gimo.zeus.db.po.zeusdb;
+package io.gimo.zeus.db.model.zeusdb;
 
 import lombok.Data;
 
 import java.time.LocalDateTime;
 
 @Data
-public class BasePO {
+public class BaseDO {
 
     /** 自增长id **/
     private Long id;

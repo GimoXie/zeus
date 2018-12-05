@@ -1,6 +1,6 @@
-package io.gimo.zeus.db.po.zeusdb.system;
+package io.gimo.zeus.db.model.zeusdb.system;
 
-import io.gimo.zeus.db.po.zeusdb.BasePO;
+import io.gimo.zeus.db.model.zeusdb.BaseDO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -11,7 +11,7 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class UserRolePO extends BasePO {
+public class UserRoleDO extends BaseDO {
 
     /** 用户id **/
     private Long userId;

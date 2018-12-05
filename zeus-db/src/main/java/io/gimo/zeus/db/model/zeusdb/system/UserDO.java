@@ -1,6 +1,6 @@
-package io.gimo.zeus.db.po.zeusdb.system;
+package io.gimo.zeus.db.model.zeusdb.system;
 
-import io.gimo.zeus.db.po.zeusdb.BasePO;
+import io.gimo.zeus.db.model.zeusdb.BaseDO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class UserPO extends BasePO {
+public class UserDO extends BaseDO {
 
     /** 用户名 **/
     private String username;

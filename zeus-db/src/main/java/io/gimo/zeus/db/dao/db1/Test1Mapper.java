@@ -1,6 +1,6 @@
 package io.gimo.zeus.db.dao.db1;
 
-import io.gimo.zeus.db.po.db1.User;
+import io.gimo.zeus.db.model.db1.User;
 
 import java.util.List;
 
