@@ -11,7 +11,7 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class RoleDO extends BaseDO {
+public class SysRoleDO extends BaseDO {
 
     /** 角色名称 **/
     private String name;

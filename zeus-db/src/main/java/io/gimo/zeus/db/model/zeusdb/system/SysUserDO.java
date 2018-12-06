@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class UserDO extends BaseDO {
+public class SysUserDO extends BaseDO {
 
     /** 用户名 **/
     private String username;

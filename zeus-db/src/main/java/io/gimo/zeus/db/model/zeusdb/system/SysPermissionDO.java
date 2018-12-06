@@ -11,7 +11,7 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class PermissionDO extends BaseDO {
+public class SysPermissionDO extends BaseDO {
 
     /** 菜单名称 **/
     private String name;

@@ -5,17 +5,16 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * 权限资源表 数据库对象
- * [table]:sys_permission_resource
- *
+ * 角色-权限表 数据库对象
+ * [table]:sys_role_permission
  * @author gimoxie
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class PermissionResourceDO extends BaseDO {
+public class SysRolePermissionDO extends BaseDO {
 
-    /** 权限id */
+    /** 角色id **/
+    private Long roleId;
+    /** 权限id **/
     private Long permissionId;
-    /** 资源id **/
-    private Long resourceId;
 }

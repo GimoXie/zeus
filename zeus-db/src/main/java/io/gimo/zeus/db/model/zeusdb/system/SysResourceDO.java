@@ -11,7 +11,7 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class ResourceDO extends BaseDO {
+public class SysResourceDO extends BaseDO {
 
     /** 资源名称 **/
     private String name;

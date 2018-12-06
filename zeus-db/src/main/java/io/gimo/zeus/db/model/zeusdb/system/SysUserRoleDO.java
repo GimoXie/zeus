@@ -11,7 +11,7 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class UserRoleDO extends BaseDO {
+public class SysUserRoleDO extends BaseDO {
 
     /** 用户id **/
     private Long userId;
