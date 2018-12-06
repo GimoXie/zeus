@@ -10,7 +10,7 @@ public class BaseDO {
     /** 自增长id **/
     private Long id;
     /** 是否有效 **/
-    private Boolean isActive;
+    private Boolean active;
     /** 数据创建时间 **/
     private LocalDateTime createTime;
     /** 数据创建用户id **/

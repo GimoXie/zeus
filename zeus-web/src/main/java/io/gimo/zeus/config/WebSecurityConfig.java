@@ -1,31 +1,50 @@
 package io.gimo.zeus.config;
 
-import io.gimo.zeus.service.impl.UserDetailsServiceImpl;
+import io.gimo.zeus.web.security.CustomPermissionEvaluator;
+import io.gimo.zeus.web.security.CustomUserDetailService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
-import javax.annotation.Resource;
+import org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler;
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
-    public UserDetailsService userDetailsService() {
-        return new UserDetailsServiceImpl();
+    public CustomUserDetailService userDetailsService() {
+        return new CustomUserDetailService();
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public CustomPermissionEvaluator permissionEvaluator() {
+        return new CustomPermissionEvaluator();
+    }
+
+    @Bean
+    public DefaultWebSecurityExpressionHandler webSecurityExpressionHandler(){
+        DefaultWebSecurityExpressionHandler handler = new DefaultWebSecurityExpressionHandler();
+        handler.setPermissionEvaluator(permissionEvaluator());
+        return handler;
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         // 参照 https://www.cnblogs.com/yhtboke/p/5764697.html配置
+        // https://blog.csdn.net/yuanlaijike/article/details/80327880
         http.csrf().disable()
             // 请求拦截配置
             .authorizeRequests()
@@ -67,12 +86,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService()).passwordEncoder(new BCryptPasswordEncoder());
+        auth.userDetailsService(userDetailsService())
+                .passwordEncoder(passwordEncoder());
     }
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-
+        // 所有用户均可访问的资源
+        web.ignoring()
+                .antMatchers("/assets/**", "/app/**")
+                .and()
+           .expressionHandler(webSecurityExpressionHandler());
     }
 
 }

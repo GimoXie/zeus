@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : gimo-dev
-Source Server Version : 50716
+Source Server         : localhost
+Source Server Version : 50719
 Source Host           : localhost:3306
 Source Database       : db_zeus
 
 Target Server Type    : MYSQL
-Target Server Version : 50716
+Target Server Version : 50719
 File Encoding         : 65001
 
-Date: 2018-12-04 21:37:07
+Date: 2018-12-06 15:40:39
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -84,6 +84,27 @@ CREATE TABLE `sys_resource` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for sys_resource_permission
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_resource_permission`;
+CREATE TABLE `sys_resource_permission` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增长id',
+  `resource_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '资源id',
+  `permission_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '权限id',
+  `is_active` bit(1) NOT NULL DEFAULT b'0' COMMENT '是否有效',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_user_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '数据创建用户',
+  `last_change_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
+  `last_change_user_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '数据最后修改用户',
+  PRIMARY KEY (`id`),
+  KEY `idx_last_change_time` (`last_change_time`) USING BTREE COMMENT '最后修改时间索引'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='zeus-资源权限表';
+
+-- ----------------------------
+-- Records of sys_resource_permission
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for sys_role
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_role`;
@@ -127,6 +148,27 @@ CREATE TABLE `sys_role_permission` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for sys_role_resource
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_role_resource`;
+CREATE TABLE `sys_role_resource` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增长id',
+  `role_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '角色id',
+  `resource_id` bigint(20) NOT NULL COMMENT '菜单id',
+  `is_active` bit(1) NOT NULL DEFAULT b'0' COMMENT '是否有效',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_user_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '数据创建用户',
+  `last_change_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
+  `last_change_user_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '数据最后修改用户',
+  PRIMARY KEY (`id`),
+  KEY `idx_last_change_time` (`last_change_time`) USING BTREE COMMENT '最后修改时间索引'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='zeus-角色资源表';
+
+-- ----------------------------
+-- Records of sys_role_resource
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for sys_user
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_user`;
@@ -134,7 +176,9 @@ CREATE TABLE `sys_user` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增长id',
   `username` varchar(64) CHARACTER SET utf8 NOT NULL DEFAULT '' COMMENT '用户名',
   `password` varchar(64) CHARACTER SET utf8 NOT NULL DEFAULT '' COMMENT '密码',
-  `last_login_time` datetime DEFAULT NULL COMMENT '最后登录时间',
+  `email` varchar(100) CHARACTER SET utf8 NOT NULL DEFAULT '' COMMENT '邮箱',
+  `telephone` varchar(100) CHARACTER SET utf8 NOT NULL DEFAULT '' COMMENT '电话号码',
+  `last_login_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最后登录时间',
   `is_active` bit(1) NOT NULL DEFAULT b'0' COMMENT '是否有效',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `create_user_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '数据创建用户',
@@ -147,7 +191,6 @@ CREATE TABLE `sys_user` (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES ('1', 'admin', 'admin', null, '\0', '2018-10-09 22:38:31', '0', '2018-10-09 22:38:31', '0');
 
 -- ----------------------------
 -- Table structure for sys_user_role
