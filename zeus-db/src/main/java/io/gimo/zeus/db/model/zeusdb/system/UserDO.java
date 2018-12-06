@@ -19,6 +19,10 @@ public class UserDO extends BaseDO {
     private String username;
     /** 密码 **/
     private String password;
+    /** 邮箱 **/
+    private String email;
+    /** 电话号码 **/
+    private String telephone;
     /** 最后登录时间 **/
     private LocalDateTime lastLoginTime;
 }
