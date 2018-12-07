@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 
-public class BaseController {
+public abstract class BaseController {
     protected Logger logger = LoggerFactory.getLogger(getClass());
 
     protected static final int CODE_SUCCESS = 1;

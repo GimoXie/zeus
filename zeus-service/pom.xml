@@ -21,6 +21,12 @@
             <groupId>io.gimo</groupId>
             <artifactId>zeus-cache</artifactId>
         </dependency>
+
+        <!-- spring boot -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
