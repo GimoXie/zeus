@@ -23,21 +23,21 @@ public class ZeusDBDatasourceConfig extends BaseDataSourceConfig {
     @Bean("zeusdbDataSource")
     @Primary
     @Override
-    public DataSource createDataSource() throws Exception {
-        return super.createDataSource();
+    public DataSource dataSource() throws Exception {
+        return super.dataSource();
     }
 
     @Bean("zeusdbTxManager")
     @Primary
     @Override
-    public PlatformTransactionManager createTxManager(@Qualifier("zeusdbDataSource") DataSource dataSource) {
-        return super.createTxManager(dataSource);
+    public PlatformTransactionManager transactionManager(@Qualifier("zeusdbDataSource") DataSource dataSource) {
+        return super.transactionManager(dataSource);
     }
 
     @Bean("zeusdbSqlSessionFactory")
     @Primary
     @Override
-    public SqlSessionFactory createSqlSessionFactory(@Qualifier("zeusdbDataSource") DataSource dataSource) throws Exception {
-        return super.createSqlSessionFactory(dataSource);
+    public SqlSessionFactory sqlSessionFactory(@Qualifier("zeusdbDataSource") DataSource dataSource) throws Exception {
+        return super.sqlSessionFactory(dataSource);
     }
 }

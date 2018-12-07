@@ -21,19 +21,19 @@ public class DB1DatasourceConfig extends BaseDataSourceConfig {
 
     @Bean("db1DataSource")
     @Override
-    public DataSource createDataSource() throws Exception {
-        return super.createDataSource();
+    public DataSource dataSource() throws Exception {
+        return super.dataSource();
     }
 
     @Bean("db1TxManager")
     @Override
-    public PlatformTransactionManager createTxManager(@Qualifier("db1DataSource") DataSource dataSource) {
-        return super.createTxManager(dataSource);
+    public PlatformTransactionManager transactionManager(@Qualifier("db1DataSource") DataSource dataSource) {
+        return super.transactionManager(dataSource);
     }
 
     @Bean("db1SqlSessionFactory")
     @Override
-    public SqlSessionFactory createSqlSessionFactory(@Qualifier("db1DataSource") DataSource dataSource) throws Exception {
-        return super.createSqlSessionFactory(dataSource);
+    public SqlSessionFactory sqlSessionFactory(@Qualifier("db1DataSource") DataSource dataSource) throws Exception {
+        return super.sqlSessionFactory(dataSource);
     }
 }

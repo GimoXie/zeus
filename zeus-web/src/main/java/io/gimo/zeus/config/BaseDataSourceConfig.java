@@ -22,15 +22,15 @@ public abstract class BaseDataSourceConfig {
         this.mybatisConfig = mybatisConfig;
     }
 
-    protected DataSource createDataSource() throws Exception{
+    protected DataSource dataSource() throws Exception{
         return mybatisConfig.createDataSource(this);
     }
 
-    protected PlatformTransactionManager createTxManager(DataSource dataSource) {
+    protected PlatformTransactionManager transactionManager(DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);
     }
 
-    protected SqlSessionFactory createSqlSessionFactory(DataSource dataSource) throws Exception{
+    protected SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception{
         return mybatisConfig.createSqlSessionFactoryBean(dataSource, this).getObject();
     }
 
