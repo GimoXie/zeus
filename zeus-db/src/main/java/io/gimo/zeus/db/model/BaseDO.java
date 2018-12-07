@@ -1,4 +1,4 @@
-package io.gimo.zeus.db.model.zeusdb;
+package io.gimo.zeus.db.model;
 
 import lombok.Data;
 

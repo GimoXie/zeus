@@ -1,5 +1,6 @@
 package io.gimo.zeus.common.utils;
 
+import com.google.common.base.Preconditions;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.*;
 import org.apache.http.client.config.RequestConfig;
@@ -44,7 +45,8 @@ public class HttpUtils {
     private static final String REQUEST_TIME_OUT = "REQUEST_TIME_OUT";
     private static final String CONTENT_TYPE = "Content-Type";
 
-    private enum RequestType { GET, POST, PUT, DELETE }
+    private enum RequestType {GET, POST, PUT, DELETE}
+
     static {
         SSLContext sslContext;
         try {
@@ -135,9 +137,7 @@ public class HttpUtils {
     private static HttpRequestBase createRequest(RequestType requestMethod, String url, byte[] bytes, String contents,
                                                  Map<String, String> params, Map<String, String> headers,
                                                  Map<String, String> config, String charset) throws Exception {
-        if (StringUtils.isBlank(url)) {
-            throw new Exception("url is null");
-        }
+        Preconditions.checkArgument(StringUtils.isBlank(url), "url is null");
         switch (requestMethod) {
             case POST:
                 HttpPost httpPost = new HttpPost(url);

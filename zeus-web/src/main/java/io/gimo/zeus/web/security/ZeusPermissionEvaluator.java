@@ -9,7 +9,7 @@ import java.io.Serializable;
  * 权限控制器
  * Created by zmxie on 2018/12/6.
  */
-public class CustomPermissionEvaluator implements PermissionEvaluator {
+public class ZeusPermissionEvaluator implements PermissionEvaluator {
 
     public boolean hasPermission(Authentication authentication, Object targetDomainObject, Object permission) {
         return false;

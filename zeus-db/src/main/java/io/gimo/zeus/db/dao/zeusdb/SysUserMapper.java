@@ -1,8 +1,8 @@
-package io.gimo.zeus.db.dao.zeusdb.system;
+package io.gimo.zeus.db.dao.zeusdb;
 
 import io.gimo.zeus.db.dao.BaseMapper;
-import io.gimo.zeus.db.model.zeusdb.system.SysUserDO;
-import io.gimo.zeus.db.model.zeusdb.system.SysUserExample;
+import io.gimo.zeus.db.model.zeusdb.SysUserDO;
+import io.gimo.zeus.db.model.zeusdb.SysUserExample;
 
 /**
  * SysUserMapper继承基类

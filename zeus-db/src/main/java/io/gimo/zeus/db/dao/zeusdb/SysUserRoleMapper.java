@@ -1,8 +1,8 @@
-package io.gimo.zeus.db.dao.zeusdb.system;
+package io.gimo.zeus.db.dao.zeusdb;
 
 import io.gimo.zeus.db.dao.BaseMapper;
-import io.gimo.zeus.db.model.zeusdb.system.SysUserRoleDO;
-import io.gimo.zeus.db.model.zeusdb.system.SysUserRoleExample;
+import io.gimo.zeus.db.model.zeusdb.SysUserRoleDO;
+import io.gimo.zeus.db.model.zeusdb.SysUserRoleExample;
 
 /**
  * SysUserRoleMapper继承基类

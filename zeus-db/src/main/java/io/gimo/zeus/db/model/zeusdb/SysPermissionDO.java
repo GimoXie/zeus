@@ -1,6 +1,6 @@
-package io.gimo.zeus.db.model.zeusdb.system;
+package io.gimo.zeus.db.model.zeusdb;
 
-import io.gimo.zeus.db.model.zeusdb.BaseDO;
+import io.gimo.zeus.db.model.BaseDO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

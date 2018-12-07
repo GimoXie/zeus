@@ -1,9 +1,12 @@
 package io.gimo.zeus.config;
 
 import io.gimo.zeus.service.system.impl.UserDetailServiceImpl;
-import io.gimo.zeus.web.security.CustomPermissionEvaluator;
+import io.gimo.zeus.web.security.ZeusAuthenticationFailureHandler;
+import io.gimo.zeus.web.security.ZeusAuthenticationSuccessHandler;
+import io.gimo.zeus.web.security.ZeusPermissionEvaluator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.access.PermissionEvaluator;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -14,6 +17,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -31,8 +36,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public CustomPermissionEvaluator permissionEvaluator() {
-        return new CustomPermissionEvaluator();
+    public AuthenticationSuccessHandler authenticationSuccessHandler() {
+        return new ZeusAuthenticationSuccessHandler();
+    }
+
+    @Bean
+    public AuthenticationFailureHandler authenticationFailureHandler() {
+        return new ZeusAuthenticationFailureHandler();
+    }
+
+    @Bean
+    public PermissionEvaluator permissionEvaluator() {
+        return new ZeusPermissionEvaluator();
     }
 
     @Bean
@@ -61,6 +76,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
             // 登陆配置
             .formLogin()
+                // 表单的用户名参数名称
+                .usernameParameter("username")
+                // 表单的密码参数名称
+                .passwordParameter("password")
                 // 登陆的请求地址
                 .loginPage("/login")
                 // 处理登陆的地址
@@ -69,10 +88,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/index", true)
                 // 登陆失败的地址
                 .failureUrl("/login")
-                // 表单的用户名参数名称
-                .usernameParameter("username")
-                // 表单的密码参数名称
-                .passwordParameter("password")
+                // 自定义登录成功处理器
+                .successHandler(authenticationSuccessHandler())
+                // 自定义登录失败处理器
+                .failureHandler(authenticationFailureHandler())
                 .permitAll()
                 .and()
             // 注销配置

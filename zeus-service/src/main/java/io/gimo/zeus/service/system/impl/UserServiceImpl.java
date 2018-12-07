@@ -1,8 +1,8 @@
 package io.gimo.zeus.service.system.impl;
 
-import io.gimo.zeus.db.dao.zeusdb.system.SysUserMapper;
-import io.gimo.zeus.db.model.zeusdb.system.SysUserDO;
-import io.gimo.zeus.db.model.zeusdb.system.SysUserExample;
+import io.gimo.zeus.db.dao.zeusdb.SysUserMapper;
+import io.gimo.zeus.db.model.zeusdb.SysUserDO;
+import io.gimo.zeus.db.model.zeusdb.SysUserExample;
 import io.gimo.zeus.service.BaseService;
 import io.gimo.zeus.service.system.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

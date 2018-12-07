@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="io.gimo.zeus.db.dao.zeusdb.system.SysPermissionMapper">
-  <resultMap id="BaseResultMap" type="io.gimo.zeus.db.model.zeusdb.system.SysPermissionDO">
+<mapper namespace="io.gimo.zeus.db.dao.zeusdb.SysPermissionMapper">
+  <resultMap id="BaseResultMap" type="io.gimo.zeus.db.model.zeusdb.SysPermissionDO">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="marker" jdbcType="VARCHAR" property="marker" />
@@ -74,7 +74,7 @@
     id, `name`, marker, description, is_active, create_time, create_user_id, last_change_time, 
     last_change_user_id
   </sql>
-  <select id="selectByExample" parameterType="io.gimo.zeus.db.model.zeusdb.system.SysPermissionExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="io.gimo.zeus.db.model.zeusdb.SysPermissionExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -109,13 +109,13 @@
     delete from sys_permission
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="io.gimo.zeus.db.model.zeusdb.system.SysPermissionExample">
+  <delete id="deleteByExample" parameterType="io.gimo.zeus.db.model.zeusdb.SysPermissionExample">
     delete from sys_permission
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="io.gimo.zeus.db.model.zeusdb.system.SysPermissionDO" useGeneratedKeys="true">
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="io.gimo.zeus.db.model.zeusdb.SysPermissionDO" useGeneratedKeys="true">
     insert into sys_permission (`name`, marker, description, 
       is_active, create_time, create_user_id, 
       last_change_time, last_change_user_id)
@@ -123,7 +123,7 @@
       #{isActive,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, #{createUserId,jdbcType=BIGINT}, 
       #{lastChangeTime,jdbcType=TIMESTAMP}, #{lastChangeUserId,jdbcType=BIGINT})
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="io.gimo.zeus.db.model.zeusdb.system.SysPermissionDO" useGeneratedKeys="true">
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="io.gimo.zeus.db.model.zeusdb.SysPermissionDO" useGeneratedKeys="true">
     insert into sys_permission
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="name != null">
@@ -178,7 +178,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="io.gimo.zeus.db.model.zeusdb.system.SysPermissionExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="io.gimo.zeus.db.model.zeusdb.SysPermissionExample" resultType="java.lang.Long">
     select count(*) from sys_permission
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -234,7 +234,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="io.gimo.zeus.db.model.zeusdb.system.SysPermissionDO">
+  <update id="updateByPrimaryKeySelective" parameterType="io.gimo.zeus.db.model.zeusdb.SysPermissionDO">
     update sys_permission
     <set>
       <if test="name != null">
@@ -264,7 +264,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="io.gimo.zeus.db.model.zeusdb.system.SysPermissionDO">
+  <update id="updateByPrimaryKey" parameterType="io.gimo.zeus.db.model.zeusdb.SysPermissionDO">
     update sys_permission
     set `name` = #{name,jdbcType=VARCHAR},
       marker = #{marker,jdbcType=VARCHAR},

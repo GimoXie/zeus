@@ -1,10 +1,10 @@
-package io.gimo.zeus.db.model.zeusdb.system;
+package io.gimo.zeus.db.model.zeusdb;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SysPermissionExample {
+public class SysRoleExample {
     protected String orderByClause;
 
     protected boolean distinct;
@@ -17,7 +17,7 @@ public class SysPermissionExample {
 
     private Boolean forUpdate;
 
-    public SysPermissionExample() {
+    public SysRoleExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -265,73 +265,73 @@ public class SysPermissionExample {
             return (Criteria) this;
         }
 
-        public Criteria andMarkerIsNull() {
-            addCriterion("marker is null");
+        public Criteria andTypeIsNull() {
+            addCriterion("`type` is null");
             return (Criteria) this;
         }
 
-        public Criteria andMarkerIsNotNull() {
-            addCriterion("marker is not null");
+        public Criteria andTypeIsNotNull() {
+            addCriterion("`type` is not null");
             return (Criteria) this;
         }
 
-        public Criteria andMarkerEqualTo(String value) {
-            addCriterion("marker =", value, "marker");
+        public Criteria andTypeEqualTo(String value) {
+            addCriterion("`type` =", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andMarkerNotEqualTo(String value) {
-            addCriterion("marker <>", value, "marker");
+        public Criteria andTypeNotEqualTo(String value) {
+            addCriterion("`type` <>", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andMarkerGreaterThan(String value) {
-            addCriterion("marker >", value, "marker");
+        public Criteria andTypeGreaterThan(String value) {
+            addCriterion("`type` >", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andMarkerGreaterThanOrEqualTo(String value) {
-            addCriterion("marker >=", value, "marker");
+        public Criteria andTypeGreaterThanOrEqualTo(String value) {
+            addCriterion("`type` >=", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andMarkerLessThan(String value) {
-            addCriterion("marker <", value, "marker");
+        public Criteria andTypeLessThan(String value) {
+            addCriterion("`type` <", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andMarkerLessThanOrEqualTo(String value) {
-            addCriterion("marker <=", value, "marker");
+        public Criteria andTypeLessThanOrEqualTo(String value) {
+            addCriterion("`type` <=", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andMarkerLike(String value) {
-            addCriterion("marker like", value, "marker");
+        public Criteria andTypeLike(String value) {
+            addCriterion("`type` like", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andMarkerNotLike(String value) {
-            addCriterion("marker not like", value, "marker");
+        public Criteria andTypeNotLike(String value) {
+            addCriterion("`type` not like", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andMarkerIn(List<String> values) {
-            addCriterion("marker in", values, "marker");
+        public Criteria andTypeIn(List<String> values) {
+            addCriterion("`type` in", values, "type");
             return (Criteria) this;
         }
 
-        public Criteria andMarkerNotIn(List<String> values) {
-            addCriterion("marker not in", values, "marker");
+        public Criteria andTypeNotIn(List<String> values) {
+            addCriterion("`type` not in", values, "type");
             return (Criteria) this;
         }
 
-        public Criteria andMarkerBetween(String value1, String value2) {
-            addCriterion("marker between", value1, value2, "marker");
+        public Criteria andTypeBetween(String value1, String value2) {
+            addCriterion("`type` between", value1, value2, "type");
             return (Criteria) this;
         }
 
-        public Criteria andMarkerNotBetween(String value1, String value2) {
-            addCriterion("marker not between", value1, value2, "marker");
+        public Criteria andTypeNotBetween(String value1, String value2) {
+            addCriterion("`type` not between", value1, value2, "type");
             return (Criteria) this;
         }
 

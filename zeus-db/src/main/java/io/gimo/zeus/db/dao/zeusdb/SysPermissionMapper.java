@@ -1,9 +1,9 @@
-package io.gimo.zeus.db.dao.zeusdb.system;
+package io.gimo.zeus.db.dao.zeusdb;
 
 
 import io.gimo.zeus.db.dao.BaseMapper;
-import io.gimo.zeus.db.model.zeusdb.system.SysPermissionDO;
-import io.gimo.zeus.db.model.zeusdb.system.SysPermissionExample;
+import io.gimo.zeus.db.model.zeusdb.SysPermissionDO;
+import io.gimo.zeus.db.model.zeusdb.SysPermissionExample;
 
 /**
  * SysPermissionMapper继承基类
