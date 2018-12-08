@@ -10,10 +10,27 @@ Target Server Type    : MYSQL
 Target Server Version : 50716
 File Encoding         : 65001
 
-Date: 2018-12-04 21:37:07
+Date: 2018-12-08 22:20:25
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for sys_operation
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_operation`;
+CREATE TABLE `sys_operation` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增长id',
+  `name` varchar(50) NOT NULL DEFAULT '' COMMENT '操作名称',
+  `code` varchar(50) NOT NULL DEFAULT '' COMMENT '操作编码',
+  `is_active` bit(1) NOT NULL DEFAULT b'0' COMMENT '是否有效',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_user_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '数据创建用户',
+  `last_change_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
+  `last_change_user_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '数据最后修改用户',
+  PRIMARY KEY (`id`),
+  KEY `idx_last_change_time` (`last_change_time`) USING BTREE COMMENT '最后修改时间索引'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='zeus-操作表';
 
 -- ----------------------------
 -- Table structure for sys_permission
@@ -21,9 +38,12 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `sys_permission`;
 CREATE TABLE `sys_permission` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增长id',
+  `parent_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '父级id',
   `name` varchar(50) CHARACTER SET utf8 NOT NULL DEFAULT '' COMMENT '权限名称',
-  `marker` varchar(100) NOT NULL DEFAULT '' COMMENT '权限标识',
-  `description` varchar(500) CHARACTER SET utf8 NOT NULL DEFAULT '' COMMENT 'url地址',
+  `icon` varchar(100) CHARACTER SET utf8 NOT NULL DEFAULT '' COMMENT '图标',
+  `url` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '' COMMENT 'url地址',
+  `description` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '' COMMENT '权限描述',
+  `priority` int(11) NOT NULL DEFAULT '0' COMMENT '优先级',
   `is_active` bit(1) NOT NULL DEFAULT b'0' COMMENT '是否有效',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `create_user_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '数据创建用户',
@@ -34,17 +54,13 @@ CREATE TABLE `sys_permission` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='zeus-权限表';
 
 -- ----------------------------
--- Records of sys_permission
+-- Table structure for sys_permission_operation
 -- ----------------------------
-
--- ----------------------------
--- Table structure for sys_permission_resource
--- ----------------------------
-DROP TABLE IF EXISTS `sys_permission_resource`;
-CREATE TABLE `sys_permission_resource` (
+DROP TABLE IF EXISTS `sys_permission_operation`;
+CREATE TABLE `sys_permission_operation` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增长id',
   `permission_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '权限id',
-  `resource_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '资源id',
+  `operation_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '操作id',
   `is_active` bit(1) NOT NULL DEFAULT b'0' COMMENT '是否有效',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `create_user_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '数据创建用户',
@@ -52,36 +68,7 @@ CREATE TABLE `sys_permission_resource` (
   `last_change_user_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '数据最后修改用户',
   PRIMARY KEY (`id`),
   KEY `idx_last_change_time` (`last_change_time`) USING BTREE COMMENT '最后修改时间索引'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='zeus-权限资源表';
-
--- ----------------------------
--- Records of sys_permission_resource
--- ----------------------------
-
--- ----------------------------
--- Table structure for sys_resource
--- ----------------------------
-DROP TABLE IF EXISTS `sys_resource`;
-CREATE TABLE `sys_resource` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增长id',
-  `name` varchar(50) NOT NULL DEFAULT '' COMMENT '资源名称',
-  `type` varchar(100) NOT NULL DEFAULT '' COMMENT '资源类型',
-  `url` varchar(255) NOT NULL DEFAULT '' COMMENT '资源路径',
-  `description` varchar(255) NOT NULL DEFAULT '' COMMENT '资源描述',
-  `priority` int(11) NOT NULL DEFAULT '0' COMMENT '优先级',
-  `parent_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '父级资源id',
-  `is_active` bit(1) NOT NULL DEFAULT b'0' COMMENT '是否有效',
-  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `create_user_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '数据创建用户',
-  `last_change_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
-  `last_change_user_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '数据最后修改用户',
-  PRIMARY KEY (`id`),
-  KEY `idx_last_change_time` (`last_change_time`) USING BTREE COMMENT '最后修改时间索引'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='zeus-资源表';
-
--- ----------------------------
--- Records of sys_resource
--- ----------------------------
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='zeus-权限 操作表';
 
 -- ----------------------------
 -- Table structure for sys_role
@@ -102,10 +89,6 @@ CREATE TABLE `sys_role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='zeus-角色表';
 
 -- ----------------------------
--- Records of sys_role
--- ----------------------------
-
--- ----------------------------
 -- Table structure for sys_role_permission
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_role_permission`;
@@ -121,10 +104,6 @@ CREATE TABLE `sys_role_permission` (
   PRIMARY KEY (`id`),
   KEY `idx_last_change_time` (`last_change_time`) USING BTREE COMMENT '最后修改时间索引'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='zeus-角色菜单表';
-
--- ----------------------------
--- Records of sys_role_permission
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for sys_user
@@ -144,11 +123,7 @@ CREATE TABLE `sys_user` (
   `last_change_user_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '数据最后修改用户',
   PRIMARY KEY (`id`),
   KEY `idx_last_change_time` (`last_change_time`) USING BTREE COMMENT '最后修改时间索引'
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COMMENT='zeus-用户表';
-
--- ----------------------------
--- Records of sys_user
--- ----------------------------
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COMMENT='zeus-用户表';
 
 -- ----------------------------
 -- Table structure for sys_user_role
@@ -166,8 +141,3 @@ CREATE TABLE `sys_user_role` (
   PRIMARY KEY (`id`),
   KEY `idx_last_change_time` (`last_change_time`) USING BTREE COMMENT '最后修改时间索引'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='zeus-用户 角色表';
-
--- ----------------------------
--- Records of sys_user_role
--- ----------------------------
-

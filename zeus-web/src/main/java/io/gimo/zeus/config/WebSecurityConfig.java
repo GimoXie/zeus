@@ -1,9 +1,9 @@
 package io.gimo.zeus.config;
 
-import io.gimo.zeus.service.system.impl.UserDetailServiceImpl;
 import io.gimo.zeus.web.security.ZeusAuthenticationFailureHandler;
 import io.gimo.zeus.web.security.ZeusAuthenticationSuccessHandler;
 import io.gimo.zeus.web.security.ZeusPermissionEvaluator;
+import io.gimo.zeus.web.security.ZeusUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.PermissionEvaluator;
@@ -27,9 +27,10 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Override
     @Bean
     public UserDetailsService userDetailsService() {
-        return new UserDetailServiceImpl();
+        return new ZeusUserDetailsService();
     }
 
     @Bean
