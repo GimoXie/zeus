@@ -70,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, role_id, permission_id, is_active, create_time, create_user_id, last_change_time,
+    id, role_id, permission_id, is_active, create_time, create_user_id, last_change_time, 
     last_change_user_id
   </sql>
   <select id="selectByExample" parameterType="io.gimo.zeus.db.model.zeusdb.SysRolePermissionExample" resultMap="BaseResultMap">
@@ -99,7 +99,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select
+    select 
     <include refid="Base_Column_List" />
     from sys_role_permission
     where id = #{id,jdbcType=BIGINT}
@@ -115,11 +115,11 @@
     </if>
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="io.gimo.zeus.db.model.zeusdb.SysRolePermissionDO" useGeneratedKeys="true">
-    insert into sys_role_permission (role_id, permission_id, is_active,
-      create_time, create_user_id, last_change_time,
+    insert into sys_role_permission (role_id, permission_id, is_active, 
+      create_time, create_user_id, last_change_time, 
       last_change_user_id)
-    values (#{roleId,jdbcType=BIGINT}, #{permissionId,jdbcType=BIGINT}, #{isActive,jdbcType=BIT},
-      #{createTime,jdbcType=TIMESTAMP}, #{createUserId,jdbcType=BIGINT}, #{lastChangeTime,jdbcType=TIMESTAMP},
+    values (#{roleId,jdbcType=BIGINT}, #{permissionId,jdbcType=BIGINT}, #{isActive,jdbcType=BIT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{createUserId,jdbcType=BIGINT}, #{lastChangeTime,jdbcType=TIMESTAMP}, 
       #{lastChangeUserId,jdbcType=BIGINT})
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="io.gimo.zeus.db.model.zeusdb.SysRolePermissionDO" useGeneratedKeys="true">

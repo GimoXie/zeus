@@ -5,16 +5,16 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * 菜单表 数据库对象
- * [table]:sys_permission
+ * 操作表 数据库对象
+ * [table]:sys_operation
  * @author gimoxie
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class SysPermissionDO extends BaseDO {
+public class SysOperationDO extends BaseDO {
 
-    /** 菜单名称 **/
+    /** 操作名称 **/
     private String name;
-    /** 资源路径 **/
-    private String url;
+    /** 操作编码 **/
+    private String code;
 }

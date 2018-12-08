@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="io.gimo.zeus.db.dao.zeusdb.SysPermissionMapper">
-  <resultMap id="BaseResultMap" type="io.gimo.zeus.db.model.zeusdb.SysPermissionDO">
+<mapper namespace="io.gimo.zeus.db.dao.zeusdb.SysOperationMapper">
+  <resultMap id="BaseResultMap" type="io.gimo.zeus.db.model.zeusdb.SysOperationDO">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="marker" jdbcType="VARCHAR" property="marker" />
-    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
     <result column="is_active" jdbcType="BIT" property="isActive" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="create_user_id" jdbcType="BIGINT" property="createUserId" />
@@ -71,16 +70,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, `name`, marker, description, is_active, create_time, create_user_id, last_change_time, 
-    last_change_user_id
+    id, `name`, code, is_active, create_time, create_user_id, last_change_time, last_change_user_id
   </sql>
-  <select id="selectByExample" parameterType="io.gimo.zeus.db.model.zeusdb.SysPermissionExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="io.gimo.zeus.db.model.zeusdb.SysOperationExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from sys_permission
+    from sys_operation
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -102,38 +100,35 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from sys_permission
+    from sys_operation
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from sys_permission
+    delete from sys_operation
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="io.gimo.zeus.db.model.zeusdb.SysPermissionExample">
-    delete from sys_permission
+  <delete id="deleteByExample" parameterType="io.gimo.zeus.db.model.zeusdb.SysOperationExample">
+    delete from sys_operation
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="io.gimo.zeus.db.model.zeusdb.SysPermissionDO" useGeneratedKeys="true">
-    insert into sys_permission (`name`, marker, description, 
-      is_active, create_time, create_user_id, 
-      last_change_time, last_change_user_id)
-    values (#{name,jdbcType=VARCHAR}, #{marker,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
-      #{isActive,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, #{createUserId,jdbcType=BIGINT}, 
-      #{lastChangeTime,jdbcType=TIMESTAMP}, #{lastChangeUserId,jdbcType=BIGINT})
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="io.gimo.zeus.db.model.zeusdb.SysOperationDO" useGeneratedKeys="true">
+    insert into sys_operation (`name`, code, is_active, 
+      create_time, create_user_id, last_change_time, 
+      last_change_user_id)
+    values (#{name,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, #{isActive,jdbcType=BIT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{createUserId,jdbcType=BIGINT}, #{lastChangeTime,jdbcType=TIMESTAMP}, 
+      #{lastChangeUserId,jdbcType=BIGINT})
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="io.gimo.zeus.db.model.zeusdb.SysPermissionDO" useGeneratedKeys="true">
-    insert into sys_permission
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="io.gimo.zeus.db.model.zeusdb.SysOperationDO" useGeneratedKeys="true">
+    insert into sys_operation
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="name != null">
         `name`,
       </if>
-      <if test="marker != null">
-        marker,
-      </if>
-      <if test="description != null">
-        description,
+      <if test="code != null">
+        code,
       </if>
       <if test="isActive != null">
         is_active,
@@ -155,11 +150,8 @@
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>
-      <if test="marker != null">
-        #{marker,jdbcType=VARCHAR},
-      </if>
-      <if test="description != null">
-        #{description,jdbcType=VARCHAR},
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
       </if>
       <if test="isActive != null">
         #{isActive,jdbcType=BIT},
@@ -178,14 +170,14 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="io.gimo.zeus.db.model.zeusdb.SysPermissionExample" resultType="java.lang.Long">
-    select count(*) from sys_permission
+  <select id="countByExample" parameterType="io.gimo.zeus.db.model.zeusdb.SysOperationExample" resultType="java.lang.Long">
+    select count(*) from sys_operation
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update sys_permission
+    update sys_operation
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=BIGINT},
@@ -193,11 +185,8 @@
       <if test="record.name != null">
         `name` = #{record.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.marker != null">
-        marker = #{record.marker,jdbcType=VARCHAR},
-      </if>
-      <if test="record.description != null">
-        description = #{record.description,jdbcType=VARCHAR},
+      <if test="record.code != null">
+        code = #{record.code,jdbcType=VARCHAR},
       </if>
       <if test="record.isActive != null">
         is_active = #{record.isActive,jdbcType=BIT},
@@ -220,11 +209,10 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update sys_permission
+    update sys_operation
     set id = #{record.id,jdbcType=BIGINT},
       `name` = #{record.name,jdbcType=VARCHAR},
-      marker = #{record.marker,jdbcType=VARCHAR},
-      description = #{record.description,jdbcType=VARCHAR},
+      code = #{record.code,jdbcType=VARCHAR},
       is_active = #{record.isActive,jdbcType=BIT},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       create_user_id = #{record.createUserId,jdbcType=BIGINT},
@@ -234,17 +222,14 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="io.gimo.zeus.db.model.zeusdb.SysPermissionDO">
-    update sys_permission
+  <update id="updateByPrimaryKeySelective" parameterType="io.gimo.zeus.db.model.zeusdb.SysOperationDO">
+    update sys_operation
     <set>
       <if test="name != null">
         `name` = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="marker != null">
-        marker = #{marker,jdbcType=VARCHAR},
-      </if>
-      <if test="description != null">
-        description = #{description,jdbcType=VARCHAR},
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
       </if>
       <if test="isActive != null">
         is_active = #{isActive,jdbcType=BIT},
@@ -264,11 +249,10 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="io.gimo.zeus.db.model.zeusdb.SysPermissionDO">
-    update sys_permission
+  <update id="updateByPrimaryKey" parameterType="io.gimo.zeus.db.model.zeusdb.SysOperationDO">
+    update sys_operation
     set `name` = #{name,jdbcType=VARCHAR},
-      marker = #{marker,jdbcType=VARCHAR},
-      description = #{description,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
       is_active = #{isActive,jdbcType=BIT},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       create_user_id = #{createUserId,jdbcType=BIGINT},
