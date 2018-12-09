@@ -1,9 +1,9 @@
 package io.gimo.zeus.web.security;
 
 import com.google.common.collect.Lists;
-import io.gimo.zeus.db.model.zeusdb.SysRoleDO;
-import io.gimo.zeus.db.model.zeusdb.SysUserDO;
-import io.gimo.zeus.service.system.UserService;
+import io.gimo.zeus.service.UserService;
+import io.gimo.zeus.service.dto.RoleDTO;
+import io.gimo.zeus.service.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,8 +18,8 @@ public class ZeusUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        SysUserDO user = userService.getUserByUsername(username);
-        List<SysRoleDO> roleList = userService.listRoleByUserName(user.getId());
+        UserDTO user = userService.getUserByUsername(username);
+        List<RoleDTO> roleList = userService.listRoleByUserId(user.getId());
         List<SimpleGrantedAuthority> authorities = Lists.newArrayList();
         roleList.forEach(role -> authorities.add(new SimpleGrantedAuthority(role.getType())));
         return new ZeusUser(
