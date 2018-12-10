@@ -7,12 +7,6 @@ import javax.annotation.PostConstruct;
 import java.lang.reflect.ParameterizedType;
 import java.util.function.Function;
 
-/**
- * java bean 映射工具
- *
- * @param <DTO>
- * @param <DO>
- */
 public abstract class AbstractDtoDoMapper<DTO, DO> {
 
     private MapperFactory mapperFactory;
@@ -27,20 +21,17 @@ public abstract class AbstractDtoDoMapper<DTO, DO> {
         this.doClass = (Class<DO>) type.getActualTypeArguments()[1];
     }
 
-    public final Function<DTO, DO> convertDtoToDo = request -> {
-        if (request == null) {
+    public final Function<DTO, DO> convertDtoToDo = dto -> {
+        if (dto == null) {
             return null;
         }
-        DO _do = mapperFactory.getMapperFacade().map(request, doClass);
-        afterDtoToDo(request, _do);
+        DO _do = mapperFactory.getMapperFacade().map(dto, doClass);
+        afterDtoToDo(dto, _do);
 
         return _do;
     };
 
-    /**
-     * 属性从 request 拷贝到 _do 以后做一些后续处理
-     */
-    protected void afterDtoToDo(DTO request, DO _do) {
+    protected void afterDtoToDo(DTO dto, DO _do) {
 
     }
 
@@ -48,15 +39,12 @@ public abstract class AbstractDtoDoMapper<DTO, DO> {
         if (_do == null) {
             return null;
         }
-        DTO response = mapperFactory.getMapperFacade().map(_do, dtoClass);
-        afterDoToDto(_do, response);
-        return response;
+        DTO dto = mapperFactory.getMapperFacade().map(_do, dtoClass);
+        afterDoToDto(_do, dto);
+        return dto;
     };
 
-    /**
-     * 属性从 _do 拷贝到 response 以后做一些后续处理
-     */
-    protected void afterDoToDto(DO _do, DTO response) {
+    protected void afterDoToDto(DO _do, DTO dto) {
 
     }
 
