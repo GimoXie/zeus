@@ -2,9 +2,11 @@ package io.gimo.zeus.service.dto;
 
 import io.gimo.zeus.db.plugin.interceptor.BasePage;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.time.LocalDateTime;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 public abstract class BaseDTO extends BasePage {
 
