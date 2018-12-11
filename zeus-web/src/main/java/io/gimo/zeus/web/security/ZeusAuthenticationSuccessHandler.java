@@ -43,7 +43,6 @@ public class ZeusAuthenticationSuccessHandler extends SimpleUrlAuthenticationSuc
         // 构建菜单树
         List<MenuVO> menuList = generateMenu(permissionList, permissionOperationMap);
         ((ZeusUser) authentication.getPrincipal()).setMenuList(menuList);
-        request.getServletContext().setAttribute("menuList", menuList);
         authenticationSuccess(request, response, authentication);
     }
 
