@@ -12,7 +12,8 @@ public interface OperationService {
 
     /**
      * 根据权限id获取权限-操作映射关系
-     * @param permissionIdList
+     * @param permissionIdList 权限id列表
+     * @return permissionOperationMap 权限-操作樱映射
      */
-    Map<Long, List<OperationDTO>> getPermissionOperationMapByPermissionId(List<Long> permissionIdList);
+    Map<Long, List<OperationDTO>> mappingPermissionOperationMapByPermissionId(List<Long> permissionIdList);
 }

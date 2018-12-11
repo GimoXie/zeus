@@ -13,6 +13,7 @@ public class MenuVO extends BaseVO{
     private String url;
     private String description;
     private Integer priority;
+    private Integer level;
     private List<MenuVO> submenuList;
     private List<String> operationCode;
 }

@@ -11,7 +11,6 @@ import io.gimo.zeus.web.vo.MenuVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
-import org.springframework.util.CollectionUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -39,7 +38,7 @@ public class ZeusAuthenticationSuccessHandler extends SimpleUrlAuthenticationSuc
         List<Long> roleIdList = authorityList.stream().map(ZeusGrantedAuthority::getId).collect(Collectors.toList());
         List<PermissionDTO> permissionList = permissionService.listPermissionByRoleId(roleIdList);
         List<Long> permissionIdList = permissionList.stream().map(PermissionDTO::getId).collect(Collectors.toList());
-        Map<Long, List<OperationDTO>> permissionOperationMap = operationService.getPermissionOperationMapByPermissionId(permissionIdList);
+        Map<Long, List<OperationDTO>> permissionOperationMap = operationService.mappingPermissionOperationMapByPermissionId(permissionIdList);
         // 构建菜单树
         List<MenuVO> menuList = generateMenu(permissionList, permissionOperationMap);
         ((ZeusUser) authentication.getPrincipal()).setMenuList(menuList);
@@ -47,19 +46,24 @@ public class ZeusAuthenticationSuccessHandler extends SimpleUrlAuthenticationSuc
     }
 
     private List<MenuVO> generateMenu(List<PermissionDTO> permissionList, Map<Long, List<OperationDTO>> permissionOperationMap) {
-        return generateMenu(permissionList, MenuConsts.FIRST_LEVEL_ID, permissionOperationMap);
+        return generateMenu(permissionList, MenuConsts.ROOT_LEVEL_ID, permissionOperationMap, MenuConsts.ROOT_LEVEL);
     }
 
-    private List<MenuVO> generateMenu(List<PermissionDTO> permissionList, Long parentId, Map<Long, List<OperationDTO>> permissionOperationMap) {
+    private List<MenuVO> generateMenu(List<PermissionDTO> permissionList, Long parentId, Map<Long, List<OperationDTO>> permissionOperationMap, Integer level) {
+        level ++;
         List<MenuVO> menuList = Lists.newArrayList();
         for (PermissionDTO permission : permissionList) {
             if (permission.getParentId().equals(parentId)) {
                 MenuVO menu = menuMapper.convertDtoToVo.apply(permission);
-                menu.setSubmenuList(generateMenu(permissionList, permission.getId(), permissionOperationMap));
-                menu.setOperationCode(permissionOperationMap.get(permission.getId()).stream().map(OperationDTO::getCode).collect(Collectors.toList()));
+                menu.setLevel(level);
+                menu.setSubmenuList(generateMenu(permissionList, permission.getId(), permissionOperationMap, level));
+                if (permissionOperationMap.containsKey(permission.getId())) {
+                    menu.setOperationCode(permissionOperationMap.get(permission.getId()).stream().map(OperationDTO::getCode).collect(Collectors.toList()));
+                }
                 menuList.add(menu);
             }
         }
+        level --;
         return menuList;
     }
 
@@ -67,7 +71,7 @@ public class ZeusAuthenticationSuccessHandler extends SimpleUrlAuthenticationSuc
 
     /*private List<MenuVO> generateMenu(List<PermissionDTO> permissionList, Map<Long, List<OperationDTO>> permissionOperationMap) {
         Map<Long, List<PermissionDTO>> permissionMap = permissionList.stream().collect(Collectors.groupingBy(PermissionDTO::getParentId));
-        List<MenuVO> menuList = generateMenu(permissionMap.get(MenuConsts.FIRST_LEVEL_ID), permissionMap, permissionOperationMap);
+        List<MenuVO> menuList = generateMenu(permissionMap.get(MenuConsts.ROOT_LEVEL_ID), permissionMap, permissionOperationMap);
         return menuList;
     }
 
