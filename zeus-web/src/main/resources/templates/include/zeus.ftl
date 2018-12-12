@@ -36,6 +36,6 @@
     <#switch menuLevel>
         <#case 1>nav nav-second-level<#break>
         <#case 2>nav nav-third-level<#break>
-        <#default>nav nav-second-level
+        <#default>nav nav-third-level
     </#switch>
 </#macro>
