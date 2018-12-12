@@ -41,6 +41,7 @@
         <httpclient.version>4.5.2</httpclient.version>
         <lombok.version>1.18.2</lombok.version>
         <orika-core.version>1.5.2</orika-core.version>
+        <cornerstone.version>0.2.0-alpha</cornerstone.version>
         <!-- plugin version -->
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
         <mybatis-generator-maven-plugin.verion>1.3.7</mybatis-generator-maven-plugin.verion>
@@ -136,8 +137,24 @@
                 <artifactId>orika-core</artifactId>
                 <version>${orika-core.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.ctrip.framework</groupId>
+                <artifactId>cornerstone</artifactId>
+                <version>${cornerstone.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>rdc-snapshots</id>
+            <url>https://repo.rdc.aliyun.com/repository/41793-snapshot-h0sdXG/</url>
+        </snapshotRepository>
+        <repository>
+            <id>rdc-releases</id>
+            <url>https://repo.rdc.aliyun.com/repository/41793-release-nzkApC/</url>
+        </repository>
+    </distributionManagement>
 
     <build>
         <plugins>
@@ -146,7 +163,6 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <release>1.8</release>
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
