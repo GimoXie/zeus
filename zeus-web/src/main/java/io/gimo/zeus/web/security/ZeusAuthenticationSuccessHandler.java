@@ -67,25 +67,6 @@ public class ZeusAuthenticationSuccessHandler extends SimpleUrlAuthenticationSuc
         return menuList;
     }
 
-
-
-    /*private List<MenuVO> generateMenu(List<PermissionDTO> permissionList, Map<Long, List<OperationDTO>> permissionOperationMap) {
-        Map<Long, List<PermissionDTO>> permissionMap = permissionList.stream().collect(Collectors.groupingBy(PermissionDTO::getParentId));
-        List<MenuVO> menuList = generateMenu(permissionMap.get(MenuConsts.ROOT_LEVEL_ID), permissionMap, permissionOperationMap);
-        return menuList;
-    }
-
-    private List<MenuVO> generateMenu(List<PermissionDTO> parentPermissionList, Map<Long, List<PermissionDTO>> permissionMap, Map<Long, List<OperationDTO>> permissionOperationMap) {
-        List<MenuVO> menuList = Lists.newArrayList();
-        parentPermissionList.forEach(permission -> {
-            MenuVO menu = menuMapper.convertDtoToVo.apply(permission);
-            menu.setSubmenuList(generateMenu(permissionMap.get(permission.getId()), permissionMap, permissionOperationMap));
-            menu.setOperationCode(permissionOperationMap.get(permission.getId()).stream().map(OperationDTO::getCode).collect(Collectors.toList()));
-            menuList.add(menu);
-        });
-        return menuList;
-    }*/
-
     private void authenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         this.setDefaultTargetUrl("/index");
         super.onAuthenticationSuccess(request, response, authentication);

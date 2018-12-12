@@ -1,5 +1,6 @@
-<!DOCTYPE html>
 <#import "/include/zeus.ftl" as zeus>
+<#assign principal = Session.SPRING_SECURITY_CONTEXT.authentication.principal>
+<!DOCTYPE html>
 <html>
 
 
@@ -38,7 +39,7 @@
                             <span><img alt="image" class="img-circle" src="/assets/img/profile_small.jpg" /></span>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <span class="clear">
-                               <span class="block m-t-xs"><strong class="font-bold"><@zeus.user/></strong></span>
+                               <span class="block m-t-xs"><strong class="font-bold">${principal.username}</strong></span>
                                 <span class="text-muted text-xs block">超级管理员<b class="caret"></b></span>
                                 </span>
                             </a>
@@ -59,7 +60,7 @@
                         <div class="logo-element">H+
                         </div>
                     </li>
-                    <@zeus.generateMenu/>
+                    <@zeus.generateMenu principal.menuList/>
                 </ul>
             </div>
         </nav>

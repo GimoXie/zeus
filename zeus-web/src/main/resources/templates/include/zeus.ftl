@@ -1,12 +1,6 @@
-<#macro user>
-    ${Session.SPRING_SECURITY_CONTEXT.authentication.principal.username}
-</#macro>
+<#assign principal = Session.SPRING_SECURITY_CONTEXT.authentication.principal>
 
-<#macro generateMenu>
-    <@generate Session.SPRING_SECURITY_CONTEXT.authentication.principal.menuList/>
-</#macro>
-
-<#macro generate menuList>
+<#macro generateMenu menuList>
     <#if menuList?? && menuList?size gt 0>
         <#list menuList as menu>
             <#if menu.submenuList?? && menu.submenuList?size gt 0>
@@ -17,7 +11,7 @@
                     <span class="fa arrow"></span>
                 </a>
                 <ul class="<@level menu.level/>">
-                    <@generate menu.submenuList/>
+                    <@generateMenu menu.submenuList/>
                 </ul>
             </li>
             <#else>
