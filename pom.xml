@@ -7,7 +7,7 @@
     <groupId>io.gimo</groupId>
     <artifactId>zeus</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.0</version>
+    <version>${zeus.version}</version>
     <modules>
         <module>zeus-web</module>
         <module>zeus-service</module>
@@ -26,10 +26,10 @@
 
     <properties>
         <!-- base version -->
+        <zeus.version>1.0.0</zeus.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>10</java.version>
-        <project.version>1.0.0</project.version>
         <!-- package version -->
         <spring-boot-dependencies.version>2.0.3.RELEASE</spring-boot-dependencies.version>
         <shiro.version>1.4.0</shiro.version>
