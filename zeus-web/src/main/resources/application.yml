@@ -62,7 +62,7 @@ spring:
         max-idle: 8
         min-idle: 0
   freemarker:
-    suffix: .html
+    suffix: .ftl
     charset: UTF-8
     content-type: text/html;charset=UTF-8
     expose-session-attributes: true

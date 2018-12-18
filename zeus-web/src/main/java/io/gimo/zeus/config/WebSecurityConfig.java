@@ -65,6 +65,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // 参照 https://www.cnblogs.com/yhtboke/p/5764697.html配置
         // https://blog.csdn.net/yuanlaijike/article/details/80327880
         http.csrf().disable()
+            // 'X-Frame-Options' to 'deny'.问题解决
+            .headers().frameOptions().disable()
+                .and()
             // 请求拦截配置
             .authorizeRequests()
                 // 所有用户均可访问的资源
