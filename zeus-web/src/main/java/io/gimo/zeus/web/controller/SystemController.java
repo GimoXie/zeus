@@ -3,7 +3,7 @@ package io.gimo.zeus.web.controller;
 import io.gimo.zeus.db.plugin.interceptor.Page;
 import io.gimo.zeus.service.UserService;
 import io.gimo.zeus.service.dto.UserDTO;
-import io.gimo.zeus.service.dto.UserQueryDTO;
+import io.gimo.zeus.web.converter.UserConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,21 +15,22 @@ import java.util.Map;
 /**
  * Created by zmxie on 2018/12/18.
  */
-@Controller("/system")
+@Controller
+@RequestMapping("/system")
 public class SystemController extends BaseController{
 
     private UserService userService;
-    //private UserMapper userMapper;
+    private UserConverter userConverter;
 
     @RequestMapping("/users")
     @ResponseBody
-    public Map<String, Object> listUser(@RequestBody UserQueryDTO request) {
+    public Map<String, Object> listUser(@RequestBody UserDTO request) {
         try {
-            Page<UserDTO> userDTOList = userService.listUserByPage(request);
-            return generateResult(CODE_SUCCESS, "", null); //todo
+            Page<UserDTO> result = userService.listUserByPage(request);
+            return success(userConverter.convertToVo(result));
         } catch (Exception e) {
             logger.error("查询用户数据时发生异常!", e.getMessage());
-            return generateResult(CODE_FAILURE, e.getMessage(), "");
+            return failure("查询用户数据时发生异常!");
         }
     }
 
@@ -38,8 +39,8 @@ public class SystemController extends BaseController{
         this.userService = userService;
     }
 
-    /*@Autowired
-    public void setUserMapper(UserMapper userMapper) {
-        this.userMapper = userMapper;
-    }*/
+    @Autowired
+    public void setUserConverter(UserConverter userConverter) {
+        this.userConverter = userConverter;
+    }
 }

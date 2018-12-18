@@ -72,7 +72,7 @@ public class Page<T> extends RowBounds {
      * 计算偏移量
      */
     private void calcOffset() {
-        this.offset = ((pageNo - 1) * pageSize);
+        this.offset = pageNo * pageSize;
     }
 
     /**
@@ -87,19 +87,19 @@ public class Page<T> extends RowBounds {
         this.calcLimit();
     }
 
-    public Page(int offSet, int pageSize) {
+    /*public Page(int offSet, int pageSize) {
         this.pageNo = offSet / pageSize + 1;
         this.pageSize = pageSize;
         this.offset = offSet;
         this.calcLimit();
-    }
+    }*/
 
-   /* public Page(int pageNo, int pageSize) {
+    public Page(int pageNo, int pageSize) {
         this.pageNo = pageNo;
         this.pageSize = pageSize;
         this.calcOffset();
         this.calcLimit();
-    }*/
+    }
 
     // -- 访问查询参数函数 --//
 

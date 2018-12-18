@@ -63,22 +63,6 @@
         </div>
     </div>
 
-    <!-- table自定义工具条 -->
-    <div id="userTableToolbar" class="btn-group" style="width: 180px;">
-        <button type="button" class="btn btn-default add-user" data-toggle="tooltip" data-placement="bottom" title="新增用户">
-            <i class="fa fa-user-plus"></i>
-        </button>
-        <button type="button" class="btn btn-default edit-user" data-toggle="tooltip" data-placement="bottom" title="编辑用户">
-            <i class="fa fa-edit"></i>
-        </button>
-        <button type="button" class="btn btn-default role-assign" data-toggle="tooltip" data-placement="bottom" title="分配角色">
-            <i class="fa fa-odnoklassniki"></i>
-        </button>
-        <button type="button" class="btn btn-default refresh-user" data-toggle="tooltip" data-placement="bottom" title="刷新">
-            <i class="fa fa-refresh"></i>
-        </button>
-    </div>
-
     <#-- base script -->
     <script src="/assets/js/jquery.min.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
@@ -87,6 +71,7 @@
     <script src="/assets/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
     <script src="/assets/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
     <script src="/assets/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script src="/app/js/userManage.js"></script>
 </body>
 
 </html>

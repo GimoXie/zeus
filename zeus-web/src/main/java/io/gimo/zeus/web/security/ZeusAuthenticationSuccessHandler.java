@@ -6,7 +6,7 @@ import io.gimo.zeus.service.OperationService;
 import io.gimo.zeus.service.PermissionService;
 import io.gimo.zeus.service.dto.OperationDTO;
 import io.gimo.zeus.service.dto.PermissionDTO;
-import io.gimo.zeus.web.mapper.MenuMapper;
+import io.gimo.zeus.web.converter.MenuConverter;
 import io.gimo.zeus.web.vo.MenuVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -27,7 +27,7 @@ public class ZeusAuthenticationSuccessHandler extends SimpleUrlAuthenticationSuc
 
     private PermissionService permissionService;
     private OperationService operationService;
-    private MenuMapper menuMapper;
+    private MenuConverter menuConverter;
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
@@ -54,7 +54,7 @@ public class ZeusAuthenticationSuccessHandler extends SimpleUrlAuthenticationSuc
         List<MenuVO> menuList = Lists.newArrayList();
         for (PermissionDTO permission : permissionList) {
             if (permission.getParentId().equals(parentId)) {
-                MenuVO menu = menuMapper.convertDtoToVo.apply(permission);
+                MenuVO menu = menuConverter.convertDtoToVo.apply(permission);
                 menu.setLevel(level);
                 menu.setSubmenuList(generateMenu(permissionList, permission.getId(), permissionOperationMap, level));
                 if (permissionOperationMap.containsKey(permission.getId())) {
@@ -83,7 +83,7 @@ public class ZeusAuthenticationSuccessHandler extends SimpleUrlAuthenticationSuc
     }
 
     @Autowired
-    public void setMenuMapper(MenuMapper menuMapper) {
-        this.menuMapper = menuMapper;
+    public void setMenuConverter(MenuConverter menuConverter) {
+        this.menuConverter = menuConverter;
     }
 }

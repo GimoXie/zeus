@@ -1,17 +1,12 @@
 package io.gimo.zeus.service.impl;
 
-import com.google.common.collect.Lists;
-import io.gimo.zeus.db._do.zeusdb.*;
-import io.gimo.zeus.db.dao.zeusdb.SysRoleDAO;
+import io.gimo.zeus.db._do.zeusdb.SysUserDO;
+import io.gimo.zeus.db._do.zeusdb.SysUserExample;
 import io.gimo.zeus.db.dao.zeusdb.SysUserDAO;
-import io.gimo.zeus.db.dao.zeusdb.SysUserRoleDAO;
 import io.gimo.zeus.db.plugin.interceptor.Page;
 import io.gimo.zeus.service.BaseService;
 import io.gimo.zeus.service.UserService;
-import io.gimo.zeus.service.dto.RoleDTO;
 import io.gimo.zeus.service.dto.UserDTO;
-import io.gimo.zeus.service.dto.UserQueryDTO;
-import io.gimo.zeus.service.mapper.RoleMapper;
 import io.gimo.zeus.service.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -19,7 +14,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Created by zmxie on 2018/12/7.
@@ -47,8 +41,12 @@ public class UserServiceImpl extends BaseService implements UserService {
     }
 
     @Override
-    public Page<UserDTO> listUserByPage(UserQueryDTO request) {
-        return null;
+    public Page<UserDTO> listUserByPage(UserDTO request) {
+        Page<SysUserDO> page = new Page<>(request.getOffset(), request.getLimit());
+        SysUserDO userDO = userMapper.convertDtoToDo.apply(request);
+        sysUserDAO.listUser(page, userDO);
+        Page<UserDTO> result = userMapper.convertPageData(page);
+        return result;
     }
 
     @Autowired

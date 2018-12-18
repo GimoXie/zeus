@@ -9,7 +9,7 @@ import java.util.function.Function;
 
 public abstract class AbstractDtoDoMapper<DTO, DO> {
 
-    private MapperFactory mapperFactory;
+    protected MapperFactory mapperFactory;
     private Class<DTO> dtoClass;
     private Class<DO> doClass;
 

@@ -1,12 +1,8 @@
 package io.gimo.zeus.service;
 
 import io.gimo.zeus.db.plugin.interceptor.Page;
-import io.gimo.zeus.service.dto.RoleDTO;
 import io.gimo.zeus.service.dto.UserDTO;
-import io.gimo.zeus.service.dto.UserQueryDTO;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-
-import java.util.List;
 
 /**
  * Created by zmxie on 2018/12/7.
@@ -21,5 +17,10 @@ public interface UserService {
      */
     UserDTO getUserByUsername(String username) throws UsernameNotFoundException;
 
-    Page<UserDTO> listUserByPage(UserQueryDTO request);
+    /**
+     * 分页查询用户
+     * @param request 查询参数
+     * @return Page<UserDTO> 分页查询结果
+     */
+    Page<UserDTO> listUserByPage(UserDTO request);
 }

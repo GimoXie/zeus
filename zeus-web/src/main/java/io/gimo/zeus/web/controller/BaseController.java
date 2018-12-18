@@ -6,14 +6,22 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 
-public abstract class BaseController {
-    protected Logger logger = LoggerFactory.getLogger(getClass());
+abstract class BaseController {
+    Logger logger = LoggerFactory.getLogger(getClass());
 
-    protected static final int CODE_SUCCESS = 1;
-    protected static final int CODE_FAILURE = 0;
+    private static final int CODE_SUCCESS = 1;
+    private static final int CODE_FAILURE = 0;
 
-    protected Map<String, Object> generateResult(Integer code, String message, Object object) {
-        Map<String,Object> result = Maps.newHashMap();
+    Map<String, Object> success(Object object) {
+        return generateResult(CODE_SUCCESS, "success", object);
+    }
+
+    Map<String, Object> failure(String message) {
+        return generateResult(CODE_FAILURE, message, null);
+    }
+
+    private Map<String, Object> generateResult(Integer code, String message, Object object) {
+        Map<String, Object> result = Maps.newHashMap();
         result.put("code", code);
         result.put("message", message);
         result.put("object", object);

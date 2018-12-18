@@ -8,11 +8,11 @@ public abstract class BasePage {
     /**
      * 当前页第一条数据偏移量
      */
-    private Integer offSet;
+    private Integer offset;
     /**
-     * 页码大小
+     * 每页数据量
      **/
-    private Integer pageSize;
+    private Integer limit;
     /**
      * 排序字段名称
      **/
@@ -20,7 +20,7 @@ public abstract class BasePage {
     /**
      * 排序方式 asc or desc
      **/
-    private String sortOrder;
+    private String order;
     /**
      * 搜索关键字
      */

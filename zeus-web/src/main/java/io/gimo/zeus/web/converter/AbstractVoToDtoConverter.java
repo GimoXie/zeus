@@ -1,4 +1,4 @@
-package io.gimo.zeus.web.mapper;
+package io.gimo.zeus.web.converter;
 
 import ma.glasnost.orika.MapperFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +10,9 @@ import java.util.function.Function;
 /**
  * Created by zmxie on 2018/12/10.
  */
-public abstract class AbstractVoToDtoMapper<VO, DTO> {
+public abstract class AbstractVoToDtoConverter<VO, DTO> {
 
-    private MapperFactory mapperFactory;
+    protected MapperFactory mapperFactory;
     private Class<VO> voClass;
     private Class<DTO> dtoClass;
 

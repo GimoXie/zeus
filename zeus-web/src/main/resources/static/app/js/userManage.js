@@ -16,12 +16,7 @@ var userManage = {
             pagination: true,
             pageSize: 10,
             pageList: [10, 20, 30],
-            sidePagination: "server",
-            search: true,
-            searchOnEnterKey: true,
-            toolbar: '#userTableToolbar',
-            toolbarAlign: 'left',
-            searchAlign: 'left',
+            sidePagination: 'server',
             striped: true,
             singleSelect: true,
             clickToSelect: true,
@@ -55,7 +50,10 @@ var userManage = {
                 sortable: false,
                 align: 'center',
                 valign: 'middle'
-            }]
+            }],
+            onLoadSuccess: function (data) {
+                console.log(data);
+            }
         });
     }
 };

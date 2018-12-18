@@ -308,4 +308,24 @@
       last_change_user_id = #{lastChangeUserId,jdbcType=BIGINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+  <!-- 自定义sql -->
+  <select id="listUser" parameterType="io.gimo.zeus.db._do.zeusdb.SysUserDO"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sys_user
+    where 1=1
+      <if test="id != null">
+        and id = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="username != null and username != ''">
+        and username = #{username,jdbcType=VARCHAR}
+      </if>
+      <if test="email != null and email != ''">
+        and email = #{email,jdbcType=VARCHAR}
+      </if>
+      <if test="telephone != null and telephone != ''">
+        and telephone = #{telephone,jdbcType=VARCHAR}
+      </if>
+  </select>
 </mapper>
