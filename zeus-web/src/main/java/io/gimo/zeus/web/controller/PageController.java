@@ -6,12 +6,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class PageController {
 
-    /*@GetMapping("/login")
+    @GetMapping("/example")
+    public String toExample() {
+        return "/view/example";
+    }
+
+    @GetMapping("/login")
     public String toLogin() {
         return "/view/login";
     }
 
-    @GetMapping("/index")
+    @GetMapping({"/", "/index"})
     public String toIndex() {
         return "/view/index";
     }
@@ -19,5 +24,10 @@ public class PageController {
     @GetMapping("/dashboard")
     public String toDashboard() {
         return "/view/dashboard";
-    }*/
+    }
+
+    @GetMapping("/userManage")
+    public String toUserManage() {
+        return "/view/userManage";
+    }
 }

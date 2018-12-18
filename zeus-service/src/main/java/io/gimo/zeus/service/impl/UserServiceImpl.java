@@ -5,10 +5,12 @@ import io.gimo.zeus.db._do.zeusdb.*;
 import io.gimo.zeus.db.dao.zeusdb.SysRoleDAO;
 import io.gimo.zeus.db.dao.zeusdb.SysUserDAO;
 import io.gimo.zeus.db.dao.zeusdb.SysUserRoleDAO;
+import io.gimo.zeus.db.plugin.interceptor.Page;
 import io.gimo.zeus.service.BaseService;
 import io.gimo.zeus.service.UserService;
 import io.gimo.zeus.service.dto.RoleDTO;
 import io.gimo.zeus.service.dto.UserDTO;
+import io.gimo.zeus.service.dto.UserQueryDTO;
 import io.gimo.zeus.service.mapper.RoleMapper;
 import io.gimo.zeus.service.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +44,11 @@ public class UserServiceImpl extends BaseService implements UserService {
         } else {
             return userMapper.convertDoToDto.apply(userList.get(0));
         }
+    }
+
+    @Override
+    public Page<UserDTO> listUserByPage(UserQueryDTO request) {
+        return null;
     }
 
     @Autowired
