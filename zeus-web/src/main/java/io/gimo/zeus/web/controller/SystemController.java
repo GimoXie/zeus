@@ -4,7 +4,6 @@ import io.gimo.zeus.db.plugin.interceptor.Page;
 import io.gimo.zeus.service.UserService;
 import io.gimo.zeus.service.dto.UserDTO;
 import io.gimo.zeus.service.dto.UserQueryDTO;
-import io.gimo.zeus.web.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,7 +19,7 @@ import java.util.Map;
 public class SystemController extends BaseController{
 
     private UserService userService;
-    private UserMapper userMapper;
+    //private UserMapper userMapper;
 
     @RequestMapping("/users")
     @ResponseBody
@@ -39,8 +38,8 @@ public class SystemController extends BaseController{
         this.userService = userService;
     }
 
-    @Autowired
+    /*@Autowired
     public void setUserMapper(UserMapper userMapper) {
         this.userMapper = userMapper;
-    }
+    }*/
 }

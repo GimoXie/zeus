@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 /**
  * Created by zmxie on 2018/12/18.
  */
-@Component
+//@Component
 public class UserMapper extends AbstractVoToDtoMapper<UserVO, UserDTO> {
 
 }
