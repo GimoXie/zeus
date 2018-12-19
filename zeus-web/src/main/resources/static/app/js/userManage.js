@@ -66,6 +66,12 @@ var userManage = {
                 sortable: false,
                 align: 'center',
                 valign: 'middle'
+            }, {
+                title: '是否有效',
+                field: 'isActive',
+                sortable: false,
+                align: 'center',
+                valign: 'middle'
             }],
             onLoadSuccess: function (result) {
                 if (result.data != null) {

@@ -49,6 +49,7 @@
                 <table id="userTable" width="100%">
                     <thead>
                     <tr>
+                        <th>用户编号</th>
                         <th>用户名</th>
                         <th>邮箱</th>
                         <th>联系电话</th>
