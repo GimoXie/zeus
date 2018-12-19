@@ -24,7 +24,7 @@ abstract class BaseController {
         Map<String, Object> result = Maps.newHashMap();
         result.put("code", code);
         result.put("message", message);
-        result.put("object", object);
+        result.put("data", object);
         return result;
     }
 

@@ -16,7 +16,7 @@ public abstract class BasePage {
     /**
      * 排序字段名称
      **/
-    private String sortName;
+    private String sort;
     /**
      * 排序方式 asc or desc
      **/
@@ -24,6 +24,6 @@ public abstract class BasePage {
     /**
      * 搜索关键字
      */
-    private String searchText;
+    private String search;
 
 }

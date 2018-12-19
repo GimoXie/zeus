@@ -1,4 +1,5 @@
 var userManage = {
+    tableData: {},
     init: function () {
         var that = this;
         that.initUserTable();
@@ -22,6 +23,15 @@ var userManage = {
             clickToSelect: true,
             formatLoadingMessage: function () {
                 return '<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>';
+            },
+            queryParams: function (params) {
+                return {
+                    limit: params.limit,
+                    offset: params.offset,
+                    sortName: params.sort,
+                    order: params.order,
+                    search: params.search
+                }
             },
             columns: [{
                 title: '#',
@@ -50,15 +60,22 @@ var userManage = {
                 sortable: false,
                 align: 'center',
                 valign: 'middle'
+            }, {
+                title: '最后登录时间',
+                field: 'lastLoginTime',
+                sortable: false,
+                align: 'center',
+                valign: 'middle'
             }],
-            onLoadSuccess: function (data) {
-                console.log(data);
+            onLoadSuccess: function (result) {
+                if (result.data != null) {
+                    userManage.tableData = result.data;
+                }
+                $('#userTable').bootstrapTable('load', result.data);
             }
         });
     }
 };
-
-
 
 $(function () {
     userManage.init();

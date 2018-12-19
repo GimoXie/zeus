@@ -17,7 +17,7 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("/system")
-public class SystemController extends BaseController{
+public class SystemController extends BaseController {
 
     private UserService userService;
     private UserConverter userConverter;
@@ -29,8 +29,9 @@ public class SystemController extends BaseController{
             Page<UserDTO> result = userService.listUserByPage(request);
             return success(userConverter.convertToVo(result));
         } catch (Exception e) {
-            logger.error("查询用户数据时发生异常!", e.getMessage());
-            return failure("查询用户数据时发生异常!");
+            String msg = "查询用户数据时发生异常!";
+            logger.error(msg, e.getMessage());
+            return failure(msg);
         }
     }
 
