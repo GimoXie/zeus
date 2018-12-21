@@ -16,6 +16,7 @@
     <link href="/assets/css/style.min.css" rel="stylesheet">
 
     <link href="/assets/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="/assets/js/plugins/layer/skin/layer.css" rel="stylesheet">
 </head>
 
 <body class="gray-bg">
@@ -72,6 +73,8 @@
     <script src="/assets/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
     <script src="/assets/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
     <script src="/assets/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script src="/assets/js/plugins/layer/layer.min.js"></script>
+    <script src="/app/js/common/common.jquery.js"></script>
     <script src="/app/js/userManage.js"></script>
 </body>
 

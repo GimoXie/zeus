@@ -28,7 +28,7 @@ var userManage = {
                 return {
                     limit: params.limit,
                     offset: params.offset,
-                    sortName: params.sort,
+                    sort: params.sort,
                     order: params.order,
                     search: params.search
                 }
@@ -74,10 +74,7 @@ var userManage = {
                 valign: 'middle'
             }],
             onLoadSuccess: function (result) {
-                if (result.data != null) {
-                    userManage.tableData = result.data;
-                }
-                $('#userTable').bootstrapTable('load', result.data);
+                $.loadData(result, userManage, "userTable");
             }
         });
     }

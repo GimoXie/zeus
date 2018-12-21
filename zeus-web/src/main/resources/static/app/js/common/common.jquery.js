@@ -7,6 +7,22 @@
                 btn: ['OK']
             });
         },
+        /**
+         * 给bootstrap-table加载数据
+         * @param result  服务返回结果
+         * @param obj     js对象
+         * @param tableId 表格id
+         */
+        loadData: function (result, obj, tableId) {
+            if (result.code == 1) {
+                if (result.data != null) {
+                    obj.tableData = result.data;
+                    $('#' + tableId).bootstrapTable('load', result.data);
+                }
+            } else {
+                $.alert(result.message);
+            }
+        },
         loading: function (type) {
             if (type == null || type == undefined) {
                 type = 2;
