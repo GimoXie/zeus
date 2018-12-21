@@ -11,7 +11,7 @@
     <link href="favicon.ico" rel="shortcut icon">
     <#-- base css -->
     <link href="/assets/css/style.min.css" rel="stylesheet">
-    <link href="/assets/plugins/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="/assets/plugins/font-awesome/font-awesome.min.css" rel="stylesheet">
     <link href="/assets/plugins/animate/animate.min.css" rel="stylesheet">
 
@@ -67,7 +67,7 @@
 
     <#-- base script -->
     <script src="/assets/plugins/jquery/jquery.min.js"></script>
-    <script src="/assets/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="/assets/js/content.min.js"></script>
 
     <script src="/assets/plugins/bootstrap-table/bootstrap-table.min.js"></script>

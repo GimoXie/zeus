@@ -18,7 +18,7 @@
     <![endif]-->
 
     <link href="favicon.ico" rel="shortcut icon">
-    <link href="/assets/plugins/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="/assets/plugins/font-awesome/font-awesome.min.css" rel="stylesheet">
     <link href="/assets/plugins/animate/animate.min.css" rel="stylesheet">
 
@@ -201,7 +201,7 @@
 
     <script src="/assets/plugins/pace/pace.min.js"></script>
     <script src="/assets/plugins/jquery/jquery.min.js"></script>
-    <script src="/assets/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="/assets/plugins/metisMenu/jquery.metisMenu.js"></script>
     <script src="/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
     <script src="/assets/plugins/layer/layer.min.js"></script>

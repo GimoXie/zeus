@@ -15,7 +15,7 @@
     <link href="favicon.ico" rel="shortcut icon">
     <link href="/assets/css/style.min.css" rel="stylesheet">
 
-    <link href="/assets/plugins/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="/assets/plugins/font-awesome/font-awesome.min.css" rel="stylesheet">
     <!-- Morris -->
     <link href="/assets/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
@@ -461,7 +461,7 @@
 </div>
 
 <script src="/assets/plugins/jquery/jquery.min.js"></script>
-<script src="/assets/plugins/bootstrap/bootstrap.min.js"></script>
+<script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 <script src="/assets/plugins/flot/jquery.flot.js"></script>
 <script src="/assets/plugins/flot/jquery.flot.tooltip.min.js"></script>
 <script src="/assets/plugins/flot/jquery.flot.spline.js"></script>
