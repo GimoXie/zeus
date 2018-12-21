@@ -11,10 +11,10 @@
     <#-- favicon -->
     <link href="favicon.ico" rel="shortcut icon">
     <#-- base css -->
-    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/assets/css/font-awesome.min.css" rel="stylesheet">
-    <link href="/assets/css/animate.min.css" rel="stylesheet">
     <link href="/assets/css/style.min.css" rel="stylesheet">
+    <link href="/assets/plugins/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/plugins/font-awesome/font-awesome.min.css" rel="stylesheet">
+    <link href="/assets/plugins/animate/animate.min.css" rel="stylesheet">
 </head>
 
 <body class="gray-bg">
@@ -52,8 +52,8 @@
         </div>
     </div>
     <#-- base script -->
-    <script src="/assets/js/jquery.min.js"></script>
-    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/plugins/jquery/jquery.min.js"></script>
+    <script src="/assets/plugins/bootstrap/bootstrap.min.js"></script>
     <script src="/assets/js/content.min.js"></script>
 
 </body>
