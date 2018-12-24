@@ -462,18 +462,18 @@
 
 <script src="/assets/plugins/jquery/jquery.min.js"></script>
 <script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-<script src="/assets/plugins/flot/jquery.flot.js"></script>
+<script src="/assets/plugins/flot/jquery.flot.min.js"></script>
 <script src="/assets/plugins/flot/jquery.flot.tooltip.min.js"></script>
-<script src="/assets/plugins/flot/jquery.flot.spline.js"></script>
-<script src="/assets/plugins/flot/jquery.flot.resize.js"></script>
-<script src="/assets/plugins/flot/jquery.flot.pie.js"></script>
-<script src="/assets/plugins/flot/jquery.flot.symbol.js"></script>
+<script src="/assets/plugins/flot/jquery.flot.spline.min.js"></script>
+<script src="/assets/plugins/flot/jquery.flot.resize.min.js"></script>
+<script src="/assets/plugins/flot/jquery.flot.pie.min.js"></script>
+<script src="/assets/plugins/flot/jquery.flot.symbol.min.js"></script>
+<script src="/assets/plugins/flot/jquery.flot.time.min.js"></script>
 <script src="/assets/plugins/peity/jquery.peity.min.js"></script>
 <script src="/assets/plugins/jquery-ui/jquery-ui.min.js"></script>
 <script src="/assets/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
 <script src="/assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-<script src="/assets/plugins/easypiechart/jquery.easypiechart.js"></script>
-<script src="/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+<script src="/assets/plugins/easypiechart/jquery.easypiechart.min.js"></script>
 <script src="/assets/plugins/sparkline/sparkline-demo.min.js"></script>
 <script src="/assets/plugins/peity/peity-demo.min.js"></script>
 <script src="/assets/js/content.min.js"></script>
