@@ -28,7 +28,7 @@
         <div class="ibox float-e-margins">
             <div class="ibox-title">
                 <h5>用户列表</h5>
-                <div class="ibox-tools">
+                <#--<div class="ibox-tools">
                     <a class="collapse-link">
                         <i class="fa fa-chevron-up"></i>
                     </a>
@@ -41,10 +41,10 @@
                         <li><a href="#">选项2</a>
                         </li>
                     </ul>
-                    <#--<a class="close-link">
+                    <a class="close-link">
                         <i class="fa fa-times"></i>
-                    </a>-->
-                </div>
+                    </a>
+                </div>-->
             </div>
             <div class="ibox-content">
                 <table id="userTable" width="100%">
@@ -63,6 +63,56 @@
                 </table>
             </div>
         </div>
+
+        <!-- table自定义工具条 -->
+        <div id="userToolbar" class="btn-group" style="width: 180px;">
+            <button type="button" class="btn btn-default user-add" data-toggle="tooltip" data-placement="bottom" title="新增用户">
+                <i class="fa fa-user-plus"></i>
+            </button>
+            <button type="button" class="btn btn-default user-edit" data-toggle="tooltip" data-placement="bottom" title="编辑用户">
+                <i class="fa fa-edit"></i>
+            </button>
+            <button type="button" class="btn btn-default user-role-assign" data-toggle="tooltip" data-placement="bottom" title="分配角色">
+                <i class="fa fa-odnoklassniki"></i>
+            </button>
+            <button type="button" class="btn btn-default user-refresh" data-toggle="tooltip" data-placement="bottom" title="刷新">
+                <i class="fa fa-refresh"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- dialogs -->
+    <div class="modal fade" id="userModel" tabindex="-1" role="dialog" aria-labelledby="userModel" aria-hidden="true"
+         data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                    <h4 class="modal-title user-title"></h4>
+                </div>
+                <div class="modal-body">
+                    <form id="userForm" class="m-t" role="form">
+                        <input type="hidden" id="id" value="">
+                        <div class="form-group">
+                            <label for="username">用户名称</label>
+                            <input type="text" class="form-control" id="username" name="username" placeholder="请输入用户名称">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">电子邮箱</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="请输入电子邮箱">
+                        </div>
+                        <div class="form-group">
+                            <label for="telephone">联系电话</label>
+                            <input type="text" class="form-control" id="telephone" name="telephone" placeholder="请输入联系电话">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn btn-cancel">取消</button>
+                    <button type="button" data-dismiss="modal" class="btn btn-primary" onclick="userManage.modifyUser()">确定</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <#-- base script -->
@@ -71,7 +121,7 @@
     <script src="/assets/js/content.min.js"></script>
 
     <script src="/assets/plugins/bootstrap-table/bootstrap-table.min.js"></script>
-    <script src="/assets/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+    <script src="/assets/plugins/bootstrap-table/extensions/mobile/bootstrap-table-mobile.min.js"></script>
     <script src="/assets/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
     <script src="/assets/plugins/layer/layer.min.js"></script>
     <script src="/app/js/common/common.jquery.js"></script>

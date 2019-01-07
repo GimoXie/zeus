@@ -6,6 +6,33 @@ var userManage = {
         that.bindEvents();
     },
     bindEvents: function () {
+        var that = this;
+        // 新增用户信息
+        $('.user-add').on('click', function () {
+            that.resetForm();
+            $('.user-title').text('新增用户');
+            $('#userModel').modal('show');
+        });
+        // 修改用户信息
+        $('.user-edit').on('click', function () {
+            that.resetForm();
+            $('.user-title').text('修改用户');
+            $('#userModel').modal('show');
+        });
+    },
+    resetForm: function () {
+        $('#userForm')[0].reset();
+        $('#id').val(null);
+    },
+    modifyUser: function () {
+        var params = {
+            id: $('#id').val(),
+            username: $('#username').val(),
+            email: $('#email').val(),
+            telephone: $('#telephone').val()
+        }
+        $.alert(JSON.stringify(params));
+        // TODO：调用服务接口
 
     },
     initUserTable: function () {
@@ -13,6 +40,10 @@ var userManage = {
             url: '/system/users',
             method: 'post',
             mobileResponsive: true,
+            toolbar: '#userToolbar',
+            toolbarAlign: 'right',
+            search: true,
+            searchAlign: 'left',
             cache: false,
             pagination: true,
             pageSize: 10,
