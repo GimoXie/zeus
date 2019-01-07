@@ -5,5 +5,5 @@ import io.gimo.zeus.service.dto.RoleDTO;
 import org.springframework.stereotype.Component;
 
 @Component
-public class RoleMapper extends AbstractDtoDoMapper<RoleDTO, SysRoleDO> {
+public class RoleMapper extends AbstractMapper<RoleDTO, SysRoleDO> {
 }

@@ -5,5 +5,5 @@ import io.gimo.zeus.service.dto.PermissionDTO;
 import org.springframework.stereotype.Component;
 
 @Component
-public class PermissionMapper extends AbstractDtoDoMapper<PermissionDTO, SysPermissionDO> {
+public class PermissionMapper extends AbstractMapper<PermissionDTO, SysPermissionDO> {
 }

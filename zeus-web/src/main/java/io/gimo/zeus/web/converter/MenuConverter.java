@@ -8,6 +8,6 @@ import org.springframework.stereotype.Component;
  * Created by zmxie on 2018/12/11.
  */
 @Component
-public class MenuConverter extends AbstractVoToDtoConverter<MenuVO, PermissionDTO> {
+public class MenuConverter extends AbstractConverter<MenuVO, PermissionDTO> {
 
 }

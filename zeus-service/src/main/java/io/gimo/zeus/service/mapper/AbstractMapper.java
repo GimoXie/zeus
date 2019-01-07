@@ -7,7 +7,7 @@ import javax.annotation.PostConstruct;
 import java.lang.reflect.ParameterizedType;
 import java.util.function.Function;
 
-public abstract class AbstractDtoDoMapper<DTO, DO> {
+public abstract class AbstractMapper<DTO, DO> {
 
     protected MapperFactory mapperFactory;
     private Class<DTO> dtoClass;

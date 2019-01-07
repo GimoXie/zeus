@@ -12,14 +12,14 @@ import java.util.List;
  * Created by zmxie on 2018/12/18.
  */
 @Component
-public class UserConverter extends AbstractVoToDtoConverter<UserVO, UserDTO> {
+public class UserConverter extends AbstractConverter<UserVO, UserDTO> {
 
 
     public Page<UserVO> convertToVo(Page<UserDTO> page) {
         Page<UserVO> result = new Page<>();
         mapperFactory.getMapperFacade().map(page, result);
         List<UserVO> userVOList = Lists.newArrayList();
-        page.getRows().forEach(row -> userVOList.add(convertDtoToVo.apply(row)));
+        page.getRows().forEach(row -> userVOList.add(convert.apply(row)));
         result.setRows(userVOList);
         return result;
     }

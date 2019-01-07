@@ -8,6 +8,6 @@ import org.springframework.stereotype.Component;
  * Created by zmxie on 2018/12/11.
  */
 @Component
-public class OperationMapper extends AbstractDtoDoMapper<OperationDTO, SysOperationDO> {
+public class OperationMapper extends AbstractMapper<OperationDTO, SysOperationDO> {
 
 }

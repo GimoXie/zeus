@@ -54,7 +54,7 @@ public class ZeusAuthenticationSuccessHandler extends SimpleUrlAuthenticationSuc
         List<MenuVO> menuList = Lists.newArrayList();
         for (PermissionDTO permission : permissionList) {
             if (permission.getParentId().equals(parentId)) {
-                MenuVO menu = menuConverter.convertDtoToVo.apply(permission);
+                MenuVO menu = menuConverter.convert.apply(permission);
                 menu.setLevel(level);
                 menu.setSubmenuList(generateMenu(permissionList, permission.getId(), permissionOperationMap, level));
                 if (permissionOperationMap.containsKey(permission.getId())) {

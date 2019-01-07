@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class UserMapper extends AbstractDtoDoMapper<UserDTO, SysUserDO> {
+public class UserMapper extends AbstractMapper<UserDTO, SysUserDO> {
 
     public Page<UserDTO> convertPageData(Page<SysUserDO> page) {
         Page<UserDTO> result = new Page<>();
