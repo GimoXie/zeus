@@ -36,14 +36,14 @@ public class UserServiceImpl extends BaseService implements UserService {
         } else if (userList.size() > 1) {
             throw new UsernameNotFoundException(String.format("名为%s的用户不止一个！", username));
         } else {
-            return userMapper.convertDoToDto.apply(userList.get(0));
+            return userMapper.reconvert.apply(userList.get(0));
         }
     }
 
     @Override
     public Page<UserDTO> listUserByPage(UserDTO request) {
         Page<SysUserDO> page = new Page<>(request.getOffset(), request.getLimit());
-        SysUserDO userDO = userMapper.convertDtoToDo.apply(request);
+        SysUserDO userDO = userMapper.convert.apply(request);
         sysUserDAO.listUser(page, userDO);
         Page<UserDTO> result = userMapper.convertPageData(page);
         return result;

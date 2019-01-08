@@ -39,7 +39,7 @@ public class OperationServiceImpl implements OperationService {
         Map<Long, SysOperationDO> operationMap = sysOperationList.stream().collect(Collectors.toMap(SysOperationDO::getId, operation -> operation));
         Map<Long, List<OperationDTO>> permissionOperationMap = Maps.newHashMap();
         sysPermissionOperationList.forEach(permissionOperation -> {
-            OperationDTO operation = operationMapper.convertDoToDto.apply(operationMap.get(permissionOperation.getOperationId()));
+            OperationDTO operation = operationMapper.reconvert.apply(operationMap.get(permissionOperation.getOperationId()));
             if (!permissionOperationMap.containsKey(permissionOperation.getPermissionId())) {
                 List<OperationDTO> operationList = Lists.newArrayList();
                 operationList.add(operation);

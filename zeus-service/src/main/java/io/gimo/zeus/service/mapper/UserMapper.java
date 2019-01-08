@@ -15,7 +15,7 @@ public class UserMapper extends AbstractMapper<UserDTO, SysUserDO> {
         Page<UserDTO> result = new Page<>();
         mapperFactory.getMapperFacade().map(page, result);
         List<UserDTO> userDTOList = Lists.newArrayList();
-        page.getRows().forEach(row -> userDTOList.add(convertDoToDto.apply(row)));
+        page.getRows().forEach(row -> userDTOList.add(reconvert.apply(row)));
         result.setRows(userDTOList);
         return result;
     }

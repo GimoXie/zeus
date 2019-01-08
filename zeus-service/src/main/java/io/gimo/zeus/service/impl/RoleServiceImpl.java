@@ -35,7 +35,7 @@ public class RoleServiceImpl implements RoleService {
         roleExample.createCriteria().andIdIn(roleIdList).andIsActiveEqualTo(true);
         List<SysRoleDO> sysRoleDOList = sysRoleDAO.selectByExample(roleExample);
         List<RoleDTO> roleDTOList = Lists.newArrayList();
-        sysRoleDOList.forEach(roleDO -> roleDTOList.add(roleMapper.convertDoToDto.apply(roleDO)));
+        sysRoleDOList.forEach(roleDO -> roleDTOList.add(roleMapper.reconvert.apply(roleDO)));
         return roleDTOList;
     }
 

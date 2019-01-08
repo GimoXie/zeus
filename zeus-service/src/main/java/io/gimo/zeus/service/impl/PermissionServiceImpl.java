@@ -31,7 +31,7 @@ public class PermissionServiceImpl implements PermissionService {
         SysPermissionExample permissionExample = new SysPermissionExample();
         permissionExample.createCriteria().andIdIn(permissionIdList).andIsActiveEqualTo(true);
         List<PermissionDTO> permissionDTOList = Lists.newArrayList();
-        sysPermissionDAO.selectByExample(permissionExample).forEach(permission -> permissionDTOList.add(permissionMapper.convertDoToDto.apply(permission)));
+        sysPermissionDAO.selectByExample(permissionExample).forEach(permission -> permissionDTOList.add(permissionMapper.reconvert.apply(permission)));
         return permissionDTOList;
     }
 

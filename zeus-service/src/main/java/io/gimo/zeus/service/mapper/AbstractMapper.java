@@ -7,44 +7,49 @@ import javax.annotation.PostConstruct;
 import java.lang.reflect.ParameterizedType;
 import java.util.function.Function;
 
-public abstract class AbstractMapper<DTO, DO> {
+public abstract class AbstractMapper<T, S> {
 
     protected MapperFactory mapperFactory;
-    private Class<DTO> dtoClass;
-    private Class<DO> doClass;
+    private Class<T> firstClass;
+    private Class<S> secondClass;
 
     @SuppressWarnings("unchecked")
     @PostConstruct
     private void init() {
         ParameterizedType type = (ParameterizedType) (this.getClass().getGenericSuperclass());
-        this.dtoClass = (Class<DTO>) type.getActualTypeArguments()[0];
-        this.doClass = (Class<DO>) type.getActualTypeArguments()[1];
+        this.firstClass = (Class<T>) type.getActualTypeArguments()[0];
+        this.secondClass = (Class<S>) type.getActualTypeArguments()[1];
     }
 
-    public final Function<DTO, DO> convertDtoToDo = dto -> {
-        if (dto == null) {
+    /**
+     * 将第一种类型的实体映射为第二种类型的实体
+     */
+    public final Function<T, S> convert = t -> {
+        if (t == null) {
             return null;
         }
-        DO _do = mapperFactory.getMapperFacade().map(dto, doClass);
-        afterDtoToDo(dto, _do);
-
-        return _do;
+        S s = mapperFactory.getMapperFacade().map(t, secondClass);
+        afterConvert(t, s);
+        return s;
     };
 
-    protected void afterDtoToDo(DTO dto, DO _do) {
+    protected void afterConvert(T t, S s) {
 
     }
 
-    public final Function<DO, DTO> convertDoToDto = _do -> {
-        if (_do == null) {
+    /**
+     * 将第二种类型的实体映射为第一种类型的实体
+     */
+    public final Function<S, T> reconvert = s -> {
+        if (s == null) {
             return null;
         }
-        DTO dto = mapperFactory.getMapperFacade().map(_do, dtoClass);
-        afterDoToDto(_do, dto);
-        return dto;
+        T t = mapperFactory.getMapperFacade().map(s, firstClass);
+        afterReconvert(s, t);
+        return t;
     };
 
-    protected void afterDoToDto(DO _do, DTO dto) {
+    protected void afterReconvert(S s, T t) {
 
     }
 
