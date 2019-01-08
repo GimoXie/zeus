@@ -1,6 +1,7 @@
 package io.gimo.zeus.service;
 
-import io.gimo.zeus.service.dto.PermissionDTO;
+
+import io.gimo.zeus.entity.dto.PermissionDTO;
 
 import java.util.List;
 

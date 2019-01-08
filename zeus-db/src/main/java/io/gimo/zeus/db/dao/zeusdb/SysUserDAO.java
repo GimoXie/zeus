@@ -1,9 +1,9 @@
 package io.gimo.zeus.db.dao.zeusdb;
 
 import io.gimo.zeus.db.dao.BaseDAO;
-import io.gimo.zeus.db._do.zeusdb.SysUserDO;
-import io.gimo.zeus.db._do.zeusdb.SysUserExample;
 import io.gimo.zeus.db.plugin.interceptor.Page;
+import io.gimo.zeus.entity._do.zeusdb.SysUserDO;
+import io.gimo.zeus.entity._do.zeusdb.SysUserExample;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

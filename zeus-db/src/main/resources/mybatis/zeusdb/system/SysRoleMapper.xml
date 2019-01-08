@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="io.gimo.zeus.db.dao.zeusdb.SysRoleDAO">
-  <resultMap id="BaseResultMap" type="io.gimo.zeus.db._do.zeusdb.SysRoleDO">
+  <resultMap id="BaseResultMap" type="io.gimo.zeus.entity._do.zeusdb.SysRoleDO">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="type" jdbcType="VARCHAR" property="type" />
@@ -74,7 +74,7 @@
     id, `name`, `type`, description, is_active, create_time, create_user_id, last_change_time, 
     last_change_user_id
   </sql>
-  <select id="selectByExample" parameterType="io.gimo.zeus.db._do.zeusdb.SysRoleExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="io.gimo.zeus.entity._do.zeusdb.SysRoleExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -109,13 +109,13 @@
     delete from sys_role
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="io.gimo.zeus.db._do.zeusdb.SysRoleExample">
+  <delete id="deleteByExample" parameterType="io.gimo.zeus.entity._do.zeusdb.SysRoleExample">
     delete from sys_role
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="io.gimo.zeus.db._do.zeusdb.SysRoleDO" useGeneratedKeys="true">
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="io.gimo.zeus.entity._do.zeusdb.SysRoleDO" useGeneratedKeys="true">
     insert into sys_role (`name`, `type`, description, 
       is_active, create_time, create_user_id, 
       last_change_time, last_change_user_id)
@@ -123,7 +123,7 @@
       #{isActive,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, #{createUserId,jdbcType=BIGINT}, 
       #{lastChangeTime,jdbcType=TIMESTAMP}, #{lastChangeUserId,jdbcType=BIGINT})
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="io.gimo.zeus.db._do.zeusdb.SysRoleDO" useGeneratedKeys="true">
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="io.gimo.zeus.entity._do.zeusdb.SysRoleDO" useGeneratedKeys="true">
     insert into sys_role
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="name != null">
@@ -178,7 +178,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="io.gimo.zeus.db._do.zeusdb.SysRoleExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="io.gimo.zeus.entity._do.zeusdb.SysRoleExample" resultType="java.lang.Long">
     select count(*) from sys_role
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -234,7 +234,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="io.gimo.zeus.db._do.zeusdb.SysRoleDO">
+  <update id="updateByPrimaryKeySelective" parameterType="io.gimo.zeus.entity._do.zeusdb.SysRoleDO">
     update sys_role
     <set>
       <if test="name != null">
@@ -264,7 +264,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="io.gimo.zeus.db._do.zeusdb.SysRoleDO">
+  <update id="updateByPrimaryKey" parameterType="io.gimo.zeus.entity._do.zeusdb.SysRoleDO">
     update sys_role
     set `name` = #{name,jdbcType=VARCHAR},
       `type` = #{type,jdbcType=VARCHAR},

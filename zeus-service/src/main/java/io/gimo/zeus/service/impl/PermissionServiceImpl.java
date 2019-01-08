@@ -1,14 +1,14 @@
 package io.gimo.zeus.service.impl;
 
 import com.google.common.collect.Lists;
-import io.gimo.zeus.db._do.zeusdb.SysPermissionExample;
-import io.gimo.zeus.db._do.zeusdb.SysRolePermissionDO;
-import io.gimo.zeus.db._do.zeusdb.SysRolePermissionExample;
 import io.gimo.zeus.db.dao.zeusdb.SysPermissionDAO;
 import io.gimo.zeus.db.dao.zeusdb.SysRolePermissionDAO;
+import io.gimo.zeus.entity._do.zeusdb.SysPermissionExample;
+import io.gimo.zeus.entity._do.zeusdb.SysRolePermissionDO;
+import io.gimo.zeus.entity._do.zeusdb.SysRolePermissionExample;
+import io.gimo.zeus.entity.dto.PermissionDTO;
 import io.gimo.zeus.service.PermissionService;
-import io.gimo.zeus.service.dto.PermissionDTO;
-import io.gimo.zeus.service.mapper.PermissionMapper;
+import io.gimo.zeus.service.mapper.PermissionConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +20,7 @@ public class PermissionServiceImpl implements PermissionService {
 
     private SysRolePermissionDAO sysRolePermissionDAO;
     private SysPermissionDAO sysPermissionDAO;
-    private PermissionMapper permissionMapper;
+    private PermissionConverter.PermissionMapper permissionMapper;
 
     @Override
     public List<PermissionDTO> listPermissionByRoleId(List<Long> roleIdList) {
@@ -46,7 +46,7 @@ public class PermissionServiceImpl implements PermissionService {
     }
 
     @Autowired
-    public void setPermissionMapper(PermissionMapper permissionMapper) {
+    public void setPermissionMapper(PermissionConverter.PermissionMapper permissionMapper) {
         this.permissionMapper = permissionMapper;
     }
 }

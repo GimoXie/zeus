@@ -1,6 +1,6 @@
 package io.gimo.zeus.web.security;
 
-import io.gimo.zeus.web.vo.MenuVO;
+import io.gimo.zeus.entity.vo.MenuVO;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 

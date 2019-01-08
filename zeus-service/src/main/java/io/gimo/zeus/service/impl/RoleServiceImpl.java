@@ -1,15 +1,15 @@
 package io.gimo.zeus.service.impl;
 
 import com.google.common.collect.Lists;
-import io.gimo.zeus.db._do.zeusdb.SysRoleDO;
-import io.gimo.zeus.db._do.zeusdb.SysRoleExample;
-import io.gimo.zeus.db._do.zeusdb.SysUserRoleDO;
-import io.gimo.zeus.db._do.zeusdb.SysUserRoleExample;
 import io.gimo.zeus.db.dao.zeusdb.SysRoleDAO;
 import io.gimo.zeus.db.dao.zeusdb.SysUserRoleDAO;
+import io.gimo.zeus.entity._do.zeusdb.SysRoleDO;
+import io.gimo.zeus.entity._do.zeusdb.SysRoleExample;
+import io.gimo.zeus.entity._do.zeusdb.SysUserRoleDO;
+import io.gimo.zeus.entity._do.zeusdb.SysUserRoleExample;
+import io.gimo.zeus.entity.dto.RoleDTO;
 import io.gimo.zeus.service.RoleService;
-import io.gimo.zeus.service.dto.RoleDTO;
-import io.gimo.zeus.service.mapper.RoleMapper;
+import io.gimo.zeus.service.mapper.RoleConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +21,7 @@ public class RoleServiceImpl implements RoleService {
 
     private SysUserRoleDAO sysUserRoleDAO;
     private SysRoleDAO sysRoleDAO;
-    private RoleMapper roleMapper;
+    private RoleConverter.RoleMapper roleMapper;
 
     @Override
     public List<RoleDTO> listRoleByUserId(Long userId) {
@@ -50,7 +50,7 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Autowired
-    public void setRoleMapper(RoleMapper roleMapper) {
+    public void setRoleMapper(RoleConverter.RoleMapper roleMapper) {
         this.roleMapper = roleMapper;
     }
 }

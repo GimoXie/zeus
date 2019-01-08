@@ -1,7 +1,7 @@
 package io.gimo.zeus.service;
 
 import io.gimo.zeus.db.plugin.interceptor.Page;
-import io.gimo.zeus.service.dto.UserDTO;
+import io.gimo.zeus.entity.dto.UserDTO;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 /**

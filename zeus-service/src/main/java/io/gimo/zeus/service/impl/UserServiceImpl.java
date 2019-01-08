@@ -1,19 +1,20 @@
 package io.gimo.zeus.service.impl;
 
-import io.gimo.zeus.db._do.zeusdb.SysUserDO;
-import io.gimo.zeus.db._do.zeusdb.SysUserExample;
 import io.gimo.zeus.db.dao.zeusdb.SysUserDAO;
 import io.gimo.zeus.db.plugin.interceptor.Page;
+import io.gimo.zeus.entity._do.zeusdb.SysUserDO;
+import io.gimo.zeus.entity._do.zeusdb.SysUserExample;
+import io.gimo.zeus.entity.dto.UserDTO;
 import io.gimo.zeus.service.BaseService;
 import io.gimo.zeus.service.UserService;
-import io.gimo.zeus.service.dto.UserDTO;
-import io.gimo.zeus.service.mapper.UserMapper;
+import io.gimo.zeus.service.mapper.UserConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
+
 
 /**
  * Created by zmxie on 2018/12/7.
@@ -22,7 +23,7 @@ import java.util.List;
 public class UserServiceImpl extends BaseService implements UserService {
 
     private SysUserDAO sysUserDAO;
-    private UserMapper userMapper;
+    private UserConverter.UserMapper userMapper;
 
     @Override
     public UserDTO getUserByUsername(String username) throws UsernameNotFoundException{
@@ -45,8 +46,7 @@ public class UserServiceImpl extends BaseService implements UserService {
         Page<SysUserDO> page = new Page<>(request.getOffset(), request.getLimit());
         SysUserDO userDO = userMapper.convert.apply(request);
         sysUserDAO.listUser(page, userDO);
-        Page<UserDTO> result = userMapper.convertPageData(page);
-        return result;
+        return userMapper.pageReconvert.apply(page);
     }
 
     @Autowired
@@ -55,8 +55,7 @@ public class UserServiceImpl extends BaseService implements UserService {
     }
 
     @Autowired
-    public void setUserMapper(UserMapper userMapper) {
+    public void setUserMapper(UserConverter.UserMapper userMapper) {
         this.userMapper = userMapper;
     }
-
 }

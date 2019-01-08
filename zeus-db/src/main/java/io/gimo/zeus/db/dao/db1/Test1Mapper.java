@@ -1,6 +1,7 @@
 package io.gimo.zeus.db.dao.db1;
 
-import io.gimo.zeus.db._do.db1.User;
+
+import io.gimo.zeus.entity._do.db1.User;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

@@ -2,15 +2,15 @@ package io.gimo.zeus.service.impl;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import io.gimo.zeus.db._do.zeusdb.SysOperationDO;
-import io.gimo.zeus.db._do.zeusdb.SysOperationExample;
-import io.gimo.zeus.db._do.zeusdb.SysPermissionOperationDO;
-import io.gimo.zeus.db._do.zeusdb.SysPermissionOperationExample;
 import io.gimo.zeus.db.dao.zeusdb.SysOperationDAO;
 import io.gimo.zeus.db.dao.zeusdb.SysPermissionOperationDAO;
+import io.gimo.zeus.entity._do.zeusdb.SysOperationDO;
+import io.gimo.zeus.entity._do.zeusdb.SysOperationExample;
+import io.gimo.zeus.entity._do.zeusdb.SysPermissionOperationDO;
+import io.gimo.zeus.entity._do.zeusdb.SysPermissionOperationExample;
+import io.gimo.zeus.entity.dto.OperationDTO;
 import io.gimo.zeus.service.OperationService;
-import io.gimo.zeus.service.dto.OperationDTO;
-import io.gimo.zeus.service.mapper.OperationMapper;
+import io.gimo.zeus.service.mapper.OperationConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +26,7 @@ public class OperationServiceImpl implements OperationService {
 
     private SysPermissionOperationDAO sysPermissionOperationDAO;
     private SysOperationDAO sysOperationDAO;
-    private OperationMapper operationMapper;
+    private OperationConverter.OperationMapper operationMapper;
 
     @Override
     public Map<Long, List<OperationDTO>> mappingPermissionOperationMapByPermissionId(List<Long> permissionIdList) {
@@ -64,7 +64,7 @@ public class OperationServiceImpl implements OperationService {
     }
 
     @Autowired
-    public void setOperationMapper(OperationMapper operationMapper) {
+    public void setOperationMapper(OperationConverter.OperationMapper operationMapper) {
         this.operationMapper = operationMapper;
     }
 }

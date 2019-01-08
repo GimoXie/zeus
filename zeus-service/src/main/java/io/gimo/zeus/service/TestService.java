@@ -2,8 +2,8 @@ package io.gimo.zeus.service;
 
 import io.gimo.zeus.db.dao.db1.Test1Mapper;
 import io.gimo.zeus.db.dao.db2.Test2Mapper;
-import io.gimo.zeus.db._do.db1.User;
-import io.gimo.zeus.db._do.db2.User2;
+import io.gimo.zeus.entity._do.db1.User;
+import io.gimo.zeus.entity._do.db2.User2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

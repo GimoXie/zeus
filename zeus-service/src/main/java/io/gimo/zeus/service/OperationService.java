@@ -1,6 +1,7 @@
 package io.gimo.zeus.service;
 
-import io.gimo.zeus.service.dto.OperationDTO;
+
+import io.gimo.zeus.entity.dto.OperationDTO;
 
 import java.util.List;
 import java.util.Map;
