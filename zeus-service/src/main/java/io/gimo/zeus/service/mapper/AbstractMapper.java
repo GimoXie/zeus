@@ -9,9 +9,14 @@ import java.lang.reflect.ParameterizedType;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+/**
+ * Bean映射工具
+ * @param <T>
+ * @param <S>
+ */
 public abstract class AbstractMapper<T, S> {
 
-    protected MapperFactory mapperFactory;
+    private MapperFactory mapperFactory;
     private Class<T> firstClass;
     private Class<S> secondClass;
 
@@ -35,7 +40,7 @@ public abstract class AbstractMapper<T, S> {
         return s;
     };
 
-    protected void afterConvert(T t, S s) {
+    private void afterConvert(T t, S s) {
 
     }
 
@@ -51,7 +56,7 @@ public abstract class AbstractMapper<T, S> {
         return t;
     };
 
-    protected void afterReconvert(S s, T t) {
+    private void afterReconvert(S s, T t) {
 
     }
 
