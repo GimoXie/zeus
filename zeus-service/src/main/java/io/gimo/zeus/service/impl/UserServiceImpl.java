@@ -49,6 +49,11 @@ public class UserServiceImpl extends BaseService implements UserService {
         return userMapper.pageReconvert.apply(page);
     }
 
+    @Override
+    public void modifyUser(UserDTO request) {
+
+    }
+
     @Autowired
     public void setSysUserDAO(SysUserDAO sysUserDAO) {
         this.sysUserDAO = sysUserDAO;

@@ -35,6 +35,19 @@ public class SystemController extends BaseController {
         }
     }
 
+    @RequestMapping("/users/modify")
+    @ResponseBody
+    public Map<String, Object> modifyUser(@RequestBody UserDTO request) {
+        try {
+            userService.modifyUser(request);
+            return success(null);
+        } catch (Exception e) {
+            String msg = "变更用户数据时发生异常!";
+            logger.error(msg, e.getMessage());
+            return failure(msg);
+        }
+    }
+
     @Autowired
     public void setUserService(UserService userService) {
         this.userService = userService;

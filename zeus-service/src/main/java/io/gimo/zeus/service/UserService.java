@@ -11,7 +11,7 @@ public interface UserService {
 
     /**
      * 根据用户名查找用户
-     * @param username   用户名
+     * @param username  用户名
      * @return userDTO  用户DTO
      * @throws UsernameNotFoundException 未找到或者数量大于一个时抛出
      */
@@ -23,4 +23,10 @@ public interface UserService {
      * @return Page<UserDTO> 分页查询结果
      */
     Page<UserDTO> listUserByPage(UserDTO request);
+
+    /**
+     * 新增/修改用户数据
+     * @param request 变更参数
+     */
+    void modifyUser(UserDTO request);
 }
