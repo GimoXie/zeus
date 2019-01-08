@@ -1,7 +1,7 @@
 package io.gimo.zeus.common.consts;
 
 /**
- * Created by zmxie on 2018/12/10.
+ * Created by gimo on 2018/12/10.
  */
 public interface MenuConsts {
     Integer ROOT_LEVEL = 0;

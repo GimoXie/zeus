@@ -6,7 +6,7 @@ import lombok.EqualsAndHashCode;
 import java.time.LocalDateTime;
 
 /**
- * Created by zmxie on 2018/12/18.
+ * Created by gimo on 2018/12/18.
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

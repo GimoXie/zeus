@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Created by zmxie on 2018/12/7.
+ * Created by gimo on 2018/12/7.
  */
 public class ZeusAuthenticationFailureHandler extends SimpleUrlAuthenticationFailureHandler {
 

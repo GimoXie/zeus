@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 /**
- * Created by zmxie on 2019/1/8.
+ * Created by gimo on 2019/1/8.
  */
 @Component
 public class RoleConverter {

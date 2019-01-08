@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 /**
  * 权限控制器
- * Created by zmxie on 2018/12/6.
+ * Created by gimo on 2018/12/6.
  */
 public class ZeusPermissionEvaluator implements PermissionEvaluator {
 

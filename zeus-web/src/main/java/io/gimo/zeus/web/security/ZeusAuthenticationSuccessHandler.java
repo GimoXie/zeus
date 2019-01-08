@@ -21,7 +21,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- * Created by zmxie on 2018/12/7.
+ * Created by gimo on 2018/12/7.
  */
 public class ZeusAuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 

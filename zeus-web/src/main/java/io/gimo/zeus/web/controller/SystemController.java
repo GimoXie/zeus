@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.Map;
 
 /**
- * Created by zmxie on 2018/12/18.
+ * Created by gimo on 2018/12/18.
  */
 @Controller
 @RequestMapping("/system")

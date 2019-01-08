@@ -12,7 +12,7 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import java.util.Locale;
 
 /**
- * Created by zmxie on 2018/12/11.
+ * Created by gimo on 2018/12/11.
  */
 @Configuration
 @EnableAutoConfiguration

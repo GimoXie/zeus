@@ -5,7 +5,7 @@ import io.gimo.zeus.entity.dto.UserDTO;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 /**
- * Created by zmxie on 2018/12/7.
+ * Created by gimo on 2018/12/7.
  */
 public interface UserService {
 
