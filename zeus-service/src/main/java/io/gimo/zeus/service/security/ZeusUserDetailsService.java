@@ -1,4 +1,4 @@
-package io.gimo.zeus.web.security;
+package io.gimo.zeus.service.security;
 
 import com.google.common.collect.Lists;
 import io.gimo.zeus.entity.dto.RoleDTO;

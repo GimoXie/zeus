@@ -1,4 +1,4 @@
-package io.gimo.zeus.web.security;
+package io.gimo.zeus.service.security;
 
 import org.springframework.security.core.GrantedAuthority;
 

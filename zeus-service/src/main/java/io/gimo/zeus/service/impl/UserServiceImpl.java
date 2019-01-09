@@ -51,9 +51,21 @@ public class UserServiceImpl extends BaseService implements UserService {
 
     @Override
     public void modifyUser(UserDTO request) {
-
+        if (request.getId() == null) {
+            this.saveUser(request);
+        } else {
+            this.updateUser(request);
+        }
     }
 
+    private void saveUser(UserDTO request) {
+        SysUserDO sysUserDO = userMapper.convert.apply(request);
+        sysUserDO.setCreateUserId(getCurrentUser().getId());
+    }
+
+    private void updateUser(UserDTO request) {
+
+    }
     @Autowired
     public void setSysUserDAO(SysUserDAO sysUserDAO) {
         this.sysUserDAO = sysUserDAO;

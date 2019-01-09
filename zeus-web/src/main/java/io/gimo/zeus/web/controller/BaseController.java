@@ -13,14 +13,14 @@ abstract class BaseController {
     private static final int CODE_FAILURE = 0;
 
     Map<String, Object> success(Object object) {
-        return generateResult(CODE_SUCCESS, "success", object);
+        return result(CODE_SUCCESS, "success", object);
     }
 
     Map<String, Object> failure(String message) {
-        return generateResult(CODE_FAILURE, message, null);
+        return result(CODE_FAILURE, message, null);
     }
 
-    private Map<String, Object> generateResult(Integer code, String message, Object object) {
+    private Map<String, Object> result(Integer code, String message, Object object) {
         Map<String, Object> result = Maps.newHashMap();
         result.put("code", code);
         result.put("message", message);

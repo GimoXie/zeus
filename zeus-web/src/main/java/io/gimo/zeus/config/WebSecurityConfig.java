@@ -3,7 +3,7 @@ package io.gimo.zeus.config;
 import io.gimo.zeus.web.security.ZeusAuthenticationFailureHandler;
 import io.gimo.zeus.web.security.ZeusAuthenticationSuccessHandler;
 import io.gimo.zeus.web.security.ZeusPermissionEvaluator;
-import io.gimo.zeus.web.security.ZeusUserDetailsService;
+import io.gimo.zeus.service.security.ZeusUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.PermissionEvaluator;

@@ -8,6 +8,8 @@ import io.gimo.zeus.entity.vo.MenuVO;
 import io.gimo.zeus.service.OperationService;
 import io.gimo.zeus.service.PermissionService;
 import io.gimo.zeus.service.mapper.PermissionConverter;
+import io.gimo.zeus.service.security.ZeusGrantedAuthority;
+import io.gimo.zeus.service.security.ZeusUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
@@ -38,7 +40,7 @@ public class ZeusAuthenticationSuccessHandler extends SimpleUrlAuthenticationSuc
         List<Long> roleIdList = authorityList.stream().map(ZeusGrantedAuthority::getId).collect(Collectors.toList());
         List<PermissionDTO> permissionList = permissionService.listPermissionByRoleId(roleIdList);
         List<Long> permissionIdList = permissionList.stream().map(PermissionDTO::getId).collect(Collectors.toList());
-        Map<Long, List<OperationDTO>> permissionOperationMap = operationService.mappingPermissionOperationMapByPermissionId(permissionIdList);
+        Map<Long, List<OperationDTO>> permissionOperationMap = operationService.mappingPermissionOperationByPermissionId(permissionIdList);
         // 构建菜单树
         List<MenuVO> menuList = generateMenu(permissionList, permissionOperationMap);
         ((ZeusUser) authentication.getPrincipal()).setMenuList(menuList);

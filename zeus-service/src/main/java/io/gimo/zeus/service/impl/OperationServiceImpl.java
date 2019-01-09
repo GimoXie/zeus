@@ -29,7 +29,7 @@ public class OperationServiceImpl implements OperationService {
     private OperationConverter.OperationMapper operationMapper;
 
     @Override
-    public Map<Long, List<OperationDTO>> mappingPermissionOperationMapByPermissionId(List<Long> permissionIdList) {
+    public Map<Long, List<OperationDTO>> mappingPermissionOperationByPermissionId(List<Long> permissionIdList) {
         SysPermissionOperationExample permissionOperationExample = new SysPermissionOperationExample();
         permissionOperationExample.createCriteria().andPermissionIdIn(permissionIdList).andIsActiveEqualTo(true);
         List<SysPermissionOperationDO> sysPermissionOperationList = sysPermissionOperationDAO.selectByExample(permissionOperationExample);
