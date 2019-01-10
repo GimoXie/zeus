@@ -124,6 +124,7 @@
     <script src="/assets/plugins/bootstrap-table/extensions/mobile/bootstrap-table-mobile.min.js"></script>
     <script src="/assets/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
     <script src="/assets/plugins/layer/layer.min.js"></script>
+    <script src="/assets/plugins/jquery-form/jquery.form.min.js"></script>
     <script src="/app/js/common/common.jquery.js"></script>
     <script src="/app/js/userManage.js"></script>
 </body>

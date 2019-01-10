@@ -9,20 +9,26 @@ var userManage = {
         var that = this;
         // 新增用户信息
         $('.user-add').on('click', function () {
-            that.resetForm();
+            $('#userForm').clearForm();
             $('.user-title').text('新增用户');
             $('#userModel').modal('show');
         });
         // 修改用户信息
         $('.user-edit').on('click', function () {
-            that.resetForm();
+            $('#userForm').clearForm();
+            var rows = $('#userTable').bootstrapTable('getSelections');
+            if (rows.length === 0) {
+                $.alert('你必须选择一条数据');
+                return;
+            }
+            var user = rows[0];
+            $('#id').val(user.id);
+            $('#username').val(user.username);
+            $('#email').val(user.email);
+            $('#telephone').val(user.telephone);
             $('.user-title').text('修改用户');
             $('#userModel').modal('show');
         });
-    },
-    resetForm: function () {
-        $('#userForm')[0].reset();
-        $('#id').val(null);
     },
     modifyUser: function () {
         var params = {
@@ -30,7 +36,7 @@ var userManage = {
             username: $('#username').val(),
             email: $('#email').val(),
             telephone: $('#telephone').val()
-        }
+        };
         $.ajax({
             type: "POST",
             url: "/system/users/modify",
@@ -47,7 +53,6 @@ var userManage = {
                 }
             }
         });
-
     },
     initUserTable: function () {
         $("#userTable").bootstrapTable({

@@ -11,6 +11,7 @@ import io.gimo.zeus.service.mapper.UserConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
@@ -50,22 +51,19 @@ public class UserServiceImpl extends BaseService implements UserService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void modifyUser(UserDTO request) {
+        SysUserDO sysUserDO = userMapper.convert.apply(request);
+        sysUserDO.setCreateUserId(getCurrentUser().getId());
+        sysUserDO.setLastChangeUserId(getCurrentUser().getId());
+        sysUserDO.setIsActive(true);
         if (request.getId() == null) {
-            this.saveUser(request);
+            sysUserDAO.insertSelective(sysUserDO);
         } else {
-            this.updateUser(request);
+            sysUserDAO.updateByPrimaryKey(sysUserDO);
         }
     }
 
-    private void saveUser(UserDTO request) {
-        SysUserDO sysUserDO = userMapper.convert.apply(request);
-        sysUserDO.setCreateUserId(getCurrentUser().getId());
-    }
-
-    private void updateUser(UserDTO request) {
-
-    }
     @Autowired
     public void setSysUserDAO(SysUserDAO sysUserDAO) {
         this.sysUserDAO = sysUserDAO;
