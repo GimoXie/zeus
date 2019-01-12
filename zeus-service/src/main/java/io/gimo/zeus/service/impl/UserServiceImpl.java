@@ -60,7 +60,7 @@ public class UserServiceImpl extends BaseService implements UserService {
         if (request.getId() == null) {
             sysUserDAO.insertSelective(sysUserDO);
         } else {
-            sysUserDAO.updateByPrimaryKey(sysUserDO);
+            sysUserDAO.updateByPrimaryKeySelective(sysUserDO);
         }
     }
 

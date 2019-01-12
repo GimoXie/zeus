@@ -95,15 +95,15 @@
                         <input type="hidden" id="id" value="">
                         <div class="form-group">
                             <label for="username">用户名称</label>
-                            <input type="text" class="form-control" id="username" name="username" placeholder="请输入用户名称">
+                            <input type="text" class="form-control" id="username" placeholder="请输入用户名称">
                         </div>
                         <div class="form-group">
                             <label for="email">电子邮箱</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="请输入电子邮箱">
+                            <input type="email" class="form-control" id="email" placeholder="请输入电子邮箱">
                         </div>
                         <div class="form-group">
                             <label for="telephone">联系电话</label>
-                            <input type="text" class="form-control" id="telephone" name="telephone" placeholder="请输入联系电话">
+                            <input type="text" class="form-control" id="telephone" placeholder="请输入联系电话">
                         </div>
                     </form>
                 </div>
@@ -126,7 +126,7 @@
     <script src="/assets/plugins/layer/layer.min.js"></script>
     <script src="/assets/plugins/jquery-form/jquery.form.min.js"></script>
     <script src="/app/js/common/common.jquery.js"></script>
-    <script src="/app/js/userManage.js"></script>
+    <script src="/app/js/system/userManage.js"></script>
 </body>
 
 </html>

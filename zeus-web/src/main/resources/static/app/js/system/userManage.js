@@ -1,12 +1,10 @@
 var userManage = {
     tableData: {},
     init: function () {
-        var that = this;
-        that.initUserTable();
-        that.bindEvents();
+        this.initTable();
+        this.bindEvents();
     },
     bindEvents: function () {
-        var that = this;
         // 新增用户信息
         $('.user-add').on('click', function () {
             $('#userForm').clearForm();
@@ -54,7 +52,7 @@ var userManage = {
             }
         });
     },
-    initUserTable: function () {
+    initTable: function () {
         $("#userTable").bootstrapTable({
             url: '/system/users',
             method: 'post',

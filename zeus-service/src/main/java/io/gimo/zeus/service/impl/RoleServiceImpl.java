@@ -3,6 +3,7 @@ package io.gimo.zeus.service.impl;
 import com.google.common.collect.Lists;
 import io.gimo.zeus.db.dao.zeusdb.SysRoleDAO;
 import io.gimo.zeus.db.dao.zeusdb.SysUserRoleDAO;
+import io.gimo.zeus.db.plugin.interceptor.Page;
 import io.gimo.zeus.entity._do.zeusdb.SysRoleDO;
 import io.gimo.zeus.entity._do.zeusdb.SysRoleExample;
 import io.gimo.zeus.entity._do.zeusdb.SysUserRoleDO;
@@ -37,6 +38,14 @@ public class RoleServiceImpl implements RoleService {
         List<RoleDTO> roleDTOList = Lists.newArrayList();
         sysRoleDOList.forEach(roleDO -> roleDTOList.add(roleMapper.reconvert.apply(roleDO)));
         return roleDTOList;
+    }
+
+    @Override
+    public Page<RoleDTO> listRoleByPage(RoleDTO request) {
+        Page<SysRoleDO> page = new Page<>(request.getOffset(), request.getLimit());
+        SysRoleDO roleDO = roleMapper.convert.apply(request);
+        sysRoleDAO.listRole(page, roleDO);
+        return roleMapper.pageReconvert.apply(page);
     }
 
     @Autowired

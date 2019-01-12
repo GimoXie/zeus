@@ -1,8 +1,11 @@
 package io.gimo.zeus.web.controller;
 
 import io.gimo.zeus.db.plugin.interceptor.Page;
+import io.gimo.zeus.entity.dto.RoleDTO;
 import io.gimo.zeus.entity.dto.UserDTO;
+import io.gimo.zeus.service.RoleService;
 import io.gimo.zeus.service.UserService;
+import io.gimo.zeus.service.mapper.RoleConverter;
 import io.gimo.zeus.service.mapper.UserConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,13 +24,14 @@ public class SystemController extends BaseController {
 
     private UserService userService;
     private UserConverter.UserViewMapper userViewMapper;
+    private RoleService roleService;
+    private RoleConverter.RoleViewMapper roleViewMapper;
 
     @RequestMapping("/users")
     @ResponseBody
     public Map<String, Object> listUser(@RequestBody UserDTO request) {
         try {
-            Page<UserDTO> result = userService.listUserByPage(request);
-            return success(userViewMapper.pageConvert.apply(result));
+            return success(userViewMapper.pageConvert.apply(userService.listUserByPage(request)));
         } catch (Exception e) {
             String msg = "查询用户数据时发生异常!";
             logger.error(msg, e.getMessage());
@@ -48,6 +52,12 @@ public class SystemController extends BaseController {
         }
     }
 
+    @RequestMapping("/roles")
+    @ResponseBody
+    public Map<String, Object> listUser(@RequestBody RoleDTO request) {
+        return success(roleViewMapper.pageConvert.apply(roleService.listRoleByPage(request)));
+    }
+
     @Autowired
     public void setUserService(UserService userService) {
         this.userService = userService;
@@ -56,5 +66,15 @@ public class SystemController extends BaseController {
     @Autowired
     public void setUserViewMapper(UserConverter.UserViewMapper userViewMapper) {
         this.userViewMapper = userViewMapper;
+    }
+
+    @Autowired
+    public void setRoleService(RoleService roleService) {
+        this.roleService = roleService;
+    }
+
+    @Autowired
+    public void setRoleViewMapper(RoleConverter.RoleViewMapper roleViewMapper) {
+        this.roleViewMapper = roleViewMapper;
     }
 }

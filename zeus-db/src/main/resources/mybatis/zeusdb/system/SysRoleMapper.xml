@@ -276,4 +276,28 @@
       last_change_user_id = #{lastChangeUserId,jdbcType=BIGINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+  <!-- 自定义sql -->
+  <select id="listRole" parameterType="io.gimo.zeus.entity._do.zeusdb.SysRoleDO"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sys_role
+    <where>
+      <if test="id != null">
+        and id = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="name != null and name != ''">
+        and `name` = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="type != null and type != ''">
+        and `type` = #{type,jdbcType=VARCHAR}
+      </if>
+      <if test="description != null and description != ''">
+        and description = #{description,jdbcType=VARCHAR}
+      </if>
+      <if test="isActive != null">
+        and is_active = #{isActive,jdbcType=BIT}
+      </if>
+    </where>
+  </select>
 </mapper>

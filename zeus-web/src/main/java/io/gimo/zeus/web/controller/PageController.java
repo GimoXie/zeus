@@ -28,6 +28,11 @@ public class PageController {
 
     @GetMapping("/userManage")
     public String toUserManage() {
-        return "/view/userManage";
+        return "/view/system/userManage";
+    }
+
+    @GetMapping("/roleManage")
+    public String toRoleManage() {
+        return "/view/system/roleManage";
     }
 }
