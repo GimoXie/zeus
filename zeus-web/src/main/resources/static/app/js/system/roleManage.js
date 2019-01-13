@@ -1,9 +1,8 @@
 var roleManage = {
     tableData: {},
     init: function () {
-        var that = this;
-        that.initTable();
-        that.bindEvents();
+        this.initTable();
+        this.bindEvents();
     },
     initTable: function () {
         $("#roleTable").bootstrapTable({

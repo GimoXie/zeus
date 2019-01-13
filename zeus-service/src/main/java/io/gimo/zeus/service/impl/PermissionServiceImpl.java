@@ -3,6 +3,7 @@ package io.gimo.zeus.service.impl;
 import com.google.common.collect.Lists;
 import io.gimo.zeus.db.dao.zeusdb.SysPermissionDAO;
 import io.gimo.zeus.db.dao.zeusdb.SysRolePermissionDAO;
+import io.gimo.zeus.entity._do.zeusdb.SysPermissionDO;
 import io.gimo.zeus.entity._do.zeusdb.SysPermissionExample;
 import io.gimo.zeus.entity._do.zeusdb.SysRolePermissionDO;
 import io.gimo.zeus.entity._do.zeusdb.SysRolePermissionExample;
@@ -30,9 +31,15 @@ public class PermissionServiceImpl implements PermissionService {
         List<Long> permissionIdList = rolePermissionDOList.stream().map(SysRolePermissionDO::getPermissionId).collect(Collectors.toList());
         SysPermissionExample permissionExample = new SysPermissionExample();
         permissionExample.createCriteria().andIdIn(permissionIdList).andIsActiveEqualTo(true);
-        List<PermissionDTO> permissionDTOList = Lists.newArrayList();
-        sysPermissionDAO.selectByExample(permissionExample).forEach(permission -> permissionDTOList.add(permissionMapper.reconvert.apply(permission)));
-        return permissionDTOList;
+        return sysPermissionDAO.selectByExample(permissionExample).stream().map(permissionMapper.reconvert).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<PermissionDTO> listPermission(PermissionDTO request) {
+        SysPermissionDO permissionDO = permissionMapper.convert.apply(request);
+        SysPermissionExample permissionExample = new SysPermissionExample();
+        permissionExample.createCriteria().andIsActiveEqualTo(true);
+        return sysPermissionDAO.selectByExample(permissionExample).stream().map(permissionMapper.reconvert).collect(Collectors.toList());
     }
 
     @Autowired

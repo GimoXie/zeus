@@ -16,6 +16,9 @@
     <link href="/assets/plugins/animate/animate.min.css" rel="stylesheet">
 
     <link href="/assets/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="/assets/plugins/jquery-treegrid/css/jquery.treegrid.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.css" rel="stylesheet">
     <link href="/assets/plugins/layer/skin/layer.css" rel="stylesheet">
 </head>
 
@@ -93,12 +96,16 @@
     <script src="/assets/js/content.min.js"></script>
 
     <script src="/assets/plugins/bootstrap-table/bootstrap-table.min.js"></script>
-    <script src="/assets/plugins/bootstrap-table/extensions/mobile/bootstrap-table-mobile.min.js"></script>
     <script src="/assets/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script src="/assets/plugins/bootstrap-table/extensions/mobile/bootstrap-table-mobile.min.js"></script>
+    <script src="/assets/plugins/bootstrap-table/extensions/treegrid/bootstrap-table-treegrid.min.js"></script>
+    <script src="/assets/plugins/jquery-treegrid/js/jquery.treegrid.js"></script>
+    <script src="/assets/plugins/jquery-treegrid/js/jquery.treegrid.bootstrap3.js"></script>
     <script src="/assets/plugins/layer/layer.min.js"></script>
     <script src="/assets/plugins/jquery-form/jquery.form.min.js"></script>
     <script src="/app/js/common/common.jquery.js"></script>
     <script src="/app/js/system/roleManage.js"></script>
+    <script src="/app/js/system/permissionManage.js"></script>
 </body>
 
 </html>

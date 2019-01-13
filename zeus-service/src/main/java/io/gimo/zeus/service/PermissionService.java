@@ -13,4 +13,11 @@ public interface PermissionService {
      * @return permissionList 权限列表
      */
     List<PermissionDTO> listPermissionByRoleId(List<Long> roleIdList);
+
+    /**
+     * 查询权限列表
+     * @param request
+     * @return
+     */
+    List<PermissionDTO> listPermission(PermissionDTO request);
 }

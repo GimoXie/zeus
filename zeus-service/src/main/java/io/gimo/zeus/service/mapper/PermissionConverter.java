@@ -18,6 +18,11 @@ public class PermissionConverter {
     }
 
     @Service
+    public class PermissionViewMapper extends AbstractMapper<PermissionDTO, SysPermissionDO> {
+
+    }
+
+    @Service
     public class MenuMapper extends AbstractMapper<PermissionDTO, MenuVO> {
 
     }

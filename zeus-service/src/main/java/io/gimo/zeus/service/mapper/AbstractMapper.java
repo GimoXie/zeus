@@ -3,9 +3,11 @@ package io.gimo.zeus.service.mapper;
 import io.gimo.zeus.db.plugin.interceptor.Page;
 import ma.glasnost.orika.MapperFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.CollectionUtils;
 
 import javax.annotation.PostConstruct;
 import java.lang.reflect.ParameterizedType;
+import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -85,6 +87,26 @@ public abstract class AbstractMapper<T, S> {
         mapperFactory.getMapperFacade().map(s, result);
         result.setRows(s.getRows().stream().map(reconvert).collect(Collectors.toList()));
         return result;
+    };
+
+    /**
+     * 将第一种类型的list映射为第二种类型的分页结果
+     */
+    public final Function<List<T>, List<S>> listConvert = t -> {
+        if (CollectionUtils.isEmpty(t)) {
+            return null;
+        }
+        return t.stream().map(convert).collect(Collectors.toList());
+    };
+
+    /**
+     * 将第一种类型的list映射为第二种类型的分页结果
+     */
+    public final Function<List<S>, List<T>> listReconvert = s -> {
+        if (CollectionUtils.isEmpty(s)) {
+            return null;
+        }
+        return s.stream().map(reconvert).collect(Collectors.toList());
     };
 
     @Autowired
