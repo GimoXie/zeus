@@ -34,10 +34,9 @@ public class ZeusAuthenticationSuccessHandler extends SimpleUrlAuthenticationSuc
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         System.out.println("login success...");
-        // 根据角色id加载菜单
-        List<ZeusGrantedAuthority> authorityList = Lists.newArrayList();
-        authentication.getAuthorities().forEach(authority -> authorityList.add((ZeusGrantedAuthority) authority));
-        List<Long> roleIdList = authorityList.stream().map(ZeusGrantedAuthority::getId).collect(Collectors.toList());
+        List<Long> roleIdList = authentication.getAuthorities().stream()
+                .map(authority -> ((ZeusGrantedAuthority) authority).getId())
+                .collect(Collectors.toList());
         List<PermissionDTO> permissionList = permissionService.listPermissionByRoleId(roleIdList);
         List<Long> permissionIdList = permissionList.stream().map(PermissionDTO::getId).collect(Collectors.toList());
         Map<Long, List<OperationDTO>> permissionOperationMap = operationService.mappingPermissionOperationByPermissionId(permissionIdList);

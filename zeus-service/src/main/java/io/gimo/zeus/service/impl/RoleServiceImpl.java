@@ -34,10 +34,7 @@ public class RoleServiceImpl implements RoleService {
         // 根据id列表查询所有角色信息
         SysRoleExample roleExample = new SysRoleExample();
         roleExample.createCriteria().andIdIn(roleIdList).andIsActiveEqualTo(true);
-        List<SysRoleDO> sysRoleDOList = sysRoleDAO.selectByExample(roleExample);
-        List<RoleDTO> roleDTOList = Lists.newArrayList();
-        sysRoleDOList.forEach(roleDO -> roleDTOList.add(roleMapper.reconvert.apply(roleDO)));
-        return roleDTOList;
+        return sysRoleDAO.selectByExample(roleExample).stream().map(roleMapper.reconvert).collect(Collectors.toList());
     }
 
     @Override

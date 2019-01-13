@@ -1,11 +1,13 @@
 var roleManage = {
     tableData: {},
+    permissionId: [],
     init: function () {
         this.initTable();
-        this.bindEvents();
+        //this.bindEvents();
     },
     initTable: function () {
-        $("#roleTable").bootstrapTable({
+        const $table = $("#roleTable");
+        $table.bootstrapTable({
             url: '/system/roles',
             method: 'post',
             mobileResponsive: true,
@@ -69,6 +71,25 @@ var roleManage = {
             }],
             onLoadSuccess: function (result) {
                 $.loadData(result, roleManage, "roleTable");
+            },
+            onCheck: function (row) {
+                let $permissionTable = $("#permissionTable");
+                $.ajax({
+                    url: '/system/rolePermissions/' + row.id,
+                    type: 'GET',
+                    async: false,
+                    success: function (result) {
+                        for (let i = 0 ; i < result.data.length; i++) {
+                            roleManage.permissionId[i] = result.data[i].permissionId;
+                        }
+                    }
+                });
+                $permissionTable.bootstrapTable('refresh');
+            },
+            onUncheck: function () {
+                let $permissionTable = $("#permissionTable");
+                roleManage.permissionId = [];
+                $permissionTable.bootstrapTable('refresh');
             }
         });
     }

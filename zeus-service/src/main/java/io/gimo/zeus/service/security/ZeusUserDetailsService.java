@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ZeusUserDetailsService implements UserDetailsService {
 
@@ -20,9 +21,9 @@ public class ZeusUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserDTO user = userService.getUserByUsername(username);
-        List<RoleDTO> roleList = roleService.listRoleByUserId(user.getId());
-        List<ZeusGrantedAuthority> authorities = Lists.newArrayList();
-        roleList.forEach(role -> authorities.add(new ZeusGrantedAuthority(role.getId(), role.getName(), role.getType())));
+        List<ZeusGrantedAuthority> authorities = roleService.listRoleByUserId(user.getId()).stream()
+                .map(role -> new ZeusGrantedAuthority(role.getId(), role.getName(), role.getType()))
+                .collect(Collectors.toList());
         return new ZeusUser(
                 user.getUsername(),
                 user.getPassword(),

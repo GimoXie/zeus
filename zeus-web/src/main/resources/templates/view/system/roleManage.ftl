@@ -17,8 +17,6 @@
 
     <link href="/assets/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
     <link href="/assets/plugins/jquery-treegrid/css/jquery.treegrid.css" rel="stylesheet">
-    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.css" rel="stylesheet">
     <link href="/assets/plugins/layer/skin/layer.css" rel="stylesheet">
 </head>
 
