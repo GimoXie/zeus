@@ -28,30 +28,6 @@ var userManage = {
             $('#userModel').modal('show');
         });
     },
-    modifyUser: function () {
-        var params = {
-            id: $('#id').val(),
-            username: $('#username').val(),
-            email: $('#email').val(),
-            telephone: $('#telephone').val()
-        };
-        $.ajax({
-            type: "POST",
-            url: "/system/users/modify",
-            data: JSON.stringify(params),
-            contentType: "application/json",
-            dataType: "json",
-            success: function (data) {
-                if (data.code == '1') {
-                    $.alert("更新成功!");
-                    $('#userTable').bootstrapTable('refresh');
-                    $('#userModel').modal('hide');
-                } else {
-                    $.alert(data.message);
-                }
-            }
-        });
-    },
     initTable: function () {
         $("#userTable").bootstrapTable({
             url: '/system/users',
@@ -123,6 +99,30 @@ var userManage = {
             }],
             onLoadSuccess: function (result) {
                 $.loadData(result, userManage, "userTable");
+            }
+        });
+    },
+    modifyUser: function () {
+        var params = {
+            id: $('#id').val(),
+            username: $('#username').val(),
+            email: $('#email').val(),
+            telephone: $('#telephone').val()
+        };
+        $.ajax({
+            type: "POST",
+            url: "/system/users/modify",
+            data: JSON.stringify(params),
+            contentType: "application/json",
+            dataType: "json",
+            success: function (data) {
+                if (data.code === '1') {
+                    $.alert("更新成功!");
+                    $('#userTable').bootstrapTable('refresh');
+                    $('#userModel').modal('hide');
+                } else {
+                    $.alert(data.message);
+                }
             }
         });
     }

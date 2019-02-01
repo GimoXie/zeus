@@ -46,6 +46,7 @@
                     </a>
                 </div>-->
             </div>
+            <!-- bootstrap-table -->
             <div class="ibox-content">
                 <table id="userTable" width="100%">
                     <thead>
@@ -63,8 +64,7 @@
                 </table>
             </div>
         </div>
-
-        <!-- table自定义工具条 -->
+        <!-- 表格自定义工具条 -->
         <div id="userToolbar" class="btn-group" style="width: 180px;">
             <button type="button" class="btn btn-default user-add" data-toggle="tooltip" data-placement="bottom" title="新增用户">
                 <i class="fa fa-user-plus"></i>
@@ -80,8 +80,7 @@
             </button>
         </div>
     </div>
-
-    <!-- dialogs -->
+    <!-- 用户管理弹层 -->
     <div class="modal fade" id="userModel" tabindex="-1" role="dialog" aria-labelledby="userModel" aria-hidden="true"
          data-backdrop="static">
         <div class="modal-dialog">

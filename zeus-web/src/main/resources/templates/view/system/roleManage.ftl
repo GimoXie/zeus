@@ -25,6 +25,7 @@
 
     </div>
     <div class="wrapper wrapper-content animated fadeInRight">
+        <!-- 角色管理 -->
         <div class="col-xs-12 col-sm-7">
             <div class="ibox float-e-margin">
                 <div class="ibox-title">
@@ -46,27 +47,23 @@
                     </table>
                 </div>
             </div>
-            <!-- table自定义工具条 -->
+            <!-- 角色表格自定义工具条 -->
             <div id="roleToolbar" class="btn-group" style="width: 180px;">
-                <button type="button" class="btn btn-default role-add" data-toggle="tooltip" data-placement="bottom"
-                        title="新增角色">
+                <button type="button" class="btn btn-default role-add" data-toggle="tooltip" data-placement="bottom" title="新增角色">
                     <i class="fa fa-plus"></i>
                 </button>
-                <button type="button" class="btn btn-default role-edit" data-toggle="tooltip" data-placement="bottom"
-                        title="编辑角色">
+                <button type="button" class="btn btn-default role-edit" data-toggle="tooltip" data-placement="bottom" title="编辑角色">
                     <i class="fa fa-edit"></i>
                 </button>
-                <button type="button" class="btn btn-default role-permission-assign" data-toggle="tooltip" data-placement="bottom"
-                        title="删除权限">
+                <button type="button" class="btn btn-default role-permission-assign" data-toggle="tooltip" data-placement="bottom" title="删除角色">
                     <i class="fa fa-trash"></i>
                 </button>
-                <button type="button" class="btn btn-default role-refresh" data-toggle="tooltip" data-placement="bottom"
-                        title="刷新">
+                <button type="button" class="btn btn-default role-refresh" data-toggle="tooltip" data-placement="bottom" title="刷新">
                     <i class="fa fa-refresh"></i>
                 </button>
             </div>
         </div>
-
+        <!-- 权限管理 -->
         <div class="col-xs-12 col-sm-5" style="overflow-y:scroll">
             <div class="ibox float-e-margin ">
                 <div class="ibox-title">
@@ -83,6 +80,40 @@
                         <tbody>
                         </tbody>
                     </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 角色管理弹层 -->
+    <div class="modal fade" id="roleModel" tabindex="-1" role="dialog" aria-labelledby="roleModel" aria-hidden="true"
+         data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                    <h4 class="modal-title role-title"></h4>
+                </div>
+                <div class="modal-body">
+                    <form id="roleForm" class="m-t" role="form">
+                        <input type="hidden" id="id" value="">
+                        <div class="form-group">
+                            <label for="name">角色名称</label>
+                            <input type="text" class="form-control" id="name" placeholder="请输入角色名称">
+                        </div>
+                        <div class="form-group">
+                            <label for="type">角色类型</label>
+                            <input type="text" class="form-control" id="type" placeholder="请输入角色类型">
+                        </div>
+                        <div class="form-group">
+                            <label for="description">角色描述</label>
+                            <input type="text" class="form-control" id="description" placeholder="请输入角色描述">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn btn-cancel">取消</button>
+                    <button type="button" <#--data-dismiss="modal"--> class="btn btn-primary" onclick="roleManage.modifyRole()">确定</button>
                 </div>
             </div>
         </div>

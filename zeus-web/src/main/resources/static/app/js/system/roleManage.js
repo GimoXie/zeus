@@ -3,7 +3,31 @@ var roleManage = {
     permissionId: [],
     init: function () {
         this.initTable();
-        //this.bindEvents();
+        this.bindEvents();
+    },
+    bindEvents: function() {
+        // 新增角色信息
+        $('.role-add').on('click', function () {
+            $('#roleForm').clearForm();
+            $('.role-title').text('新增角色');
+            $('#roleModel').modal('show');
+        });
+        // 修改角色信息
+        $('.role-edit').on('click', function () {
+            $('#roleForm').clearForm();
+            var rows = $('#roleTable').bootstrapTable('getSelections');
+            if (rows.length === 0) {
+                $.alert('你必须选择一条数据');
+                return;
+            }
+            var role = rows[0];
+            $('#id').val(role.id);
+            $('#name').val(role.name);
+            $('#type').val(role.type);
+            $('#description').val(role.description);
+            $('.role-title').text('修改角色');
+            $('#roleModel').modal('show');
+        });
     },
     initTable: function () {
         const $table = $("#roleTable");
@@ -90,6 +114,30 @@ var roleManage = {
                 let $permissionTable = $("#permissionTable");
                 roleManage.permissionId = [];
                 $permissionTable.bootstrapTable('refresh');
+            }
+        });
+    },
+    modifyRole: function () {
+        var params = {
+            id: $('#id').val(),
+            name: $('#name').val(),
+            type: $('#type').val(),
+            description: $('#description').val()
+        };
+        $.ajax({
+            type: "POST",
+            url: "#",
+            data: JSON.stringify(params),
+            contentType: "application/json",
+            dataType: "json",
+            success: function (data) {
+                if (data.code === '1') {
+                    $.alert("更新成功!");
+                    $('#roleTable').bootstrapTable('refresh');
+                    $('#roleModel').modal('hide');
+                } else {
+                    $.alert(data.message);
+                }
             }
         });
     }

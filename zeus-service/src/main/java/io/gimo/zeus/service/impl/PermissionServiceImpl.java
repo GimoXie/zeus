@@ -1,6 +1,5 @@
 package io.gimo.zeus.service.impl;
 
-import com.google.common.collect.Lists;
 import io.gimo.zeus.db.dao.zeusdb.SysPermissionDAO;
 import io.gimo.zeus.db.dao.zeusdb.SysRolePermissionDAO;
 import io.gimo.zeus.entity._do.zeusdb.SysPermissionDO;

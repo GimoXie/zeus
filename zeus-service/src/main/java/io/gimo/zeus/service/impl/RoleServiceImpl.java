@@ -1,6 +1,5 @@
 package io.gimo.zeus.service.impl;
 
-import com.google.common.collect.Lists;
 import io.gimo.zeus.db.dao.zeusdb.SysRoleDAO;
 import io.gimo.zeus.db.dao.zeusdb.SysUserRoleDAO;
 import io.gimo.zeus.db.plugin.interceptor.Page;
