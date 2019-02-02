@@ -70,7 +70,7 @@
                     <h5>权限列表</h5>
                 </div>
                 <div class="ibox-content">
-                    <table id="permissionTable" width="100%">
+                    <table id="rolePermissionTable" width="100%">
                         <thead>
                         <tr>
                             <th>权限名称</th>
@@ -82,6 +82,12 @@
                     </table>
                 </div>
             </div>
+        </div>
+        <!-- 权限表格自定义工具条 -->
+        <div id="rolePermissionToolbar" class="btn-group">
+            <button type="button" class="btn btn-default permission-save" data-toggle="tooltip" data-placement="bottom" title="保存权限">
+                <i class="fa fa-save"></i>
+            </button>
         </div>
     </div>
 

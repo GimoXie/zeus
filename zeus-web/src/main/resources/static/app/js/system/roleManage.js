@@ -6,6 +6,7 @@ var roleManage = {
         this.bindEvents();
     },
     bindEvents: function() {
+        var self = this;
         // 新增角色信息
         $('.role-add').on('click', function () {
             $('#roleForm').clearForm();
@@ -28,6 +29,31 @@ var roleManage = {
             $('.role-title').text('修改角色');
             $('#roleModel').modal('show');
         });
+
+        // 新增角色信息
+        $('.permission-save').on('click', function () {
+            $.alertCallback("确定保存？", self.savePermission);
+        });
+    },
+    savePermission: function() {
+        var param = {};
+        $.alert("save permission has been clicked");
+        /*$.ajax({
+            type: "POST",
+            url: "/system/roles/savePermission",
+            data: JSON.stringify(params),
+            contentType: "application/json",
+            dataType: "json",
+            success: function (data) {
+                if (data.code == '1') {
+                    $.alert("保存成功!");
+                    $('#roleTable').bootstrapTable('refresh');
+                    $('#roleModel').modal('hide');
+                } else {
+                    $.alert(data.message);
+                }
+            }
+        });*/
     },
     initTable: function () {
         const $table = $("#roleTable");
@@ -97,7 +123,7 @@ var roleManage = {
                 $.loadData(result, roleManage, "roleTable");
             },
             onCheck: function (row) {
-                let $permissionTable = $("#permissionTable");
+                let $permissionTable = $("#rolePermissionTable");
                 $.ajax({
                     url: '/system/rolePermissions/' + row.id,
                     type: 'GET',
@@ -111,7 +137,7 @@ var roleManage = {
                 $permissionTable.bootstrapTable('refresh');
             },
             onUncheck: function () {
-                let $permissionTable = $("#permissionTable");
+                let $permissionTable = $("#rolePermissionTable");
                 roleManage.permissionId = [];
                 $permissionTable.bootstrapTable('refresh');
             }

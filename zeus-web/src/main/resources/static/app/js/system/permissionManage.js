@@ -2,15 +2,17 @@ var permissionManage = {
     tableData: {},
     init: function () {
         this.initTable();
-        //this.bindEvents();
+        // this.bindEvents();
     },
     initTable: function () {
-        let $table = $("#permissionTable");
+        let $table = $("#rolePermissionTable");
         $table.bootstrapTable({
             url: '/system/permissions',
             method: 'post',
             search: true,
             searchAlign: 'left',
+            toolbar: '#rolePermissionToolbar',
+            toolbarAlign: 'right',
             idField: 'id',
             treeShowField: 'name',
             parentIdField: 'parentId',
@@ -57,7 +59,7 @@ var permissionManage = {
                 }
             },
             onLoadSuccess: function (result) {
-                $.loadData(result, permissionManage, "permissionTable");
+                $.loadData(result, permissionManage, "rolePermissionTable");
                 // 加载完毕后清空从roleManage.js带过来的permissionId,否认则父子节点的checkbox会失效。
                 roleManage.permissionId = [];
             },
