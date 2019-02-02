@@ -116,7 +116,7 @@ var userManage = {
             contentType: "application/json",
             dataType: "json",
             success: function (data) {
-                if (data.code === '1') {
+                if (data.code == '1') {
                     $.alert("更新成功!");
                     $('#userTable').bootstrapTable('refresh');
                     $('#userModel').modal('hide');

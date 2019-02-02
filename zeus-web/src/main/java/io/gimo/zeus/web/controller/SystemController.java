@@ -54,10 +54,10 @@ public class SystemController extends BaseController {
     public Map<String, Object> modifyUser(@RequestBody UserDTO request) {
         try {
             userService.modifyUser(request);
-            return success(null);
+            return success();
         } catch (Exception e) {
             String msg = "变更用户数据时发生异常!";
-            logger.error(msg, e.getMessage());
+            logger.error(msg, e);
             return failure(msg);
         }
     }
@@ -78,6 +78,19 @@ public class SystemController extends BaseController {
     @ResponseBody
     public Map<String, Object> listRolePermission(@PathVariable("roleId") Long roleId) {
         return success(rolePermissionService.listRolePermission(roleId).stream().map(rolePermissionViewMapper.convert).collect(Collectors.toList()));
+    }
+
+    @RequestMapping("/roles/modify")
+    @ResponseBody
+    public Map<String, Object> modifyRole(@RequestBody RoleDTO request) {
+        try {
+            roleService.modifyRole(request);
+            return success();
+        } catch (Exception e) {
+            String msg = "变更角色数据时发生异常!";
+            logger.error(msg, e);
+            return failure(msg);
+        }
     }
 
     @Autowired

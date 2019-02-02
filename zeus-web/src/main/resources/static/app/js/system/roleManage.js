@@ -126,12 +126,12 @@ var roleManage = {
         };
         $.ajax({
             type: "POST",
-            url: "#",
+            url: "/system/roles/modify",
             data: JSON.stringify(params),
             contentType: "application/json",
             dataType: "json",
             success: function (data) {
-                if (data.code === '1') {
+                if (data.code == '1') {
                     $.alert("更新成功!");
                     $('#roleTable').bootstrapTable('refresh');
                     $('#roleModel').modal('hide');

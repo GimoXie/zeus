@@ -108,7 +108,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" data-dismiss="modal" class="btn btn-cancel">取消</button>
-                    <button type="button" <#--data-dismiss="modal"--> class="btn btn-primary" onclick="userManage.modifyUser()">确定</button>
+                    <button type="button" class="btn btn-primary" onclick="userManage.modifyUser()">确定</button>
                 </div>
             </div>
         </div>
