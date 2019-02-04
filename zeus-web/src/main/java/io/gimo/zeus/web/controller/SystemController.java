@@ -2,6 +2,7 @@ package io.gimo.zeus.web.controller;
 
 import io.gimo.zeus.entity.dto.PermissionDTO;
 import io.gimo.zeus.entity.dto.RoleDTO;
+import io.gimo.zeus.entity.dto.RolePermissionDTO;
 import io.gimo.zeus.entity.dto.UserDTO;
 import io.gimo.zeus.service.PermissionService;
 import io.gimo.zeus.service.RolePermissionService;
@@ -87,7 +88,20 @@ public class SystemController extends BaseController {
             roleService.modifyRole(request);
             return success();
         } catch (Exception e) {
-            String msg = "变更角色数据时发生异常!";
+            String msg = "变更角色数据时发生异常！";
+            logger.error(msg, e);
+            return failure(msg);
+        }
+    }
+
+    @RequestMapping("/rolePermissions/modify")
+    @ResponseBody
+    public Map<String, Object> modifyRolePermission(@RequestBody RolePermissionDTO request) {
+        try {
+            rolePermissionService.modify(request);
+            return success();
+        } catch (Exception e) {
+            String msg = "更新角色-权限数据时发生异常！";
             logger.error(msg, e);
             return failure(msg);
         }

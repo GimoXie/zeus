@@ -1,6 +1,5 @@
 var roleManage = {
     tableData: {},
-    permissionId: [],
     init: function () {
         this.initTable();
         this.bindEvents();
@@ -29,18 +28,32 @@ var roleManage = {
             $('.role-title').text('修改角色');
             $('#roleModel').modal('show');
         });
-
         // 新增角色信息
         $('.permission-save').on('click', function () {
             $.alertCallback("确定保存？", self.savePermission);
         });
     },
     savePermission: function() {
-        var param = {};
-        $.alert("save permission has been clicked");
-        /*$.ajax({
+        var that = this;
+        var $roleTable = $('#roleTable').bootstrapTable();
+        var roles = $roleTable.bootstrapTable('getSelections');
+        if (roles.length === 0) {
+            $.alert('你必须选择一个角色。');
+            return;
+        }
+        var role = roles[0];
+        var $rolePermissionTable = $('#rolePermissionTable').bootstrapTable();
+        var permissions = $rolePermissionTable.bootstrapTable('getSelections');
+        var permissionIdList = [];
+        $.each(permissions, function (index, row) {
+            permissionIdList.push(row.id);
+        });
+        var params = {};
+        params.roleId = role.id;
+        params.permissionIdList = permissionIdList;
+        $.ajax({
             type: "POST",
-            url: "/system/roles/savePermission",
+            url: "/system/rolePermissions/modify",
             data: JSON.stringify(params),
             contentType: "application/json",
             dataType: "json",
@@ -48,12 +61,13 @@ var roleManage = {
                 if (data.code == '1') {
                     $.alert("保存成功!");
                     $('#roleTable').bootstrapTable('refresh');
+                    $('#rolePermissionTable').bootstrapTable('refresh');
                     $('#roleModel').modal('hide');
                 } else {
                     $.alert(data.message);
                 }
             }
-        });*/
+        });
     },
     initTable: function () {
         const $table = $("#roleTable");
@@ -123,23 +137,23 @@ var roleManage = {
                 $.loadData(result, roleManage, "roleTable");
             },
             onCheck: function (row) {
-                let $permissionTable = $("#rolePermissionTable");
+                let $rolePermissionTable = $("#rolePermissionTable");
                 $.ajax({
                     url: '/system/rolePermissions/' + row.id,
                     type: 'GET',
                     async: false,
                     success: function (result) {
                         for (let i = 0 ; i < result.data.length; i++) {
-                            roleManage.permissionId[i] = result.data[i].permissionId;
+                            permissionManage.permissionId[i] = result.data[i].permissionId;
                         }
                     }
                 });
-                $permissionTable.bootstrapTable('refresh');
+                $rolePermissionTable.bootstrapTable('refresh');
             },
             onUncheck: function () {
-                let $permissionTable = $("#rolePermissionTable");
-                roleManage.permissionId = [];
-                $permissionTable.bootstrapTable('refresh');
+                let $rolePermissionTable = $("#rolePermissionTable");
+                permissionManage.permissionId = [];
+                $rolePermissionTable.bootstrapTable('refresh');
             }
         });
     },

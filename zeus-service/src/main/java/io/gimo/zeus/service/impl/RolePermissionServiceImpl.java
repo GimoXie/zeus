@@ -1,12 +1,15 @@
 package io.gimo.zeus.service.impl;
 
+import com.google.common.collect.Lists;
 import io.gimo.zeus.db.dao.zeusdb.SysRolePermissionDAO;
+import io.gimo.zeus.entity._do.zeusdb.SysRolePermissionDO;
 import io.gimo.zeus.entity._do.zeusdb.SysRolePermissionExample;
 import io.gimo.zeus.entity.dto.RolePermissionDTO;
 import io.gimo.zeus.service.RolePermissionService;
 import io.gimo.zeus.service.mapper.RolePermissionConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,6 +26,29 @@ public class RolePermissionServiceImpl implements RolePermissionService {
         example.createCriteria().andIsActiveEqualTo(true).andRoleIdEqualTo(roleId);
         return sysRolePermissionDAO.selectByExample(example).stream().map(rolePermissionMapper.reconvert).collect(Collectors.toList());
     }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void modify(RolePermissionDTO request) {
+        List<Long> preservedIdList = request.getPermissionIdList();
+        // step1:根据roleId查询数据库中的permission信息
+        SysRolePermissionExample example = new SysRolePermissionExample();
+        example.createCriteria().andRoleIdEqualTo(request.getRoleId());
+        List<SysRolePermissionDO> sysRolePermissionList = sysRolePermissionDAO.selectByExample(example);
+        List<SysRolePermissionDO> updateData = sysRolePermissionList.stream()
+                .filter(rolePermission -> !rolePermission.getIsActive())
+                .filter(rolePermission -> preservedIdList.contains(rolePermission.getPermissionId()))
+                .collect(Collectors.toList());
+        List<SysRolePermissionDO> deleteData =  sysRolePermissionList.stream()
+                .filter(SysRolePermissionDO::getIsActive)
+                .filter(rolePermission -> !preservedIdList.contains(rolePermission.getPermissionId()))
+                .collect(Collectors.toList());
+        List<Long> insertData = preservedIdList.stream()
+                .filter(preservedId -> sysRolePermissionList.stream().noneMatch(rolePermission -> rolePermission.getPermissionId().equals(preservedId)))
+                .collect(Collectors.toList());
+        // TODO: 保存三类数据。
+    }
+
 
     @Autowired
     public void setSysRolePermissionDAO(SysRolePermissionDAO sysRolePermissionDAO) {

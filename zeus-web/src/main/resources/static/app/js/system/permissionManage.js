@@ -1,5 +1,6 @@
 var permissionManage = {
     tableData: {},
+    permissionId: [],
     init: function () {
         this.initTable();
         // this.bindEvents();
@@ -16,11 +17,12 @@ var permissionManage = {
             idField: 'id',
             treeShowField: 'name',
             parentIdField: 'parentId',
+            clickToSelect: true,
             columns: [{
                 field: 'check',
                 checkbox: true,
                 formatter: function (value, row) {
-                    let permissionId = roleManage.permissionId;
+                    let permissionId = permissionManage.permissionId;
                     if (permissionId === null || permissionId.length === 0) {
                         if (row.check === true) {
                             return {
@@ -61,7 +63,7 @@ var permissionManage = {
             onLoadSuccess: function (result) {
                 $.loadData(result, permissionManage, "rolePermissionTable");
                 // 加载完毕后清空从roleManage.js带过来的permissionId,否认则父子节点的checkbox会失效。
-                roleManage.permissionId = [];
+                permissionManage.permissionId = [];
             },
             onResetView: function () {
                 $table.treegrid({
@@ -78,22 +80,20 @@ var permissionManage = {
                 //$table.treegrid('getRootNodes').treegrid('expand');
             },
             onCheck: function (row) {
-                let permissionId = roleManage.permissionId;
+                let permissionId = permissionManage.permissionId;
                 if (permissionId != null && permissionId.length !== 0) {
                     return;
                 }
                 // 勾选子类
                 permissionManage.selectChild(permissionManage.tableData, row, "id", "parentId", true);
-
                 // 勾选父类
                 permissionManage.selectParentChecked(permissionManage.tableData, row, "id", "parentId")
-
                 // 刷新数据
                 $table.bootstrapTable('load', permissionManage.tableData);
             },
 
             onUncheck: function (row) {
-                let permissionId = roleManage.permissionId;
+                let permissionId = permissionManage.permissionId;
                 if (permissionId != null && permissionId.length !== 0) {
                     return;
                 }
