@@ -1,4 +1,4 @@
-var userManage = {
+const userManage = {
     tableData: {},
     init: function () {
         this.initTable();
@@ -14,12 +14,12 @@ var userManage = {
         // 修改用户信息
         $('.user-edit').on('click', function () {
             $('#userForm').clearForm();
-            var rows = $('#userTable').bootstrapTable('getSelections');
+            let rows = $('#userTable').bootstrapTable('getSelections');
             if (rows.length === 0) {
                 $.alert('你必须选择一条数据');
                 return;
             }
-            var user = rows[0];
+            let user = rows[0];
             $('#id').val(user.id);
             $('#username').val(user.username);
             $('#email').val(user.email);
@@ -29,7 +29,7 @@ var userManage = {
         });
     },
     modifyUser: function () {
-        var params = {
+        let params = {
             id: $('#id').val(),
             username: $('#username').val(),
             email: $('#email').val(),
@@ -42,7 +42,7 @@ var userManage = {
             contentType: "application/json",
             dataType: "json",
             success: function (data) {
-                if (data.code == '1') {
+                if (data.code === '1') {
                     $.alert("更新成功!");
                     $('#userTable').bootstrapTable('refresh');
                     $('#userModel').modal('hide');

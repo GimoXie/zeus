@@ -1,4 +1,4 @@
-var permissionManage = {
+const permissionManage = {
     tableData: {},
     init: function () {
         this.initTable();
@@ -9,9 +9,12 @@ var permissionManage = {
         $table.bootstrapTable({
             url: '/system/permissions',
             method: 'post',
+            toolbar: '#permissionToolbar',
+            toolbarAlign: 'right',
             search: true,
             searchAlign: 'left',
             idField: 'id',
+            //clickToSelect: true,
             treeShowField: 'name',
             parentIdField: 'parentId',
             columns: [{
@@ -80,14 +83,15 @@ var permissionManage = {
                 if (permissionId != null && permissionId.length !== 0) {
                     return;
                 }
+                let data = permissionManage.tableData;
                 // 勾选子类
-                permissionManage.selectChild(permissionManage.tableData, row, "id", "parentId", true);
+                permissionManage.selectChild(data, row, "id", "parentId", true);
 
                 // 勾选父类
-                permissionManage.selectParentChecked(permissionManage.tableData, row, "id", "parentId")
+                permissionManage.selectParentChecked(data, row, "id", "parentId")
 
                 // 刷新数据
-                $table.bootstrapTable('load', permissionManage.tableData);
+                $table.bootstrapTable('load', data);
             },
 
             onUncheck: function (row) {
@@ -95,26 +99,27 @@ var permissionManage = {
                 if (permissionId != null && permissionId.length !== 0) {
                     return;
                 }
-                permissionManage.selectChild(permissionManage.tableData, row, "id", "parentId", false);
-                $table.bootstrapTable('load', permissionManage.tableData);
-            },
+                let data = permissionManage.tableData;
+                permissionManage.selectChild(data, row, "id", "parentId", false);
+                $table.bootstrapTable('load', data);
+            }
         });
     },
-    selectChild: function (tableData, row, id, pid, checked) {
-        for (let i in tableData) {
-            if (tableData[i][pid] === row[id]) {
-                tableData[i].check = checked;
-                permissionManage.selectChild(tableData, tableData[i], id, pid, checked);
+    selectChild: function (data, row, id, pid, checked) {
+        data.forEach(item => {
+            if (item[pid] === row[id]) {
+                item.check = checked;
+                permissionManage.selectChild(data, item, id, pid, checked);
             }
-        }
+        });
     },
-    selectParentChecked: function (tableData, row, id, pid) {
-        for (let i in tableData) {
-            if (tableData[i][id] === row[pid]) {
-                tableData[i].check = true;
-                permissionManage.selectParentChecked(tableData, tableData[i], id, pid);
+    selectParentChecked: function (data, row, id, pid) {
+        data.forEach(item => {
+            if (item[id] === row[pid]) {
+                item.check = true;
+                permissionManage.selectParentChecked(data, item, id, pid);
             }
-        }
+        });
     }
 };
 $(function () {

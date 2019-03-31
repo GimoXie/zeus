@@ -84,6 +84,17 @@
                         </tbody>
                     </table>
                 </div>
+                <!-- table自定义工具条 -->
+                <div id="permissionToolbar" class="btn-group">
+                    <button type="button" class="btn btn-default permission-save" data-toggle="tooltip" data-placement="bottom"
+                            title="保存">
+                        <i class="fa fa-save"></i>
+                    </button>
+                    <button type="button" class="btn btn-default permission-refresh" data-toggle="tooltip" data-placement="bottom"
+                            title="刷新">
+                        <i class="fa fa-refresh"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </div>

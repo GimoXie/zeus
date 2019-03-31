@@ -35,4 +35,9 @@ public class PageController {
     public String toRoleManage() {
         return "/view/system/roleManage";
     }
+
+    @GetMapping("/menuManage")
+    public String toMenuManage() {
+        return "/view/system/menuManage";
+    }
 }
