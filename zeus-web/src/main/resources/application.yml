@@ -28,7 +28,7 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     zeusdb:
       driver-class-name: com.mysql.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/db_zeus
+      url: jdbc:mysql://localhost:3306/db_zeus?useUnicode=true&characterEncoding=UTF-8
       username: root
       password: root
       config-location: classpath:mybatis/zeusdb/config.xml

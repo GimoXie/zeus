@@ -13,4 +13,10 @@ public interface RolePermissionService {
      * @return
      */
     List<RolePermissionDTO> listRolePermission(Long roleId);
+
+    /**
+     * 变更角色权限信息
+     * @param request
+     */
+    void modify(RolePermissionDTO request);
 }

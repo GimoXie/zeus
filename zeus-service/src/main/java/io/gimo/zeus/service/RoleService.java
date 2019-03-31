@@ -21,4 +21,10 @@ public interface RoleService {
      * @return
      */
     Page<RoleDTO> listRoleByPage(RoleDTO request);
+
+    /**
+     * 修改角色信息
+     * @param request 变更参数
+     */
+    void modifyRole(RoleDTO request);
 }

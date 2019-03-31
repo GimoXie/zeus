@@ -12,6 +12,10 @@ abstract class BaseController {
     private static final int CODE_SUCCESS = 1;
     private static final int CODE_FAILURE = 0;
 
+    Map<String, Object> success() {
+        return result(CODE_SUCCESS, "success", null);
+    }
+
     Map<String, Object> success(Object object) {
         return result(CODE_SUCCESS, "success", object);
     }
