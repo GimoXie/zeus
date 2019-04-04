@@ -14,7 +14,7 @@ public abstract class BaseDO {
     /**
      * 是否有效
      **/
-    private Boolean isActive;
+    private Boolean active;
     /**
      * 数据创建时间
      **/
@@ -26,9 +26,9 @@ public abstract class BaseDO {
     /**
      * 数据最后修改时间
      **/
-    private LocalDateTime lastChangeTime;
+    private LocalDateTime changeTime;
     /**
      * 数据最后修改用户id
      **/
-    private Long lastChangeUserId;
+    private Long changeUserId;
 }

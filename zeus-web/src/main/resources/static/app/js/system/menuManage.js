@@ -35,7 +35,7 @@ const menuManage = {
                 }
             }, {
                 title: '路径',
-                field: 'url',
+                field: 'uri',
                 sortable: false,
                 align: 'center',
                 valign: 'middle'

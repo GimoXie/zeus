@@ -5,6 +5,7 @@
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="telephone" jdbcType="VARCHAR" property="telephone" />
     <result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime" />
@@ -14,10 +15,12 @@
     <result column="change_time" jdbcType="TIMESTAMP" property="changeTime" />
     <result column="change_user_id" jdbcType="BIGINT" property="changeUserId" />
   </resultMap>
+
   <sql id="Base_Column_List">
-    id, username, `password`, email, telephone, last_login_time, active, create_time, 
+    id, username, `password`, nick_name, email, telephone, last_login_time, active, create_time,
     create_user_id, change_time, change_user_id
   </sql>
+
   <select id="listUser" parameterType="io.gimo.zeus.entity._do.zeusdb.SysUserDO"  resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />

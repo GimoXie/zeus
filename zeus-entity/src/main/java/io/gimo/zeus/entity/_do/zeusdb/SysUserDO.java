@@ -24,6 +24,11 @@ public class SysUserDO implements Serializable {
     private String password;
 
     /**
+     * 昵称
+     */
+    private String nickName;
+
+    /**
      * 邮箱
      */
     private String email;
@@ -87,6 +92,14 @@ public class SysUserDO implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
     }
 
     public String getEmail() {
@@ -168,6 +181,7 @@ public class SysUserDO implements Serializable {
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
             && (this.getUsername() == null ? other.getUsername() == null : this.getUsername().equals(other.getUsername()))
             && (this.getPassword() == null ? other.getPassword() == null : this.getPassword().equals(other.getPassword()))
+            && (this.getNickName() == null ? other.getNickName() == null : this.getNickName().equals(other.getNickName()))
             && (this.getEmail() == null ? other.getEmail() == null : this.getEmail().equals(other.getEmail()))
             && (this.getTelephone() == null ? other.getTelephone() == null : this.getTelephone().equals(other.getTelephone()))
             && (this.getLastLoginTime() == null ? other.getLastLoginTime() == null : this.getLastLoginTime().equals(other.getLastLoginTime()))
@@ -185,6 +199,7 @@ public class SysUserDO implements Serializable {
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
         result = prime * result + ((getUsername() == null) ? 0 : getUsername().hashCode());
         result = prime * result + ((getPassword() == null) ? 0 : getPassword().hashCode());
+        result = prime * result + ((getNickName() == null) ? 0 : getNickName().hashCode());
         result = prime * result + ((getEmail() == null) ? 0 : getEmail().hashCode());
         result = prime * result + ((getTelephone() == null) ? 0 : getTelephone().hashCode());
         result = prime * result + ((getLastLoginTime() == null) ? 0 : getLastLoginTime().hashCode());
@@ -205,6 +220,7 @@ public class SysUserDO implements Serializable {
         sb.append(", id=").append(id);
         sb.append(", username=").append(username);
         sb.append(", password=").append(password);
+        sb.append(", nickName=").append(nickName);
         sb.append(", email=").append(email);
         sb.append(", telephone=").append(telephone);
         sb.append(", lastLoginTime=").append(lastLoginTime);

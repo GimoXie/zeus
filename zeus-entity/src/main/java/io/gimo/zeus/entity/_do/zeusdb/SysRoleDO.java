@@ -29,6 +29,11 @@ public class SysRoleDO implements Serializable {
     private String description;
 
     /**
+     * 角色优先级
+     */
+    private Integer priority;
+
+    /**
      * 是否有效
      */
     private Boolean active;
@@ -87,6 +92,14 @@ public class SysRoleDO implements Serializable {
         this.description = description;
     }
 
+    public Integer getPriority() {
+        return priority;
+    }
+
+    public void setPriority(Integer priority) {
+        this.priority = priority;
+    }
+
     public Boolean getActive() {
         return active;
     }
@@ -143,6 +156,7 @@ public class SysRoleDO implements Serializable {
             && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
             && (this.getCode() == null ? other.getCode() == null : this.getCode().equals(other.getCode()))
             && (this.getDescription() == null ? other.getDescription() == null : this.getDescription().equals(other.getDescription()))
+            && (this.getPriority() == null ? other.getPriority() == null : this.getPriority().equals(other.getPriority()))
             && (this.getActive() == null ? other.getActive() == null : this.getActive().equals(other.getActive()))
             && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
             && (this.getCreateUserId() == null ? other.getCreateUserId() == null : this.getCreateUserId().equals(other.getCreateUserId()))
@@ -158,6 +172,7 @@ public class SysRoleDO implements Serializable {
         result = prime * result + ((getName() == null) ? 0 : getName().hashCode());
         result = prime * result + ((getCode() == null) ? 0 : getCode().hashCode());
         result = prime * result + ((getDescription() == null) ? 0 : getDescription().hashCode());
+        result = prime * result + ((getPriority() == null) ? 0 : getPriority().hashCode());
         result = prime * result + ((getActive() == null) ? 0 : getActive().hashCode());
         result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
         result = prime * result + ((getCreateUserId() == null) ? 0 : getCreateUserId().hashCode());
@@ -176,6 +191,7 @@ public class SysRoleDO implements Serializable {
         sb.append(", name=").append(name);
         sb.append(", code=").append(code);
         sb.append(", description=").append(description);
+        sb.append(", priority=").append(priority);
         sb.append(", active=").append(active);
         sb.append(", createTime=").append(createTime);
         sb.append(", createUserId=").append(createUserId);

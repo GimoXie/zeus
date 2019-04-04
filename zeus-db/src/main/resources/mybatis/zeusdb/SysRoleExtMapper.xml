@@ -6,6 +6,7 @@
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="code" jdbcType="VARCHAR" property="code" />
     <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="priority" jdbcType="INTEGER" property="priority" />
     <result column="active" jdbcType="BIT" property="active" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="create_user_id" jdbcType="BIGINT" property="createUserId" />
@@ -13,7 +14,7 @@
     <result column="change_user_id" jdbcType="BIGINT" property="changeUserId" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, `name`, code, description, active, create_time, create_user_id, change_time, 
+    id, `name`, code, description, priority, active, create_time, create_user_id, change_time,
     change_user_id
   </sql>
 
