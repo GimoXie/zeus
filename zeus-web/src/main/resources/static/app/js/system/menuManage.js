@@ -7,7 +7,7 @@ const menuManage = {
     initTable: function () {
         let $table = $("#menuTable");
         $table.bootstrapTable({
-            url: '/system/permissions',
+            url: '/permissions',
             method: 'post',
             search: true,
             searchAlign: 'left',

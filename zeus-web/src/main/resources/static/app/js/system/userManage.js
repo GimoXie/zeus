@@ -37,7 +37,7 @@ const userManage = {
         };
         $.ajax({
             type: "POST",
-            url: "/system/users/modify",
+            url: "/users/modify",
             data: JSON.stringify(params),
             contentType: "application/json",
             dataType: "json",
@@ -54,7 +54,7 @@ const userManage = {
     },
     initTable: function () {
         $("#userTable").bootstrapTable({
-            url: '/system/users',
+            url: '/users',
             method: 'post',
             mobileResponsive: true,
             toolbar: '#userToolbar',
