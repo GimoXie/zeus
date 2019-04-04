@@ -6,6 +6,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class PermissionDTO extends BaseDTO {
+    private static final long serialVersionUID = -431351213982336175L;
     private Long parentId;
     private String name;
     private String icon;

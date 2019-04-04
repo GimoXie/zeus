@@ -21,7 +21,7 @@ const userManage = {
             }
             let user = rows[0];
             $('#id').val(user.id);
-            $('#username').val(user.username);
+            $('#nickName').val(user.nickName);
             $('#email').val(user.email);
             $('#telephone').val(user.telephone);
             $('.user-title').text('修改用户');
@@ -31,7 +31,7 @@ const userManage = {
     modifyUser: function () {
         let params = {
             id: $('#id').val(),
-            username: $('#username').val(),
+            nickName: $('#nickName').val(),
             email: $('#email').val(),
             telephone: $('#telephone').val()
         };
@@ -93,6 +93,12 @@ const userManage = {
             }, {
                 title: '用户名',
                 field: 'username',
+                sortable: false,
+                align: 'center',
+                valign: 'middle'
+            }, {
+                title: '昵称',
+                field: 'nickName',
                 sortable: false,
                 align: 'center',
                 valign: 'middle'

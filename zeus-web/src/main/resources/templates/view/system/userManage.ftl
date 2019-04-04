@@ -94,8 +94,8 @@
                     <form id="userForm" class="m-t" role="form">
                         <input type="hidden" id="id" value="">
                         <div class="form-group">
-                            <label for="username">用户名称</label>
-                            <input type="text" class="form-control" id="username" placeholder="请输入用户名称">
+                            <label for="nickName">昵称</label>
+                            <input type="text" class="form-control" id="nickName" placeholder="请输入昵称">
                         </div>
                         <div class="form-group">
                             <label for="email">电子邮箱</label>
