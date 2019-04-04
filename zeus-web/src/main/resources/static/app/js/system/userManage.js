@@ -55,7 +55,7 @@ const userManage = {
     initTable: function () {
         $("#userTable").bootstrapTable({
             url: '/users',
-            method: 'post',
+            method: 'GET',
             mobileResponsive: true,
             toolbar: '#userToolbar',
             toolbarAlign: 'right',

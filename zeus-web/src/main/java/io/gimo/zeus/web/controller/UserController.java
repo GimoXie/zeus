@@ -5,9 +5,7 @@ import io.gimo.zeus.service.UserService;
 import io.gimo.zeus.service.mapper.UserConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -18,9 +16,9 @@ public class UserController extends BaseController {
     private UserService userService;
     private UserConverter.UserViewMapper userViewMapper;
 
-    @RequestMapping("")
+    @GetMapping
     @ResponseBody
-    public Map<String, Object> listUser(@RequestBody UserDTO request) {
+    public Map<String, Object> listUser(UserDTO request) {
         try {
             return success(userViewMapper.pageConvert.apply(userService.listUserByPage(request)));
         } catch (Exception e) {
@@ -30,7 +28,7 @@ public class UserController extends BaseController {
         }
     }
 
-    @RequestMapping("/modify")
+    @PostMapping("/modify")
     @ResponseBody
     public Map<String, Object> modifyUser(@RequestBody UserDTO request) {
         try {

@@ -9,7 +9,7 @@ var roleManage = {
         const $table = $("#roleTable");
         $table.bootstrapTable({
             url: '/roles',
-            method: 'post',
+            method: 'GET',
             mobileResponsive: true,
             toolbar: '#roleToolbar',
             toolbarAlign: 'right',
@@ -75,7 +75,7 @@ var roleManage = {
             onCheck: function (row) {
                 let $permissionTable = $("#permissionTable");
                 $.ajax({
-                    url: '/rolePermissions/' + row.id,
+                    url: '/rolePermissions/?roleId=' + row.id,
                     type: 'GET',
                     async: false,
                     success: function (result) {

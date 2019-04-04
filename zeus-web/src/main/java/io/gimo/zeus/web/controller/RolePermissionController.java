@@ -5,10 +5,7 @@ import io.gimo.zeus.service.RolePermissionService;
 import io.gimo.zeus.service.mapper.RolePermissionConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -20,14 +17,14 @@ public class RolePermissionController extends BaseController {
     private RolePermissionService rolePermissionService;
     private RolePermissionConverter.RolePermissionViewMapper rolePermissionViewMapper;
 
-    @RequestMapping("/{roleId}")
+    @GetMapping
     @ResponseBody
-    public Map<String, Object> listRolePermission(@PathVariable("roleId") Long roleId) {
+    public Map<String, Object> listRolePermission(@RequestParam("roleId") Long roleId) {
         return success(rolePermissionService.listRolePermission(roleId).stream().map(rolePermissionViewMapper.convert).collect(Collectors.toList()));
     }
 
 
-    @RequestMapping("/modify")
+    @PostMapping("/modify")
     @ResponseBody
     public Map<String, Object> modifyRolePermission(@RequestBody RolePermissionDTO request) {
         try {

@@ -5,9 +5,7 @@ import io.gimo.zeus.service.RoleService;
 import io.gimo.zeus.service.mapper.RoleConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -18,13 +16,13 @@ public class RoleController extends BaseController {
     private RoleService roleService;
     private RoleConverter.RoleViewMapper roleViewMapper;
 
-    @RequestMapping("")
+    @GetMapping
     @ResponseBody
-    public Map<String, Object> listRole(@RequestBody RoleDTO request) {
+    public Map<String, Object> listRole(RoleDTO request) {
         return success(roleViewMapper.pageConvert.apply(roleService.listRoleByPage(request)));
     }
 
-    @RequestMapping("/modify")
+    @PostMapping("/modify")
     @ResponseBody
     public Map<String, Object> modifyRole(@RequestBody RoleDTO request) {
         try {

@@ -8,7 +8,7 @@ const permissionManage = {
         let $table = $("#permissionTable");
         $table.bootstrapTable({
             url: '/permissions',
-            method: 'post',
+            method: 'GET',
             toolbar: '#permissionToolbar',
             toolbarAlign: 'right',
             search: true,
