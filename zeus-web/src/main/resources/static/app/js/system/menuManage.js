@@ -53,7 +53,7 @@ const menuManage = {
                 valign: 'middle'
             }, {
                 title: '是否有效',
-                field: 'isActive',
+                field: 'active',
                 sortable: false,
                 align: 'center',
                 valign: 'middle'

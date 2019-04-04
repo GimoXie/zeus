@@ -17,5 +17,5 @@ public class UserVO extends BaseVO {
     private String email;
     private String telephone;
     private LocalDateTime lastLoginTime;
-    private Boolean isActive;
+    private Boolean active;
 }

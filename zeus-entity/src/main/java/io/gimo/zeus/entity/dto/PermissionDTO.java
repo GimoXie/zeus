@@ -9,7 +9,9 @@ public class PermissionDTO extends BaseDTO {
     private Long parentId;
     private String name;
     private String icon;
-    private String url;
+    private String uri;
+    private String code;
+    private Integer type;
     private String description;
     private Integer priority;
 }

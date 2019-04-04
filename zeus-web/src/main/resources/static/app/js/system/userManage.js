@@ -42,7 +42,7 @@ const userManage = {
             contentType: "application/json",
             dataType: "json",
             success: function (data) {
-                if (data.code === '1') {
+                if (data.code === 1) {
                     $.alert("更新成功!");
                     $('#userTable').bootstrapTable('refresh');
                     $('#userModel').modal('hide');
@@ -116,7 +116,7 @@ const userManage = {
                 valign: 'middle'
             }, {
                 title: '是否有效',
-                field: 'isActive',
+                field: 'active',
                 sortable: false,
                 align: 'center',
                 valign: 'middle'

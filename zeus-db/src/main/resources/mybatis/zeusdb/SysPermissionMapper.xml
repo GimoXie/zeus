@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="io.gimo.zeus.db.dao.zeusdb.SysOperationDAO">
-  <resultMap id="BaseResultMap" type="io.gimo.zeus.entity._do.zeusdb.SysOperationDO">
+<mapper namespace="io.gimo.zeus.db.dao.zeusdb.SysPermissionDAO">
+  <resultMap id="BaseResultMap" type="io.gimo.zeus.entity._do.zeusdb.SysPermissionDO">
     <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="parent_id" jdbcType="BIGINT" property="parentId" />
     <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="icon" jdbcType="VARCHAR" property="icon" />
+    <result column="uri" jdbcType="VARCHAR" property="uri" />
     <result column="code" jdbcType="VARCHAR" property="code" />
-    <result column="is_active" jdbcType="BIT" property="isActive" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="priority" jdbcType="INTEGER" property="priority" />
+    <result column="active" jdbcType="BIT" property="active" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="create_user_id" jdbcType="BIGINT" property="createUserId" />
-    <result column="last_change_time" jdbcType="TIMESTAMP" property="lastChangeTime" />
-    <result column="last_change_user_id" jdbcType="BIGINT" property="lastChangeUserId" />
+    <result column="change_time" jdbcType="TIMESTAMP" property="changeTime" />
+    <result column="change_user_id" jdbcType="BIGINT" property="changeUserId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -70,15 +76,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, `name`, code, is_active, create_time, create_user_id, last_change_time, last_change_user_id
+    id, parent_id, `name`, icon, uri, code, `type`, description, priority, active, create_time, 
+    create_user_id, change_time, change_user_id
   </sql>
-  <select id="selectByExample" parameterType="io.gimo.zeus.entity._do.zeusdb.SysOperationExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="io.gimo.zeus.entity._do.zeusdb.SysPermissionExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from sys_operation
+    from sys_permission
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -100,38 +107,60 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from sys_operation
+    from sys_permission
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from sys_operation
+    delete from sys_permission
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="io.gimo.zeus.entity._do.zeusdb.SysOperationExample">
-    delete from sys_operation
+  <delete id="deleteByExample" parameterType="io.gimo.zeus.entity._do.zeusdb.SysPermissionExample">
+    delete from sys_permission
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="io.gimo.zeus.entity._do.zeusdb.SysOperationDO" useGeneratedKeys="true">
-    insert into sys_operation (`name`, code, is_active, 
-      create_time, create_user_id, last_change_time, 
-      last_change_user_id)
-    values (#{name,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, #{isActive,jdbcType=BIT}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{createUserId,jdbcType=BIGINT}, #{lastChangeTime,jdbcType=TIMESTAMP}, 
-      #{lastChangeUserId,jdbcType=BIGINT})
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="io.gimo.zeus.entity._do.zeusdb.SysPermissionDO" useGeneratedKeys="true">
+    insert into sys_permission (parent_id, `name`, icon, 
+      uri, code, `type`, description, 
+      priority, active, create_time, 
+      create_user_id, change_time, change_user_id
+      )
+    values (#{parentId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR}, 
+      #{uri,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, 
+      #{priority,jdbcType=INTEGER}, #{active,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{createUserId,jdbcType=BIGINT}, #{changeTime,jdbcType=TIMESTAMP}, #{changeUserId,jdbcType=BIGINT}
+      )
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="io.gimo.zeus.entity._do.zeusdb.SysOperationDO" useGeneratedKeys="true">
-    insert into sys_operation
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="io.gimo.zeus.entity._do.zeusdb.SysPermissionDO" useGeneratedKeys="true">
+    insert into sys_permission
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="parentId != null">
+        parent_id,
+      </if>
       <if test="name != null">
         `name`,
+      </if>
+      <if test="icon != null">
+        icon,
+      </if>
+      <if test="uri != null">
+        uri,
       </if>
       <if test="code != null">
         code,
       </if>
-      <if test="isActive != null">
-        is_active,
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="priority != null">
+        priority,
+      </if>
+      <if test="active != null">
+        active,
       </if>
       <if test="createTime != null">
         create_time,
@@ -139,22 +168,40 @@
       <if test="createUserId != null">
         create_user_id,
       </if>
-      <if test="lastChangeTime != null">
-        last_change_time,
+      <if test="changeTime != null">
+        change_time,
       </if>
-      <if test="lastChangeUserId != null">
-        last_change_user_id,
+      <if test="changeUserId != null">
+        change_user_id,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="parentId != null">
+        #{parentId,jdbcType=BIGINT},
+      </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null">
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="uri != null">
+        #{uri,jdbcType=VARCHAR},
       </if>
       <if test="code != null">
         #{code,jdbcType=VARCHAR},
       </if>
-      <if test="isActive != null">
-        #{isActive,jdbcType=BIT},
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="priority != null">
+        #{priority,jdbcType=INTEGER},
+      </if>
+      <if test="active != null">
+        #{active,jdbcType=BIT},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
@@ -162,34 +209,52 @@
       <if test="createUserId != null">
         #{createUserId,jdbcType=BIGINT},
       </if>
-      <if test="lastChangeTime != null">
-        #{lastChangeTime,jdbcType=TIMESTAMP},
+      <if test="changeTime != null">
+        #{changeTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="lastChangeUserId != null">
-        #{lastChangeUserId,jdbcType=BIGINT},
+      <if test="changeUserId != null">
+        #{changeUserId,jdbcType=BIGINT},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="io.gimo.zeus.entity._do.zeusdb.SysOperationExample" resultType="java.lang.Long">
-    select count(*) from sys_operation
+  <select id="countByExample" parameterType="io.gimo.zeus.entity._do.zeusdb.SysPermissionExample" resultType="java.lang.Long">
+    select count(*) from sys_permission
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update sys_operation
+    update sys_permission
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=BIGINT},
       </if>
+      <if test="record.parentId != null">
+        parent_id = #{record.parentId,jdbcType=BIGINT},
+      </if>
       <if test="record.name != null">
         `name` = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.icon != null">
+        icon = #{record.icon,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uri != null">
+        uri = #{record.uri,jdbcType=VARCHAR},
       </if>
       <if test="record.code != null">
         code = #{record.code,jdbcType=VARCHAR},
       </if>
-      <if test="record.isActive != null">
-        is_active = #{record.isActive,jdbcType=BIT},
+      <if test="record.type != null">
+        `type` = #{record.type,jdbcType=INTEGER},
+      </if>
+      <if test="record.description != null">
+        description = #{record.description,jdbcType=VARCHAR},
+      </if>
+      <if test="record.priority != null">
+        priority = #{record.priority,jdbcType=INTEGER},
+      </if>
+      <if test="record.active != null">
+        active = #{record.active,jdbcType=BIT},
       </if>
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
@@ -197,11 +262,11 @@
       <if test="record.createUserId != null">
         create_user_id = #{record.createUserId,jdbcType=BIGINT},
       </if>
-      <if test="record.lastChangeTime != null">
-        last_change_time = #{record.lastChangeTime,jdbcType=TIMESTAMP},
+      <if test="record.changeTime != null">
+        change_time = #{record.changeTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.lastChangeUserId != null">
-        last_change_user_id = #{record.lastChangeUserId,jdbcType=BIGINT},
+      <if test="record.changeUserId != null">
+        change_user_id = #{record.changeUserId,jdbcType=BIGINT},
       </if>
     </set>
     <if test="_parameter != null">
@@ -209,30 +274,54 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update sys_operation
+    update sys_permission
     set id = #{record.id,jdbcType=BIGINT},
+      parent_id = #{record.parentId,jdbcType=BIGINT},
       `name` = #{record.name,jdbcType=VARCHAR},
+      icon = #{record.icon,jdbcType=VARCHAR},
+      uri = #{record.uri,jdbcType=VARCHAR},
       code = #{record.code,jdbcType=VARCHAR},
-      is_active = #{record.isActive,jdbcType=BIT},
+      `type` = #{record.type,jdbcType=INTEGER},
+      description = #{record.description,jdbcType=VARCHAR},
+      priority = #{record.priority,jdbcType=INTEGER},
+      active = #{record.active,jdbcType=BIT},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       create_user_id = #{record.createUserId,jdbcType=BIGINT},
-      last_change_time = #{record.lastChangeTime,jdbcType=TIMESTAMP},
-      last_change_user_id = #{record.lastChangeUserId,jdbcType=BIGINT}
+      change_time = #{record.changeTime,jdbcType=TIMESTAMP},
+      change_user_id = #{record.changeUserId,jdbcType=BIGINT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="io.gimo.zeus.entity._do.zeusdb.SysOperationDO">
-    update sys_operation
+  <update id="updateByPrimaryKeySelective" parameterType="io.gimo.zeus.entity._do.zeusdb.SysPermissionDO">
+    update sys_permission
     <set>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=BIGINT},
+      </if>
       <if test="name != null">
         `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null">
+        icon = #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="uri != null">
+        uri = #{uri,jdbcType=VARCHAR},
       </if>
       <if test="code != null">
         code = #{code,jdbcType=VARCHAR},
       </if>
-      <if test="isActive != null">
-        is_active = #{isActive,jdbcType=BIT},
+      <if test="type != null">
+        `type` = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="priority != null">
+        priority = #{priority,jdbcType=INTEGER},
+      </if>
+      <if test="active != null">
+        active = #{active,jdbcType=BIT},
       </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -240,24 +329,30 @@
       <if test="createUserId != null">
         create_user_id = #{createUserId,jdbcType=BIGINT},
       </if>
-      <if test="lastChangeTime != null">
-        last_change_time = #{lastChangeTime,jdbcType=TIMESTAMP},
+      <if test="changeTime != null">
+        change_time = #{changeTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="lastChangeUserId != null">
-        last_change_user_id = #{lastChangeUserId,jdbcType=BIGINT},
+      <if test="changeUserId != null">
+        change_user_id = #{changeUserId,jdbcType=BIGINT},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="io.gimo.zeus.entity._do.zeusdb.SysOperationDO">
-    update sys_operation
-    set `name` = #{name,jdbcType=VARCHAR},
+  <update id="updateByPrimaryKey" parameterType="io.gimo.zeus.entity._do.zeusdb.SysPermissionDO">
+    update sys_permission
+    set parent_id = #{parentId,jdbcType=BIGINT},
+      `name` = #{name,jdbcType=VARCHAR},
+      icon = #{icon,jdbcType=VARCHAR},
+      uri = #{uri,jdbcType=VARCHAR},
       code = #{code,jdbcType=VARCHAR},
-      is_active = #{isActive,jdbcType=BIT},
+      `type` = #{type,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      priority = #{priority,jdbcType=INTEGER},
+      active = #{active,jdbcType=BIT},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       create_user_id = #{createUserId,jdbcType=BIGINT},
-      last_change_time = #{lastChangeTime,jdbcType=TIMESTAMP},
-      last_change_user_id = #{lastChangeUserId,jdbcType=BIGINT}
+      change_time = #{changeTime,jdbcType=TIMESTAMP},
+      change_user_id = #{changeUserId,jdbcType=BIGINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

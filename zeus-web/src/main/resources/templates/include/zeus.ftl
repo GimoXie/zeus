@@ -5,7 +5,7 @@
         <#list menuList as menu>
             <#if menu.submenuList?? && menu.submenuList?size gt 0>
             <li>
-                <a href="${menu.url}">
+                <a href="${menu.uri}">
                     <i class="${menu.icon}"></i>
                     <span class="nav-label">${menu.name}</span>
                     <span class="fa arrow"></span>
@@ -16,7 +16,7 @@
             </li>
             <#else>
             <li>
-                <a class="J_menuItem" href="${menu.url}">
+                <a class="J_menuItem" href="${menu.uri}">
                     <i class="${menu.icon}"></i>
                     <span class="nav-label">${menu.name}</span>
                 </a>

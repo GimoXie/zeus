@@ -1,0 +1,36 @@
+/*
+Navicat MySQL Data Transfer
+
+Source Server         : localhost
+Source Server Version : 50719
+Source Host           : localhost:3306
+Source Database       : db_zeus
+
+Target Server Type    : MYSQL
+Target Server Version : 50719
+File Encoding         : 65001
+
+Date: 2019-04-04 18:13:47
+*/
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for sys_user
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_user`;
+CREATE TABLE `sys_user` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增长id',
+  `username` varchar(64) NOT NULL DEFAULT '' COMMENT '用户名',
+  `password` varchar(64) NOT NULL DEFAULT '' COMMENT '密码',
+  `email` varchar(100) NOT NULL DEFAULT '' COMMENT '邮箱',
+  `telephone` varchar(100) NOT NULL DEFAULT '' COMMENT '电话号码',
+  `last_login_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最后登录时间',
+  `active` bit(1) NOT NULL DEFAULT b'0' COMMENT '是否有效',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_user_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '数据创建用户',
+  `change_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
+  `change_user_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '数据最后修改用户',
+  PRIMARY KEY (`id`) USING BTREE,
+  KEY `idx_last_change_time` (`change_time`) USING BTREE COMMENT '最后修改时间索引'
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='zeus-用户表';

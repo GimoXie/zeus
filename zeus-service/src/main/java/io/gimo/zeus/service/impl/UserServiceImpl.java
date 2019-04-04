@@ -1,6 +1,7 @@
 package io.gimo.zeus.service.impl;
 
 import io.gimo.zeus.db.dao.zeusdb.SysUserDAO;
+import io.gimo.zeus.db.dao.zeusdb.SysUserExtDAO;
 import io.gimo.zeus.db.plugin.interceptor.Page;
 import io.gimo.zeus.entity._do.zeusdb.SysUserDO;
 import io.gimo.zeus.entity._do.zeusdb.SysUserExample;
@@ -24,6 +25,7 @@ import java.util.List;
 public class UserServiceImpl extends BaseService implements UserService {
 
     private SysUserDAO sysUserDAO;
+    private SysUserExtDAO sysUserExtDAO;
     private UserConverter.UserMapper userMapper;
 
     @Override
@@ -31,7 +33,7 @@ public class UserServiceImpl extends BaseService implements UserService {
         SysUserExample userExample = new SysUserExample();
         userExample.createCriteria()
                 .andUsernameEqualTo(username)
-                .andIsActiveEqualTo(true);
+                .andActiveEqualTo(true);
         List<SysUserDO> userList = sysUserDAO.selectByExample(userExample);
         if (CollectionUtils.isEmpty(userList)) {
             throw new UsernameNotFoundException(String.format("未查询到用户名为%s的用户！", username));
@@ -46,7 +48,7 @@ public class UserServiceImpl extends BaseService implements UserService {
     public Page<UserDTO> listUserByPage(UserDTO request) {
         Page<SysUserDO> page = new Page<>(request.getOffset(), request.getLimit());
         SysUserDO userDO = userMapper.convert.apply(request);
-        sysUserDAO.listUser(page, userDO);
+        sysUserExtDAO.listUser(page, userDO);
         return userMapper.pageReconvert.apply(page);
     }
 
@@ -55,8 +57,8 @@ public class UserServiceImpl extends BaseService implements UserService {
     public void modifyUser(UserDTO request) {
         SysUserDO sysUserDO = userMapper.convert.apply(request);
         sysUserDO.setCreateUserId(getCurrentUser().getId());
-        sysUserDO.setLastChangeUserId(getCurrentUser().getId());
-        sysUserDO.setIsActive(true);
+        sysUserDO.setChangeUserId(getCurrentUser().getId());
+        sysUserDO.setActive(true);
         if (request.getId() == null) {
             sysUserDAO.insertSelective(sysUserDO);
         } else {
@@ -67,6 +69,11 @@ public class UserServiceImpl extends BaseService implements UserService {
     @Autowired
     public void setSysUserDAO(SysUserDAO sysUserDAO) {
         this.sysUserDAO = sysUserDAO;
+    }
+
+    @Autowired
+    public void setSysUserExtDAO(SysUserExtDAO sysUserExtDAO) {
+        this.sysUserExtDAO = sysUserExtDAO;
     }
 
     @Autowired

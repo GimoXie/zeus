@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.gimo.zeus.db.dao.zeusdb.SysUserExtDAO">
+  <resultMap id="BaseResultMap" type="io.gimo.zeus.entity._do.zeusdb.SysUserDO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
+    <result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime" />
+    <result column="active" jdbcType="BIT" property="active" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_user_id" jdbcType="BIGINT" property="createUserId" />
+    <result column="change_time" jdbcType="TIMESTAMP" property="changeTime" />
+    <result column="change_user_id" jdbcType="BIGINT" property="changeUserId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, username, `password`, email, telephone, last_login_time, active, create_time, 
+    create_user_id, change_time, change_user_id
+  </sql>
+  <select id="listUser" parameterType="io.gimo.zeus.entity._do.zeusdb.SysUserDO"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sys_user
+    <where>
+      <if test="id != null">
+        and id = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="username != null and username != ''">
+        and username = #{username,jdbcType=VARCHAR}
+      </if>
+      <if test="email != null and email != ''">
+        and email = #{email,jdbcType=VARCHAR}
+      </if>
+      <if test="telephone != null and telephone != ''">
+        and telephone = #{telephone,jdbcType=VARCHAR}
+      </if>
+      <if test="active != null">
+        and active = #{active,jdbcType=BIT}
+      </if>
+    </where>
+  </select>
+</mapper>

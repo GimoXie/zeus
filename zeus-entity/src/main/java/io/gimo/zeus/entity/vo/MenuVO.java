@@ -12,8 +12,7 @@ public class MenuVO extends BaseVO{
     private Long parentId;
     private String name;
     private String icon;
-    private String url;
-    private String description;
+    private String uri;
     private Integer priority;
     private Integer level;
     private List<MenuVO> submenuList;

@@ -8,11 +8,11 @@
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="telephone" jdbcType="VARCHAR" property="telephone" />
     <result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime" />
-    <result column="is_active" jdbcType="BIT" property="isActive" />
+    <result column="active" jdbcType="BIT" property="active" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="create_user_id" jdbcType="BIGINT" property="createUserId" />
-    <result column="last_change_time" jdbcType="TIMESTAMP" property="lastChangeTime" />
-    <result column="last_change_user_id" jdbcType="BIGINT" property="lastChangeUserId" />
+    <result column="change_time" jdbcType="TIMESTAMP" property="changeTime" />
+    <result column="change_user_id" jdbcType="BIGINT" property="changeUserId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -73,8 +73,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, username, `password`, email, telephone, last_login_time, is_active, create_time, 
-    create_user_id, last_change_time, last_change_user_id
+    id, username, `password`, email, telephone, last_login_time, active, create_time, 
+    create_user_id, change_time, change_user_id
   </sql>
   <select id="selectByExample" parameterType="io.gimo.zeus.entity._do.zeusdb.SysUserExample" resultMap="BaseResultMap">
     select
@@ -119,13 +119,13 @@
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="io.gimo.zeus.entity._do.zeusdb.SysUserDO" useGeneratedKeys="true">
     insert into sys_user (username, `password`, email, 
-      telephone, last_login_time, is_active, 
-      create_time, create_user_id, last_change_time, 
-      last_change_user_id)
+      telephone, last_login_time, active, 
+      create_time, create_user_id, change_time, 
+      change_user_id)
     values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
-      #{telephone,jdbcType=VARCHAR}, #{lastLoginTime,jdbcType=TIMESTAMP}, #{isActive,jdbcType=BIT}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{createUserId,jdbcType=BIGINT}, #{lastChangeTime,jdbcType=TIMESTAMP}, 
-      #{lastChangeUserId,jdbcType=BIGINT})
+      #{telephone,jdbcType=VARCHAR}, #{lastLoginTime,jdbcType=TIMESTAMP}, #{active,jdbcType=BIT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{createUserId,jdbcType=BIGINT}, #{changeTime,jdbcType=TIMESTAMP}, 
+      #{changeUserId,jdbcType=BIGINT})
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="io.gimo.zeus.entity._do.zeusdb.SysUserDO" useGeneratedKeys="true">
     insert into sys_user
@@ -145,8 +145,8 @@
       <if test="lastLoginTime != null">
         last_login_time,
       </if>
-      <if test="isActive != null">
-        is_active,
+      <if test="active != null">
+        active,
       </if>
       <if test="createTime != null">
         create_time,
@@ -154,11 +154,11 @@
       <if test="createUserId != null">
         create_user_id,
       </if>
-      <if test="lastChangeTime != null">
-        last_change_time,
+      <if test="changeTime != null">
+        change_time,
       </if>
-      <if test="lastChangeUserId != null">
-        last_change_user_id,
+      <if test="changeUserId != null">
+        change_user_id,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -177,8 +177,8 @@
       <if test="lastLoginTime != null">
         #{lastLoginTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="isActive != null">
-        #{isActive,jdbcType=BIT},
+      <if test="active != null">
+        #{active,jdbcType=BIT},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
@@ -186,11 +186,11 @@
       <if test="createUserId != null">
         #{createUserId,jdbcType=BIGINT},
       </if>
-      <if test="lastChangeTime != null">
-        #{lastChangeTime,jdbcType=TIMESTAMP},
+      <if test="changeTime != null">
+        #{changeTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="lastChangeUserId != null">
-        #{lastChangeUserId,jdbcType=BIGINT},
+      <if test="changeUserId != null">
+        #{changeUserId,jdbcType=BIGINT},
       </if>
     </trim>
   </insert>
@@ -221,8 +221,8 @@
       <if test="record.lastLoginTime != null">
         last_login_time = #{record.lastLoginTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.isActive != null">
-        is_active = #{record.isActive,jdbcType=BIT},
+      <if test="record.active != null">
+        active = #{record.active,jdbcType=BIT},
       </if>
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
@@ -230,11 +230,11 @@
       <if test="record.createUserId != null">
         create_user_id = #{record.createUserId,jdbcType=BIGINT},
       </if>
-      <if test="record.lastChangeTime != null">
-        last_change_time = #{record.lastChangeTime,jdbcType=TIMESTAMP},
+      <if test="record.changeTime != null">
+        change_time = #{record.changeTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.lastChangeUserId != null">
-        last_change_user_id = #{record.lastChangeUserId,jdbcType=BIGINT},
+      <if test="record.changeUserId != null">
+        change_user_id = #{record.changeUserId,jdbcType=BIGINT},
       </if>
     </set>
     <if test="_parameter != null">
@@ -249,11 +249,11 @@
       email = #{record.email,jdbcType=VARCHAR},
       telephone = #{record.telephone,jdbcType=VARCHAR},
       last_login_time = #{record.lastLoginTime,jdbcType=TIMESTAMP},
-      is_active = #{record.isActive,jdbcType=BIT},
+      active = #{record.active,jdbcType=BIT},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       create_user_id = #{record.createUserId,jdbcType=BIGINT},
-      last_change_time = #{record.lastChangeTime,jdbcType=TIMESTAMP},
-      last_change_user_id = #{record.lastChangeUserId,jdbcType=BIGINT}
+      change_time = #{record.changeTime,jdbcType=TIMESTAMP},
+      change_user_id = #{record.changeUserId,jdbcType=BIGINT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -276,8 +276,8 @@
       <if test="lastLoginTime != null">
         last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="isActive != null">
-        is_active = #{isActive,jdbcType=BIT},
+      <if test="active != null">
+        active = #{active,jdbcType=BIT},
       </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -285,11 +285,11 @@
       <if test="createUserId != null">
         create_user_id = #{createUserId,jdbcType=BIGINT},
       </if>
-      <if test="lastChangeTime != null">
-        last_change_time = #{lastChangeTime,jdbcType=TIMESTAMP},
+      <if test="changeTime != null">
+        change_time = #{changeTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="lastChangeUserId != null">
-        last_change_user_id = #{lastChangeUserId,jdbcType=BIGINT},
+      <if test="changeUserId != null">
+        change_user_id = #{changeUserId,jdbcType=BIGINT},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
@@ -301,11 +301,11 @@
       email = #{email,jdbcType=VARCHAR},
       telephone = #{telephone,jdbcType=VARCHAR},
       last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
-      is_active = #{isActive,jdbcType=BIT},
+      active = #{active,jdbcType=BIT},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       create_user_id = #{createUserId,jdbcType=BIGINT},
-      last_change_time = #{lastChangeTime,jdbcType=TIMESTAMP},
-      last_change_user_id = #{lastChangeUserId,jdbcType=BIGINT}
+      change_time = #{changeTime,jdbcType=TIMESTAMP},
+      change_user_id = #{changeUserId,jdbcType=BIGINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
 

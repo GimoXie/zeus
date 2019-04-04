@@ -8,7 +8,7 @@ import lombok.EqualsAndHashCode;
 public class RoleVO extends BaseVO {
     private Long id;
     private String name;
-    private String type;
+    private String code;
     private String description;
-    private Boolean isActive;
+    private Boolean active;
 }

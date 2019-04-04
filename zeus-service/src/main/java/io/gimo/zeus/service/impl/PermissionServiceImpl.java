@@ -25,11 +25,11 @@ public class PermissionServiceImpl implements PermissionService {
     @Override
     public List<PermissionDTO> listPermissionByRoleId(List<Long> roleIdList) {
         SysRolePermissionExample rolePermissionExample = new SysRolePermissionExample();
-        rolePermissionExample.createCriteria().andRoleIdIn(roleIdList).andIsActiveEqualTo(true);
+        rolePermissionExample.createCriteria().andRoleIdIn(roleIdList).andActiveEqualTo(true);
         List<SysRolePermissionDO> rolePermissionDOList = sysRolePermissionDAO.selectByExample(rolePermissionExample);
         List<Long> permissionIdList = rolePermissionDOList.stream().map(SysRolePermissionDO::getPermissionId).collect(Collectors.toList());
         SysPermissionExample permissionExample = new SysPermissionExample();
-        permissionExample.createCriteria().andIdIn(permissionIdList).andIsActiveEqualTo(true);
+        permissionExample.createCriteria().andIdIn(permissionIdList).andActiveEqualTo(true);
         return sysPermissionDAO.selectByExample(permissionExample).stream().map(permissionMapper.reconvert).collect(Collectors.toList());
     }
 
@@ -37,7 +37,7 @@ public class PermissionServiceImpl implements PermissionService {
     public List<PermissionDTO> listPermission(PermissionDTO request) {
         SysPermissionDO permissionDO = permissionMapper.convert.apply(request);
         SysPermissionExample permissionExample = new SysPermissionExample();
-        permissionExample.createCriteria().andIsActiveEqualTo(true);
+        permissionExample.createCriteria().andActiveEqualTo(true);
         return sysPermissionDAO.selectByExample(permissionExample).stream().map(permissionMapper.reconvert).collect(Collectors.toList());
     }
 

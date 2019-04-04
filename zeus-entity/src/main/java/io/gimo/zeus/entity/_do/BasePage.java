@@ -2,8 +2,10 @@ package io.gimo.zeus.entity._do;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
-public abstract class BasePage {
+public abstract class BasePage implements Serializable {
 
     /**
      * 当前页第一条数据偏移量

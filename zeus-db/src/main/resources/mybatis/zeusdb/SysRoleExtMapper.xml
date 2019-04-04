@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.gimo.zeus.db.dao.zeusdb.SysRoleExtDAO">
+  <resultMap id="BaseResultMap" type="io.gimo.zeus.entity._do.zeusdb.SysRoleDO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="active" jdbcType="BIT" property="active" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_user_id" jdbcType="BIGINT" property="createUserId" />
+    <result column="change_time" jdbcType="TIMESTAMP" property="changeTime" />
+    <result column="change_user_id" jdbcType="BIGINT" property="changeUserId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, `name`, code, description, active, create_time, create_user_id, change_time, 
+    change_user_id
+  </sql>
+
+  <select id="listRole" parameterType="io.gimo.zeus.entity._do.zeusdb.SysRoleDO"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sys_role
+    <where>
+      <if test="id != null">
+        and id = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="name != null and name != ''">
+        and `name` = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="code != null and code != ''">
+        and code = #{code,jdbcType=VARCHAR}
+      </if>
+      <if test="description != null and description != ''">
+        and description = #{description,jdbcType=VARCHAR}
+      </if>
+      <if test="active != null">
+        and active = #{active,jdbcType=BIT}
+      </if>
+    </where>
+  </select>
+</mapper>

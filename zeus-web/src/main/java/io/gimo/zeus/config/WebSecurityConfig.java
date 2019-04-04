@@ -27,7 +27,6 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Override
     @Bean
     public UserDetailsService userDetailsService() {
         return new ZeusUserDetailsService();

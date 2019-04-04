@@ -1,6 +1,5 @@
 package io.gimo.zeus.service.impl;
 
-import com.google.common.collect.Lists;
 import io.gimo.zeus.db.dao.zeusdb.SysRolePermissionDAO;
 import io.gimo.zeus.entity._do.zeusdb.SysRolePermissionDO;
 import io.gimo.zeus.entity._do.zeusdb.SysRolePermissionExample;
@@ -23,7 +22,7 @@ public class RolePermissionServiceImpl implements RolePermissionService {
     @Override
     public List<RolePermissionDTO> listRolePermission(Long roleId) {
         SysRolePermissionExample example = new SysRolePermissionExample();
-        example.createCriteria().andIsActiveEqualTo(true).andRoleIdEqualTo(roleId);
+        example.createCriteria().andActiveEqualTo(true).andRoleIdEqualTo(roleId);
         return sysRolePermissionDAO.selectByExample(example).stream().map(rolePermissionMapper.reconvert).collect(Collectors.toList());
     }
 
@@ -36,11 +35,11 @@ public class RolePermissionServiceImpl implements RolePermissionService {
         example.createCriteria().andRoleIdEqualTo(request.getRoleId());
         List<SysRolePermissionDO> sysRolePermissionList = sysRolePermissionDAO.selectByExample(example);
         List<SysRolePermissionDO> updateData = sysRolePermissionList.stream()
-                .filter(rolePermission -> !rolePermission.getIsActive())
+                .filter(rolePermission -> !rolePermission.getActive())
                 .filter(rolePermission -> preservedIdList.contains(rolePermission.getPermissionId()))
                 .collect(Collectors.toList());
         List<SysRolePermissionDO> deleteData =  sysRolePermissionList.stream()
-                .filter(SysRolePermissionDO::getIsActive)
+                .filter(SysRolePermissionDO::getActive)
                 .filter(rolePermission -> !preservedIdList.contains(rolePermission.getPermissionId()))
                 .collect(Collectors.toList());
         List<Long> insertData = preservedIdList.stream()

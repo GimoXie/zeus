@@ -4,11 +4,12 @@ import io.gimo.zeus.entity._do.BasePage;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-public abstract class BaseDTO extends BasePage {
+public abstract class BaseDTO extends BasePage implements Serializable {
 
     /**
      * 自增长id
@@ -17,7 +18,7 @@ public abstract class BaseDTO extends BasePage {
     /**
      * 是否有效
      **/
-    private Boolean isActive;
+    private Boolean active;
     /**
      * 数据创建时间
      **/
@@ -29,9 +30,9 @@ public abstract class BaseDTO extends BasePage {
     /**
      * 数据最后修改时间
      **/
-    private LocalDateTime lastChangeTime;
+    private LocalDateTime changeTime;
     /**
      * 数据最后修改用户id
      **/
-    private Long lastChangeUserId;
+    private Long changeUserId;
 }

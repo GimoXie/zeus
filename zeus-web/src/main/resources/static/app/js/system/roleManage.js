@@ -51,8 +51,8 @@ var roleManage = {
                 align: 'center',
                 valign: 'middle'
             }, {
-                title: '角色类型',
-                field: 'type',
+                title: '角色编码',
+                field: 'code',
                 sortable: false,
                 align: 'center',
                 valign: 'middle'
@@ -64,7 +64,7 @@ var roleManage = {
                 valign: 'middle'
             }, {
                 title: '是否有效',
-                field: 'isActive',
+                field: 'active',
                 sortable: false,
                 align: 'center',
                 valign: 'middle'

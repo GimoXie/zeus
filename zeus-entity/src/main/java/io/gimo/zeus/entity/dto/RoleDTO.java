@@ -7,6 +7,6 @@ import lombok.EqualsAndHashCode;
 @Data
 public class RoleDTO extends BaseDTO {
     private String name;
-    private String type;
+    private String code;
     private String description;
 }
