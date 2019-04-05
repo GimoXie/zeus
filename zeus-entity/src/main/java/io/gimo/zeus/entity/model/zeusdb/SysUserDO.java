@@ -1,57 +1,47 @@
-package io.gimo.zeus.entity._do.zeusdb;
+package io.gimo.zeus.entity.model.zeusdb;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
- * sys_permission
+ * sys_user
  * @author 
  */
-public class SysPermissionDO implements Serializable {
+public class SysUserDO implements Serializable {
     /**
      * 自增长id
      */
     private Long id;
 
     /**
-     * 父级id
+     * 用户名
      */
-    private Long parentId;
+    private String username;
 
     /**
-     * 权限名称
+     * 密码
      */
-    private String name;
+    private String password;
 
     /**
-     * 图标
+     * 昵称
      */
-    private String icon;
+    private String nickName;
 
     /**
-     * 资源uri
+     * 邮箱
      */
-    private String uri;
+    private String email;
 
     /**
-     * 权限编码
+     * 电话号码
      */
-    private String code;
+    private String telephone;
 
     /**
-     * 0 - 菜单 1 - 按钮
+     * 最后登录时间
      */
-    private Integer type;
-
-    /**
-     * 权限描述
-     */
-    private String description;
-
-    /**
-     * 优先级
-     */
-    private Integer priority;
+    private LocalDateTime lastLoginTime;
 
     /**
      * 是否有效
@@ -88,68 +78,52 @@ public class SysPermissionDO implements Serializable {
         this.id = id;
     }
 
-    public Long getParentId() {
-        return parentId;
+    public String getUsername() {
+        return username;
     }
 
-    public void setParentId(Long parentId) {
-        this.parentId = parentId;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getName() {
-        return name;
+    public String getPassword() {
+        return password;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getIcon() {
-        return icon;
+    public String getNickName() {
+        return nickName;
     }
 
-    public void setIcon(String icon) {
-        this.icon = icon;
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
     }
 
-    public String getUri() {
-        return uri;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUri(String uri) {
-        this.uri = uri;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getCode() {
-        return code;
+    public String getTelephone() {
+        return telephone;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
 
-    public Integer getType() {
-        return type;
+    public LocalDateTime getLastLoginTime() {
+        return lastLoginTime;
     }
 
-    public void setType(Integer type) {
-        this.type = type;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Integer getPriority() {
-        return priority;
-    }
-
-    public void setPriority(Integer priority) {
-        this.priority = priority;
+    public void setLastLoginTime(LocalDateTime lastLoginTime) {
+        this.lastLoginTime = lastLoginTime;
     }
 
     public Boolean getActive() {
@@ -203,16 +177,14 @@ public class SysPermissionDO implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        SysPermissionDO other = (SysPermissionDO) that;
+        SysUserDO other = (SysUserDO) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getParentId() == null ? other.getParentId() == null : this.getParentId().equals(other.getParentId()))
-            && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
-            && (this.getIcon() == null ? other.getIcon() == null : this.getIcon().equals(other.getIcon()))
-            && (this.getUri() == null ? other.getUri() == null : this.getUri().equals(other.getUri()))
-            && (this.getCode() == null ? other.getCode() == null : this.getCode().equals(other.getCode()))
-            && (this.getType() == null ? other.getType() == null : this.getType().equals(other.getType()))
-            && (this.getDescription() == null ? other.getDescription() == null : this.getDescription().equals(other.getDescription()))
-            && (this.getPriority() == null ? other.getPriority() == null : this.getPriority().equals(other.getPriority()))
+            && (this.getUsername() == null ? other.getUsername() == null : this.getUsername().equals(other.getUsername()))
+            && (this.getPassword() == null ? other.getPassword() == null : this.getPassword().equals(other.getPassword()))
+            && (this.getNickName() == null ? other.getNickName() == null : this.getNickName().equals(other.getNickName()))
+            && (this.getEmail() == null ? other.getEmail() == null : this.getEmail().equals(other.getEmail()))
+            && (this.getTelephone() == null ? other.getTelephone() == null : this.getTelephone().equals(other.getTelephone()))
+            && (this.getLastLoginTime() == null ? other.getLastLoginTime() == null : this.getLastLoginTime().equals(other.getLastLoginTime()))
             && (this.getActive() == null ? other.getActive() == null : this.getActive().equals(other.getActive()))
             && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
             && (this.getCreateUserId() == null ? other.getCreateUserId() == null : this.getCreateUserId().equals(other.getCreateUserId()))
@@ -225,14 +197,12 @@ public class SysPermissionDO implements Serializable {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getParentId() == null) ? 0 : getParentId().hashCode());
-        result = prime * result + ((getName() == null) ? 0 : getName().hashCode());
-        result = prime * result + ((getIcon() == null) ? 0 : getIcon().hashCode());
-        result = prime * result + ((getUri() == null) ? 0 : getUri().hashCode());
-        result = prime * result + ((getCode() == null) ? 0 : getCode().hashCode());
-        result = prime * result + ((getType() == null) ? 0 : getType().hashCode());
-        result = prime * result + ((getDescription() == null) ? 0 : getDescription().hashCode());
-        result = prime * result + ((getPriority() == null) ? 0 : getPriority().hashCode());
+        result = prime * result + ((getUsername() == null) ? 0 : getUsername().hashCode());
+        result = prime * result + ((getPassword() == null) ? 0 : getPassword().hashCode());
+        result = prime * result + ((getNickName() == null) ? 0 : getNickName().hashCode());
+        result = prime * result + ((getEmail() == null) ? 0 : getEmail().hashCode());
+        result = prime * result + ((getTelephone() == null) ? 0 : getTelephone().hashCode());
+        result = prime * result + ((getLastLoginTime() == null) ? 0 : getLastLoginTime().hashCode());
         result = prime * result + ((getActive() == null) ? 0 : getActive().hashCode());
         result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
         result = prime * result + ((getCreateUserId() == null) ? 0 : getCreateUserId().hashCode());
@@ -248,14 +218,12 @@ public class SysPermissionDO implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", parentId=").append(parentId);
-        sb.append(", name=").append(name);
-        sb.append(", icon=").append(icon);
-        sb.append(", uri=").append(uri);
-        sb.append(", code=").append(code);
-        sb.append(", type=").append(type);
-        sb.append(", description=").append(description);
-        sb.append(", priority=").append(priority);
+        sb.append(", username=").append(username);
+        sb.append(", password=").append(password);
+        sb.append(", nickName=").append(nickName);
+        sb.append(", email=").append(email);
+        sb.append(", telephone=").append(telephone);
+        sb.append(", lastLoginTime=").append(lastLoginTime);
         sb.append(", active=").append(active);
         sb.append(", createTime=").append(createTime);
         sb.append(", createUserId=").append(createUserId);

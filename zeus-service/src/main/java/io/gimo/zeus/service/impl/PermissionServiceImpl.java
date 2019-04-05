@@ -2,10 +2,10 @@ package io.gimo.zeus.service.impl;
 
 import io.gimo.zeus.db.dao.zeusdb.SysPermissionDAO;
 import io.gimo.zeus.db.dao.zeusdb.SysRolePermissionDAO;
-import io.gimo.zeus.entity._do.zeusdb.SysPermissionDO;
-import io.gimo.zeus.entity._do.zeusdb.SysPermissionExample;
-import io.gimo.zeus.entity._do.zeusdb.SysRolePermissionDO;
-import io.gimo.zeus.entity._do.zeusdb.SysRolePermissionExample;
+import io.gimo.zeus.entity.model.zeusdb.SysPermissionDO;
+import io.gimo.zeus.entity.model.zeusdb.SysPermissionExample;
+import io.gimo.zeus.entity.model.zeusdb.SysRolePermissionDO;
+import io.gimo.zeus.entity.model.zeusdb.SysRolePermissionExample;
 import io.gimo.zeus.entity.dto.PermissionDTO;
 import io.gimo.zeus.service.PermissionService;
 import io.gimo.zeus.service.mapper.PermissionConverter;

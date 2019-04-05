@@ -1,4 +1,4 @@
-package io.gimo.zeus.entity._do.zeusdb;
+package io.gimo.zeus.entity.model.zeusdb;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;

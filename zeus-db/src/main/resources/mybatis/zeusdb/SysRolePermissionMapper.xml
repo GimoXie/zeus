@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="io.gimo.zeus.db.dao.zeusdb.SysRolePermissionDAO">
-  <resultMap id="BaseResultMap" type="io.gimo.zeus.entity._do.zeusdb.SysRolePermissionDO">
+  <resultMap id="BaseResultMap" type="io.gimo.zeus.entity.model.zeusdb.SysRolePermissionDO">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="role_id" jdbcType="BIGINT" property="roleId" />
     <result column="permission_id" jdbcType="BIGINT" property="permissionId" />
@@ -72,7 +72,7 @@
   <sql id="Base_Column_List">
     id, role_id, permission_id, active, create_time, create_user_id, change_time, change_user_id
   </sql>
-  <select id="selectByExample" parameterType="io.gimo.zeus.entity._do.zeusdb.SysRolePermissionExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="io.gimo.zeus.entity.model.zeusdb.SysRolePermissionExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -107,13 +107,13 @@
     delete from sys_role_permission
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="io.gimo.zeus.entity._do.zeusdb.SysRolePermissionExample">
+  <delete id="deleteByExample" parameterType="io.gimo.zeus.entity.model.zeusdb.SysRolePermissionExample">
     delete from sys_role_permission
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="io.gimo.zeus.entity._do.zeusdb.SysRolePermissionDO" useGeneratedKeys="true">
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="io.gimo.zeus.entity.model.zeusdb.SysRolePermissionDO" useGeneratedKeys="true">
     insert into sys_role_permission (role_id, permission_id, active, 
       create_time, create_user_id, change_time, 
       change_user_id)
@@ -121,7 +121,7 @@
       #{createTime,jdbcType=TIMESTAMP}, #{createUserId,jdbcType=BIGINT}, #{changeTime,jdbcType=TIMESTAMP}, 
       #{changeUserId,jdbcType=BIGINT})
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="io.gimo.zeus.entity._do.zeusdb.SysRolePermissionDO" useGeneratedKeys="true">
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="io.gimo.zeus.entity.model.zeusdb.SysRolePermissionDO" useGeneratedKeys="true">
     insert into sys_role_permission
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="roleId != null">
@@ -170,7 +170,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="io.gimo.zeus.entity._do.zeusdb.SysRolePermissionExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="io.gimo.zeus.entity.model.zeusdb.SysRolePermissionExample" resultType="java.lang.Long">
     select count(*) from sys_role_permission
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -222,7 +222,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="io.gimo.zeus.entity._do.zeusdb.SysRolePermissionDO">
+  <update id="updateByPrimaryKeySelective" parameterType="io.gimo.zeus.entity.model.zeusdb.SysRolePermissionDO">
     update sys_role_permission
     <set>
       <if test="roleId != null">
@@ -249,7 +249,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="io.gimo.zeus.entity._do.zeusdb.SysRolePermissionDO">
+  <update id="updateByPrimaryKey" parameterType="io.gimo.zeus.entity.model.zeusdb.SysRolePermissionDO">
     update sys_role_permission
     set role_id = #{roleId,jdbcType=BIGINT},
       permission_id = #{permissionId,jdbcType=BIGINT},

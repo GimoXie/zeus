@@ -1,6 +1,6 @@
 package io.gimo.zeus.entity.dto;
 
-import io.gimo.zeus.entity._do.BasePage;
+import io.gimo.zeus.entity.bo.BasePage;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-public abstract class BaseDTO extends BasePage implements Serializable {
+public abstract class BaseDTO extends BasePage{
 
     /**
      * 自增长id

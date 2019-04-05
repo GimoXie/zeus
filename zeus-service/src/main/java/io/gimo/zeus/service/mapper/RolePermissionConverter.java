@@ -1,6 +1,6 @@
 package io.gimo.zeus.service.mapper;
 
-import io.gimo.zeus.entity._do.zeusdb.SysRolePermissionDO;
+import io.gimo.zeus.entity.model.zeusdb.SysRolePermissionDO;
 import io.gimo.zeus.entity.dto.RolePermissionDTO;
 import io.gimo.zeus.entity.vo.RolePermissionVO;
 import org.springframework.stereotype.Component;

@@ -1,11 +1,11 @@
-package io.gimo.zeus.entity._do;
+package io.gimo.zeus.entity.bo;
 
 import lombok.Data;
 
 import java.io.Serializable;
 
 @Data
-public abstract class BasePage implements Serializable {
+public abstract class BasePage {
 
     /**
      * 当前页第一条数据偏移量

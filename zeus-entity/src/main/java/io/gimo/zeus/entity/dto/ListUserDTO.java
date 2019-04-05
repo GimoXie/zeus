@@ -1,19 +1,17 @@
 package io.gimo.zeus.entity.dto;
 
+import io.gimo.zeus.entity.bo.BasePage;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class UserDTO extends BaseDTO implements Serializable {
-    private static final long serialVersionUID = 7476428088005635883L;
+public class ListUserDTO extends BasePage implements Serializable {
+    private static final long serialVersionUID = 2817483500536233896L;
     private String username;
-    private String password;
     private String nickName;
     private String email;
     private String telephone;
-    private LocalDateTime lastLoginTime;
 }

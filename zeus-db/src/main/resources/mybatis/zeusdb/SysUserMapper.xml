@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="io.gimo.zeus.db.dao.zeusdb.SysUserDAO">
-  <resultMap id="BaseResultMap" type="io.gimo.zeus.entity._do.zeusdb.SysUserDO">
+  <resultMap id="BaseResultMap" type="io.gimo.zeus.entity.model.zeusdb.SysUserDO">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
@@ -77,7 +77,7 @@
     id, username, `password`, nick_name, email, telephone, last_login_time, active, create_time, 
     create_user_id, change_time, change_user_id
   </sql>
-  <select id="selectByExample" parameterType="io.gimo.zeus.entity._do.zeusdb.SysUserExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="io.gimo.zeus.entity.model.zeusdb.SysUserExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -112,13 +112,13 @@
     delete from sys_user
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="io.gimo.zeus.entity._do.zeusdb.SysUserExample">
+  <delete id="deleteByExample" parameterType="io.gimo.zeus.entity.model.zeusdb.SysUserExample">
     delete from sys_user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="io.gimo.zeus.entity._do.zeusdb.SysUserDO" useGeneratedKeys="true">
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="io.gimo.zeus.entity.model.zeusdb.SysUserDO" useGeneratedKeys="true">
     insert into sys_user (username, `password`, nick_name, 
       email, telephone, last_login_time, 
       active, create_time, create_user_id, 
@@ -128,7 +128,7 @@
       #{active,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, #{createUserId,jdbcType=BIGINT}, 
       #{changeTime,jdbcType=TIMESTAMP}, #{changeUserId,jdbcType=BIGINT})
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="io.gimo.zeus.entity._do.zeusdb.SysUserDO" useGeneratedKeys="true">
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="io.gimo.zeus.entity.model.zeusdb.SysUserDO" useGeneratedKeys="true">
     insert into sys_user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="username != null">
@@ -201,7 +201,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="io.gimo.zeus.entity._do.zeusdb.SysUserExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="io.gimo.zeus.entity.model.zeusdb.SysUserExample" resultType="java.lang.Long">
     select count(*) from sys_user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -269,7 +269,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="io.gimo.zeus.entity._do.zeusdb.SysUserDO">
+  <update id="updateByPrimaryKeySelective" parameterType="io.gimo.zeus.entity.model.zeusdb.SysUserDO">
     update sys_user
     <set>
       <if test="username != null">
@@ -308,7 +308,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="io.gimo.zeus.entity._do.zeusdb.SysUserDO">
+  <update id="updateByPrimaryKey" parameterType="io.gimo.zeus.entity.model.zeusdb.SysUserDO">
     update sys_user
     set username = #{username,jdbcType=VARCHAR},
       `password` = #{password,jdbcType=VARCHAR},

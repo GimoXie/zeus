@@ -32,7 +32,7 @@ spring:
       username: root
       password: root
       config-location: classpath:mybatis/zeusdb/config.xml
-      type-aliases-package: io.gimo.zeus.entity._do.zeusdb
+      type-aliases-package: io.gimo.zeus.entity.model.zeusdb
       mapper-locations: classpath:mybatis/zeusdb/**/*Mapper.xml
     db1:
       driver-class-name: com.mysql.jdbc.Driver
@@ -40,7 +40,7 @@ spring:
       username: root
       password: root
       config-location: classpath:mybatis/db1/config.xml
-      type-aliases-package: io.gimo.zeus.entity._do.db1
+      type-aliases-package: io.gimo.zeus.entity.model.db1
       mapper-locations: classpath:mybatis/db1/**/*Mapper.xml
     db2:
       driver-class-name: com.mysql.jdbc.Driver
@@ -48,7 +48,7 @@ spring:
       username: root
       password: root
       config-location: classpath:mybatis/db2/config.xml
-      type-aliases-package: io.gimo.zeus.entity._do.db2
+      type-aliases-package: io.gimo.zeus.entity.model.db2
       mapper-locations: classpath:mybatis/db2/**/*Mapper.xml
   redis:
     host: 127.0.0.1

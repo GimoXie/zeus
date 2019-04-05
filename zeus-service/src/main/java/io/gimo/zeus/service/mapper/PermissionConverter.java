@@ -1,6 +1,6 @@
 package io.gimo.zeus.service.mapper;
 
-import io.gimo.zeus.entity._do.zeusdb.SysPermissionDO;
+import io.gimo.zeus.entity.model.zeusdb.SysPermissionDO;
 import io.gimo.zeus.entity.dto.PermissionDTO;
 import io.gimo.zeus.entity.vo.MenuVO;
 import org.springframework.stereotype.Component;

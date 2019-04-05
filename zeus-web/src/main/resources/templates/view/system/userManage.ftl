@@ -94,6 +94,10 @@
                     <form id="userForm" class="m-t" role="form">
                         <input type="hidden" id="id" value="">
                         <div class="form-group">
+                            <label for="username">用户名</label>
+                            <input type="text" class="form-control" id="username" placeholder="请输入用户名">
+                        </div>
+                        <div class="form-group">
                             <label for="nickName">昵称</label>
                             <input type="text" class="form-control" id="nickName" placeholder="请输入昵称">
                         </div>
@@ -109,7 +113,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" data-dismiss="modal" class="btn btn-cancel">取消</button>
-                    <button type="button" <#--data-dismiss="modal"--> class="btn btn-primary" onclick="userManage.modifyUser()">确定</button>
+                    <button type="button" class="btn btn-primary user-modify">确定</button>
                 </div>
             </div>
         </div>

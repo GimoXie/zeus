@@ -1,4 +1,4 @@
-package io.gimo.zeus.entity._do.db2;
+package io.gimo.zeus.entity.model.db2;
 
 public class User2 {
     private String username;

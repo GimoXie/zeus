@@ -1,6 +1,9 @@
 package io.gimo.zeus.service;
 
 import io.gimo.zeus.db.plugin.interceptor.Page;
+import io.gimo.zeus.entity.dto.ListUserDTO;
+import io.gimo.zeus.entity.dto.SaveUserDTO;
+import io.gimo.zeus.entity.dto.UpdateUserDTO;
 import io.gimo.zeus.entity.dto.UserDTO;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
@@ -19,14 +22,20 @@ public interface UserService {
 
     /**
      * 分页查询用户
-     * @param request 查询参数
+     * @param param 查询参数
      * @return Page<UserDTO> 分页查询结果
      */
-    Page<UserDTO> listUserByPage(UserDTO request);
+    Page<UserDTO> listUserByPage(ListUserDTO param);
 
     /**
-     * 新增/修改用户数据
-     * @param request 变更参数
+     * 新增用户
+     * @param param 用户信息
      */
-    void modifyUser(UserDTO request);
+    void saveUser(SaveUserDTO param);
+
+    /**
+     * 修改用户信息
+     * @param param 修改参数
+     */
+    void updateUser(Long id, UpdateUserDTO param);
 }

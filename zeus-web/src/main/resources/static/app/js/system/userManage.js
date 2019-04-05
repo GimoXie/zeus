@@ -8,12 +8,15 @@ const userManage = {
         // 新增用户信息
         $('.user-add').on('click', function () {
             $('#userForm').clearForm();
+            $('#username').removeAttr("readonly");
             $('.user-title').text('新增用户');
+            $('.user-modify').attr('onclick', 'userManage.saveUser();');
             $('#userModel').modal('show');
         });
         // 修改用户信息
         $('.user-edit').on('click', function () {
             $('#userForm').clearForm();
+            $('#username').attr("readonly","readonly");
             let rows = $('#userTable').bootstrapTable('getSelections');
             if (rows.length === 0) {
                 $.alert('你必须选择一条数据');
@@ -21,29 +24,54 @@ const userManage = {
             }
             let user = rows[0];
             $('#id').val(user.id);
+            $('#username').val(user.username);
             $('#nickName').val(user.nickName);
             $('#email').val(user.email);
             $('#telephone').val(user.telephone);
             $('.user-title').text('修改用户');
+            $('.user-modify').attr('onclick', 'userManage.updateUser();');
             $('#userModel').modal('show');
         });
     },
-    modifyUser: function () {
+    saveUser: function () {
         let params = {
-            id: $('#id').val(),
+            username: $('#username').val(),
             nickName: $('#nickName').val(),
             email: $('#email').val(),
             telephone: $('#telephone').val()
         };
         $.ajax({
             type: "POST",
-            url: "/users/modify",
+            url: "/users",
             data: JSON.stringify(params),
             contentType: "application/json",
             dataType: "json",
             success: function (data) {
                 if (data.code === 1) {
-                    $.alert("更新成功!");
+                    $.alert("新增用户成功!");
+                    $('#userTable').bootstrapTable('refresh');
+                    $('#userModel').modal('hide');
+                } else {
+                    $.alert(data.message);
+                }
+            }
+        });
+    },
+    updateUser: function () {
+        let params = {
+            nickName: $('#nickName').val(),
+            email: $('#email').val(),
+            telephone: $('#telephone').val()
+        };
+        $.ajax({
+            type: "PUT",
+            url: "/users/" + $('#id').val(),
+            data: JSON.stringify(params),
+            contentType: "application/json",
+            dataType: "json",
+            success: function (data) {
+                if (data.code === 1) {
+                    $.alert("更新用户信息成功!");
                     $('#userTable').bootstrapTable('refresh');
                     $('#userModel').modal('hide');
                 } else {

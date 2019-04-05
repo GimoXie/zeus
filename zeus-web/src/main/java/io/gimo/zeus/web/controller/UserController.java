@@ -1,5 +1,8 @@
 package io.gimo.zeus.web.controller;
 
+import io.gimo.zeus.entity.dto.ListUserDTO;
+import io.gimo.zeus.entity.dto.SaveUserDTO;
+import io.gimo.zeus.entity.dto.UpdateUserDTO;
 import io.gimo.zeus.entity.dto.UserDTO;
 import io.gimo.zeus.service.UserService;
 import io.gimo.zeus.service.mapper.UserConverter;
@@ -18,9 +21,9 @@ public class UserController extends BaseController {
 
     @GetMapping
     @ResponseBody
-    public Map<String, Object> listUser(UserDTO request) {
+    public Map<String, Object> listUser(ListUserDTO param) {
         try {
-            return success(userViewMapper.pageConvert.apply(userService.listUserByPage(request)));
+            return success(userViewMapper.pageConvert.apply(userService.listUserByPage(param)));
         } catch (Exception e) {
             String msg = "查询用户数据时发生异常!";
             logger.error(msg, e.getMessage());
@@ -28,14 +31,27 @@ public class UserController extends BaseController {
         }
     }
 
-    @PostMapping("/modify")
+    @PostMapping
     @ResponseBody
-    public Map<String, Object> modifyUser(@RequestBody UserDTO request) {
+    public  Map<String, Object> saveUser(@RequestBody SaveUserDTO param) {
         try {
-            userService.modifyUser(request);
+            userService.saveUser(param);
             return success();
         } catch (Exception e) {
-            String msg = "变更用户数据时发生异常!";
+            String msg = "新增用户数据时发生异常!";
+            logger.error(msg, e);
+            return failure(msg);
+        }
+    }
+
+    @PutMapping("/{id}")
+    @ResponseBody
+    public Map<String, Object> updateUser(@PathVariable("id") Long id, @RequestBody UpdateUserDTO param) {
+        try {
+            userService.updateUser(id, param);
+            return success();
+        } catch (Exception e) {
+            String msg = "更新用户数据时发生异常!";
             logger.error(msg, e);
             return failure(msg);
         }

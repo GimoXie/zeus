@@ -1,6 +1,6 @@
 package io.gimo.zeus.service.mapper;
 
-import io.gimo.zeus.entity._do.zeusdb.SysRoleDO;
+import io.gimo.zeus.entity.model.zeusdb.SysRoleDO;
 import io.gimo.zeus.entity.dto.RoleDTO;
 import io.gimo.zeus.entity.vo.RoleVO;
 import org.springframework.stereotype.Component;

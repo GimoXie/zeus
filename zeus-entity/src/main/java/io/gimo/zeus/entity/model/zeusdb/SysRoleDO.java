@@ -1,27 +1,37 @@
-package io.gimo.zeus.entity._do.zeusdb;
+package io.gimo.zeus.entity.model.zeusdb;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
- * sys_user_role
+ * sys_role
  * @author 
  */
-public class SysUserRoleDO implements Serializable {
+public class SysRoleDO implements Serializable {
     /**
      * 自增长id
      */
     private Long id;
 
     /**
-     * 用户id
+     * 角色名称
      */
-    private Long userId;
+    private String name;
 
     /**
-     * 角色id
+     * 角色编码
      */
-    private Long roleId;
+    private String code;
+
+    /**
+     * 角色描述
+     */
+    private String description;
+
+    /**
+     * 角色优先级
+     */
+    private Integer priority;
 
     /**
      * 是否有效
@@ -58,20 +68,36 @@ public class SysUserRoleDO implements Serializable {
         this.id = id;
     }
 
-    public Long getUserId() {
-        return userId;
+    public String getName() {
+        return name;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Long getRoleId() {
-        return roleId;
+    public String getCode() {
+        return code;
     }
 
-    public void setRoleId(Long roleId) {
-        this.roleId = roleId;
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Integer getPriority() {
+        return priority;
+    }
+
+    public void setPriority(Integer priority) {
+        this.priority = priority;
     }
 
     public Boolean getActive() {
@@ -125,10 +151,12 @@ public class SysUserRoleDO implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        SysUserRoleDO other = (SysUserRoleDO) that;
+        SysRoleDO other = (SysRoleDO) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getUserId() == null ? other.getUserId() == null : this.getUserId().equals(other.getUserId()))
-            && (this.getRoleId() == null ? other.getRoleId() == null : this.getRoleId().equals(other.getRoleId()))
+            && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
+            && (this.getCode() == null ? other.getCode() == null : this.getCode().equals(other.getCode()))
+            && (this.getDescription() == null ? other.getDescription() == null : this.getDescription().equals(other.getDescription()))
+            && (this.getPriority() == null ? other.getPriority() == null : this.getPriority().equals(other.getPriority()))
             && (this.getActive() == null ? other.getActive() == null : this.getActive().equals(other.getActive()))
             && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
             && (this.getCreateUserId() == null ? other.getCreateUserId() == null : this.getCreateUserId().equals(other.getCreateUserId()))
@@ -141,8 +169,10 @@ public class SysUserRoleDO implements Serializable {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getUserId() == null) ? 0 : getUserId().hashCode());
-        result = prime * result + ((getRoleId() == null) ? 0 : getRoleId().hashCode());
+        result = prime * result + ((getName() == null) ? 0 : getName().hashCode());
+        result = prime * result + ((getCode() == null) ? 0 : getCode().hashCode());
+        result = prime * result + ((getDescription() == null) ? 0 : getDescription().hashCode());
+        result = prime * result + ((getPriority() == null) ? 0 : getPriority().hashCode());
         result = prime * result + ((getActive() == null) ? 0 : getActive().hashCode());
         result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
         result = prime * result + ((getCreateUserId() == null) ? 0 : getCreateUserId().hashCode());
@@ -158,8 +188,10 @@ public class SysUserRoleDO implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", userId=").append(userId);
-        sb.append(", roleId=").append(roleId);
+        sb.append(", name=").append(name);
+        sb.append(", code=").append(code);
+        sb.append(", description=").append(description);
+        sb.append(", priority=").append(priority);
         sb.append(", active=").append(active);
         sb.append(", createTime=").append(createTime);
         sb.append(", createUserId=").append(createUserId);
