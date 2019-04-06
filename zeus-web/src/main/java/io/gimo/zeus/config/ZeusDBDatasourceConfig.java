@@ -23,7 +23,7 @@ public class ZeusDBDatasourceConfig extends BaseDataSourceConfig {
     @Bean("zeusdbDataSource")
     @Primary
     @Override
-    public DataSource dataSource() throws Exception {
+    public DataSource dataSource() {
         return super.dataSource();
     }
 

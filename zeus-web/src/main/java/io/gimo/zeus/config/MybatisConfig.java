@@ -1,7 +1,7 @@
 package io.gimo.zeus.config;
 
-import com.alibaba.druid.pool.DruidDataSourceFactory;
 import com.google.common.base.Strings;
+import com.zaxxer.hikari.HikariDataSource;
 import io.gimo.zeus.db.plugin.interceptor.PaginationResultSetHandlerInterceptor;
 import io.gimo.zeus.db.plugin.interceptor.PaginationStatementHandlerInterceptor;
 import org.apache.ibatis.session.Configuration;
@@ -18,7 +18,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Properties;
 
 @org.springframework.context.annotation.Configuration
 public class MybatisConfig {
@@ -29,21 +28,16 @@ public class MybatisConfig {
         this.mybatisProperties = mybatisProperties;
     }
 
-    public DataSource createDataSource(BaseDataSourceConfig dbInfo) throws Exception {
-        Properties props = new Properties();
-        props.put("driverClassName", dbInfo.getDriverClassName());
-        props.put("url", dbInfo.getUrl());
-        props.put("username", dbInfo.getUsername());
-        props.put("password", dbInfo.getPassword());
-        return DruidDataSourceFactory.createDataSource(props);
+    public DataSource createDataSource(BaseDataSourceConfig dataSourceConfig) {
+        return new HikariDataSource(dataSourceConfig);
     }
 
-    public SqlSessionFactoryBean createSqlSessionFactoryBean(DataSource dataSource, BaseDataSourceConfig dbInfo) {
+    public SqlSessionFactoryBean createSqlSessionFactoryBean(DataSource dataSource, BaseDataSourceConfig dataSourceConfig) {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setVfs(SpringBootVFS.class);
         sqlSessionFactoryBean.setDataSource(dataSource);
-        sqlSessionFactoryBean.setTypeAliasesPackage(dbInfo.getTypeAliasesPackage());
-        sqlSessionFactoryBean.setMapperLocations(this.resolveMapperLocations(dbInfo.getMapperLocations()));
+        sqlSessionFactoryBean.setTypeAliasesPackage(dataSourceConfig.getTypeAliasesPackage());
+        sqlSessionFactoryBean.setMapperLocations(this.resolveMapperLocations(dataSourceConfig.getMapperLocations()));
         Configuration configuration = new Configuration();
         if (mybatisProperties.getConfiguration() != null) {
             BeanUtils.copyProperties(mybatisProperties.getConfiguration(), configuration);

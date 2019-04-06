@@ -5,51 +5,39 @@ mybatis:
     log-prefix: dao.
   configuration-properties:
     dialectClass: io.gimo.zeus.db.plugin.dialect.MySql5Dialect
-## druid config
-druid:
-  initialSize: 1
-  minIdle: 3
-  maxActive: 20
-  maxWait: 60000
-  timeBetweenEvictionRunsMillis: 60000
-  minEvictableIdleTimeMillis: 30000
-  validationQuery: select 'x'
-  testWhileIdle: true
-  testOnBorrow: false
-  testOnReturn: false
-  poolPreparedStatements: true
-  maxPoolPreparedStatementPerConnectionSize: 20
-  filters: stat,wall,slf4j
-  connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
-  useGlobalDataSourceStat: true
 ## spring config
 spring:
   datasource:
-    type: com.alibaba.druid.pool.DruidDataSource
     zeusdb:
+      pool-name: db_zeus
       driver-class-name: com.mysql.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/db_zeus?useUnicode=true&characterEncoding=UTF-8
+      jdbcUrl: jdbc:mysql://localhost:3306/db_zeus?useUnicode=true&characterEncoding=UTF-8
       username: root
       password: root
+      connection-timeout: 20000
+      minimum-idle: 5
+      maximum-pool-size: 12
+      idle-timeout: 300000
+      max-lifetime: 1200000
+      auto-commit: true
       config-location: classpath:mybatis/zeusdb/config.xml
       type-aliases-package: io.gimo.zeus.entity.model.zeusdb
       mapper-locations: classpath:mybatis/zeusdb/**/*Mapper.xml
     db1:
+      pool-name: db1
       driver-class-name: com.mysql.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/db1
+      jdbcUrl: jdbc:mysql://localhost:3306/db1
       username: root
       password: root
+      connection-timeout: 20000
+      minimum-idle: 5
+      maximum-pool-size: 12
+      idle-timeout: 300000
+      max-lifetime: 1200000
+      auto-commit: true
       config-location: classpath:mybatis/db1/config.xml
       type-aliases-package: io.gimo.zeus.entity.model.db1
       mapper-locations: classpath:mybatis/db1/**/*Mapper.xml
-    db2:
-      driver-class-name: com.mysql.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/db2
-      username: root
-      password: root
-      config-location: classpath:mybatis/db2/config.xml
-      type-aliases-package: io.gimo.zeus.entity.model.db2
-      mapper-locations: classpath:mybatis/db2/**/*Mapper.xml
   redis:
     host: 127.0.0.1
     port: 6379

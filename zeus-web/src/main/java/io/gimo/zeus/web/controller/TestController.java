@@ -2,7 +2,6 @@ package io.gimo.zeus.web.controller;
 
 import io.gimo.zeus.cache.redis.template.IRedisService;
 import io.gimo.zeus.entity.model.db1.User;
-import io.gimo.zeus.entity.model.db2.User2;
 import io.gimo.zeus.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,10 +22,4 @@ public class TestController {
         redisService.set("1","1");
         return testService.testDataSource1();
     }
-
-    @RequestMapping("/testDataSource2")
-    public List<User2> testDataSource2() {
-        return testService.testDataSource2();
-    }
-
 }

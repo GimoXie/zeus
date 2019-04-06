@@ -21,7 +21,7 @@ public class DB1DatasourceConfig extends BaseDataSourceConfig {
 
     @Bean("db1DataSource")
     @Override
-    public DataSource dataSource() throws Exception {
+    public DataSource dataSource() {
         return super.dataSource();
     }
 
