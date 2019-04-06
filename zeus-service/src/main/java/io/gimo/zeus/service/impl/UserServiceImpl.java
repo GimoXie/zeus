@@ -30,7 +30,7 @@ public class UserServiceImpl extends BaseService implements UserService {
     private SysUserDAO sysUserDAO;
     private SysUserExtDAO sysUserExtDAO;
     private UserConverter.UserMapper userMapper;
-    private UserConverter.QueryUserMapper queryUserMapper;
+    private UserConverter.ListUserMapper listUserMapper;
     private UserConverter.SaveUserMapper saveUserMapper;
     private UserConverter.UpdateUserMapper updateUserMapper;
 
@@ -53,7 +53,7 @@ public class UserServiceImpl extends BaseService implements UserService {
     @Override
     public Page<UserDTO> listUserByPage(ListUserDTO request) {
         Page<SysUserDO> page = new Page<>(request.getOffset(), request.getLimit());
-        SysUserDO userDO = queryUserMapper.convert.apply(request);
+        SysUserDO userDO = listUserMapper.convert.apply(request);
         sysUserExtDAO.listUser(page, userDO);
         return userMapper.pageReconvert.apply(page);
     }
@@ -95,8 +95,8 @@ public class UserServiceImpl extends BaseService implements UserService {
     }
 
     @Autowired
-    public void setQueryUserMapper(UserConverter.QueryUserMapper queryUserMapper) {
-        this.queryUserMapper = queryUserMapper;
+    public void setListUserMapper(UserConverter.ListUserMapper listUserMapper) {
+        this.listUserMapper = listUserMapper;
     }
 
     @Autowired

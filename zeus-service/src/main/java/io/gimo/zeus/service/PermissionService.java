@@ -1,6 +1,7 @@
 package io.gimo.zeus.service;
 
 
+import io.gimo.zeus.entity.dto.ListPermissionDTO;
 import io.gimo.zeus.entity.dto.PermissionDTO;
 
 import java.util.List;
@@ -16,8 +17,8 @@ public interface PermissionService {
 
     /**
      * 查询权限列表
-     * @param request
+     * @param param
      * @return
      */
-    List<PermissionDTO> listPermission(PermissionDTO request);
+    List<PermissionDTO> listPermission(ListPermissionDTO param);
 }

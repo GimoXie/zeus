@@ -1,5 +1,6 @@
 package io.gimo.zeus.web.controller;
 
+import io.gimo.zeus.entity.dto.ListPermissionDTO;
 import io.gimo.zeus.entity.dto.PermissionDTO;
 import io.gimo.zeus.service.PermissionService;
 import io.gimo.zeus.service.mapper.PermissionConverter;
@@ -20,8 +21,8 @@ public class PermissionController extends BaseController {
 
     @GetMapping
     @ResponseBody
-    public Map<String, Object> listPermission(PermissionDTO request) {
-        return success(permissionService.listPermission(request).stream().map(permissionViewMapper.convert).collect(Collectors.toList()));
+    public Map<String, Object> listPermission(ListPermissionDTO param) {
+        return success(permissionService.listPermission(param).stream().map(permissionViewMapper.convert).collect(Collectors.toList()));
     }
 
     @Autowired

@@ -2,7 +2,10 @@ package io.gimo.zeus.service;
 
 
 import io.gimo.zeus.db.plugin.interceptor.Page;
+import io.gimo.zeus.entity.dto.ListRoleDTO;
 import io.gimo.zeus.entity.dto.RoleDTO;
+import io.gimo.zeus.entity.dto.SaveRoleDTO;
+import io.gimo.zeus.entity.dto.UpdateRoleDTO;
 
 import java.util.List;
 
@@ -17,14 +20,21 @@ public interface RoleService {
 
     /**
      * 分页查询角色信息
-     * @param request
+     * @param param 查询参数
      * @return
      */
-    Page<RoleDTO> listRoleByPage(RoleDTO request);
+    Page<RoleDTO> listRoleByPage(ListRoleDTO param);
+
+    /**
+     * 新增角色
+     * @param param 角色信息
+     */
+    void saveRole(SaveRoleDTO param);
 
     /**
      * 修改角色信息
-     * @param request 变更参数
+     * @param id    角色id
+     * @param param 修改参数
      */
-    void modifyRole(RoleDTO request);
+    void updateRole(Long id, UpdateRoleDTO param);
 }

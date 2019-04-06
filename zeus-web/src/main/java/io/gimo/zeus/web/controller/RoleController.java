@@ -1,6 +1,9 @@
 package io.gimo.zeus.web.controller;
 
+import io.gimo.zeus.entity.dto.ListRoleDTO;
 import io.gimo.zeus.entity.dto.RoleDTO;
+import io.gimo.zeus.entity.dto.SaveRoleDTO;
+import io.gimo.zeus.entity.dto.UpdateRoleDTO;
 import io.gimo.zeus.service.RoleService;
 import io.gimo.zeus.service.mapper.RoleConverter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,18 +21,31 @@ public class RoleController extends BaseController {
 
     @GetMapping
     @ResponseBody
-    public Map<String, Object> listRole(RoleDTO request) {
-        return success(roleViewMapper.pageConvert.apply(roleService.listRoleByPage(request)));
+    public Map<String, Object> listRole(ListRoleDTO param) {
+        return success(roleViewMapper.pageConvert.apply(roleService.listRoleByPage(param)));
     }
 
-    @PostMapping("/modify")
+    @PostMapping
     @ResponseBody
-    public Map<String, Object> modifyRole(@RequestBody RoleDTO request) {
+    public Map<String, Object> saveRole(@RequestBody SaveRoleDTO param) {
         try {
-            roleService.modifyRole(request);
+            roleService.saveRole(param);
             return success();
         } catch (Exception e) {
-            String msg = "变更角色数据时发生异常！";
+            String msg = "新增角色发生异常！";
+            logger.error(msg, e);
+            return failure(msg);
+        }
+    }
+
+    @PutMapping("/{id}")
+    @ResponseBody
+    public Map<String, Object> updateRole(@PathVariable("id") Long id, @RequestBody UpdateRoleDTO param) {
+        try {
+            roleService.updateRole(id, param);
+            return success();
+        } catch (Exception e) {
+            String msg = "新增角色发生异常！";
             logger.error(msg, e);
             return failure(msg);
         }

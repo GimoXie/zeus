@@ -1,6 +1,7 @@
 package io.gimo.zeus.service.impl;
 
 import io.gimo.zeus.db.dao.zeusdb.SysRolePermissionDAO;
+import io.gimo.zeus.entity.dto.SaveRolePermissionDTO;
 import io.gimo.zeus.entity.model.zeusdb.SysRolePermissionDO;
 import io.gimo.zeus.entity.model.zeusdb.SysRolePermissionExample;
 import io.gimo.zeus.entity.dto.RolePermissionDTO;
@@ -28,11 +29,11 @@ public class RolePermissionServiceImpl implements RolePermissionService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void modify(RolePermissionDTO request) {
-        List<Long> preservedIdList = request.getPermissionIdList();
+    public void saveRolePermission(SaveRolePermissionDTO param) {
+        List<Long> preservedIdList = param.getPermissionIdList();
         // step1:根据roleId查询数据库中的permission信息
         SysRolePermissionExample example = new SysRolePermissionExample();
-        example.createCriteria().andRoleIdEqualTo(request.getRoleId());
+        example.createCriteria().andRoleIdEqualTo(param.getRoleId());
         List<SysRolePermissionDO> sysRolePermissionList = sysRolePermissionDAO.selectByExample(example);
         List<SysRolePermissionDO> updateData = sysRolePermissionList.stream()
                 .filter(rolePermission -> !rolePermission.getActive())

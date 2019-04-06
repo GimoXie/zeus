@@ -1,6 +1,6 @@
 package io.gimo.zeus.web.controller;
 
-import io.gimo.zeus.entity.dto.RolePermissionDTO;
+import io.gimo.zeus.entity.dto.SaveRolePermissionDTO;
 import io.gimo.zeus.service.RolePermissionService;
 import io.gimo.zeus.service.mapper.RolePermissionConverter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,19 +19,19 @@ public class RolePermissionController extends BaseController {
 
     @GetMapping
     @ResponseBody
-    public Map<String, Object> listRolePermission(@RequestParam("roleId") Long roleId) {
+    public Map<String, Object> listRolePermission(Long roleId) {
         return success(rolePermissionService.listRolePermission(roleId).stream().map(rolePermissionViewMapper.convert).collect(Collectors.toList()));
     }
 
 
-    @PostMapping("/modify")
+    @PostMapping
     @ResponseBody
-    public Map<String, Object> modifyRolePermission(@RequestBody RolePermissionDTO request) {
+    public Map<String, Object> saveRolePermission(@RequestBody SaveRolePermissionDTO param) {
         try {
-            rolePermissionService.modify(request);
+            rolePermissionService.saveRolePermission(param);
             return success();
         } catch (Exception e) {
-            String msg = "更新角色-权限数据时发生异常！";
+            String msg = "保存角色-权限数据时发生异常！";
             logger.error(msg, e);
             return failure(msg);
         }

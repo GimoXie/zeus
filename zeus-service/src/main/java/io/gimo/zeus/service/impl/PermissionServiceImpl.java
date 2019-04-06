@@ -2,6 +2,7 @@ package io.gimo.zeus.service.impl;
 
 import io.gimo.zeus.db.dao.zeusdb.SysPermissionDAO;
 import io.gimo.zeus.db.dao.zeusdb.SysRolePermissionDAO;
+import io.gimo.zeus.entity.dto.ListPermissionDTO;
 import io.gimo.zeus.entity.model.zeusdb.SysPermissionDO;
 import io.gimo.zeus.entity.model.zeusdb.SysPermissionExample;
 import io.gimo.zeus.entity.model.zeusdb.SysRolePermissionDO;
@@ -34,8 +35,7 @@ public class PermissionServiceImpl implements PermissionService {
     }
 
     @Override
-    public List<PermissionDTO> listPermission(PermissionDTO request) {
-        SysPermissionDO permissionDO = permissionMapper.convert.apply(request);
+    public List<PermissionDTO> listPermission(ListPermissionDTO param) {
         SysPermissionExample permissionExample = new SysPermissionExample();
         permissionExample.createCriteria().andActiveEqualTo(true);
         return sysPermissionDAO.selectByExample(permissionExample).stream().map(permissionMapper.reconvert).collect(Collectors.toList());

@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 public class UserConverter {
 
     @Service
-    public class QueryUserMapper extends AbstractMapper<ListUserDTO, SysUserDO> {
+    public class ListUserMapper extends AbstractMapper<ListUserDTO, SysUserDO> {
 
     }
 

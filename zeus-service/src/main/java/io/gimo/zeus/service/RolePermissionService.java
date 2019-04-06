@@ -1,6 +1,7 @@
 package io.gimo.zeus.service;
 
 import io.gimo.zeus.entity.dto.RolePermissionDTO;
+import io.gimo.zeus.entity.dto.SaveRolePermissionDTO;
 
 import java.util.List;
 
@@ -16,7 +17,7 @@ public interface RolePermissionService {
 
     /**
      * 变更角色权限信息
-     * @param request
+     * @param param
      */
-    void modify(RolePermissionDTO request);
+    void saveRolePermission(SaveRolePermissionDTO param);
 }
