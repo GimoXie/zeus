@@ -1,10 +1,23 @@
 ## mybatis config
 mybatis:
-  configuration:
-    map-underscore-to-camel-case: true
-    log-prefix: dao.
-  configuration-properties:
-    dialectClass: io.gimo.zeus.db.plugin.dialect.MySql5Dialect
+  zeusdb:
+    configuration:
+      map-underscore-to-camel-case: true
+      log-prefix: dao.
+    configuration-properties:
+      dialectClass: io.gimo.zeus.db.plugin.dialect.MySql5Dialect
+    config-location: classpath:mybatis/zeusdb/config.xml
+    type-aliases-package: io.gimo.zeus.entity.model.zeusdb
+    mapper-locations: classpath:mybatis/zeusdb/**/*Mapper.xml
+  db1:
+    configuration:
+      map-underscore-to-camel-case: true
+      log-prefix: dao.
+    configuration-properties:
+      dialectClass: io.gimo.zeus.db.plugin.dialect.MySql5Dialect
+    config-location: classpath:mybatis/db1/config.xml
+    type-aliases-package: io.gimo.zeus.entity.model.db1
+    mapper-locations: classpath:mybatis/db1/**/*Mapper.xml
 ## spring config
 spring:
   datasource:
@@ -20,9 +33,6 @@ spring:
       idle-timeout: 300000
       max-lifetime: 1200000
       auto-commit: true
-      config-location: classpath:mybatis/zeusdb/config.xml
-      type-aliases-package: io.gimo.zeus.entity.model.zeusdb
-      mapper-locations: classpath:mybatis/zeusdb/**/*Mapper.xml
     db1:
       pool-name: db1
       driver-class-name: com.mysql.jdbc.Driver
@@ -35,9 +45,6 @@ spring:
       idle-timeout: 300000
       max-lifetime: 1200000
       auto-commit: true
-      config-location: classpath:mybatis/db1/config.xml
-      type-aliases-package: io.gimo.zeus.entity.model.db1
-      mapper-locations: classpath:mybatis/db1/**/*Mapper.xml
   redis:
     host: 127.0.0.1
     port: 6379
