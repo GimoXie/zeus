@@ -3,7 +3,87 @@ var roleManage = {
     permissionId: [],
     init: function () {
         this.initTable();
-        //this.bindEvents();
+        this.bindEvents();
+    },
+    bindEvents: function() {
+        // 新增角色信息
+        $('.role-add').on('click', function () {
+            $('#roleForm').clearForm();
+            $('#name').removeAttr("readonly");
+            $('.role-title').text('新增角色');
+            $('.role-modify').attr('onclick', 'roleManage.saveRole();');
+            $('#roleModel').modal('show');
+        });
+        // 编辑角色信息
+        $('.role-edit').on('click', function () {
+            $('#roleForm').clearForm();
+            $('#name').attr("readonly","readonly");
+            let rows = $('#roleTable').bootstrapTable('getSelections');
+            if (rows.length === 0) {
+                $.alert('你必须选择一条数据');
+                return;
+            }
+            let role = rows[0];
+            $('#id').val(role.id);
+            $('#name').val(role.name);
+            $('#code').val(role.code);
+            $('#description').val(role.description);
+            $('.role-title').text('修改角色');
+            $('.role-modify').attr('onclick', 'roleManage.updateRole();');
+            $('#roleModel').modal('show');
+        });
+        // 保存角色权限信息
+        $('.role-permission-assign').on('click', function () {
+            $.alert('保存成功！');// todo
+        });
+    },
+    saveRole: function () {
+        let params = {
+            name: $('#name').val(),
+            code: $('#code').val(),
+            description: $('#description').val(),
+            telephone: $('#telephone').val()
+        };
+        $.ajax({
+            type: "POST",
+            url: "/roles",
+            data: JSON.stringify(params),
+            contentType: "application/json",
+            dataType: "json",
+            success: function (data) {
+                if (data.code === 1) {
+                    $.alert("新增角色成功!");
+                    $('#roleTable').bootstrapTable('refresh');
+                    $('#roleModel').modal('hide');
+                } else {
+                    $.alert(data.message);
+                }
+            }
+        });
+    },
+    updateRole: function () {
+        let params = {
+            name: $('#name').val(),
+            code: $('#code').val(),
+            description: $('#description').val(),
+            telephone: $('#telephone').val()
+        };
+        $.ajax({
+            type: "PUT",
+            url: "/roles/" + $('#id').val(),
+            data: JSON.stringify(params),
+            contentType: "application/json",
+            dataType: "json",
+            success: function (data) {
+                if (data.code === 1) {
+                    $.alert("更新角色信息成功!");
+                    $('#roleTable').bootstrapTable('refresh');
+                    $('#roleModel').modal('hide');
+                } else {
+                    $.alert(data.message);
+                }
+            }
+        });
     },
     initTable: function () {
         const $table = $("#roleTable");

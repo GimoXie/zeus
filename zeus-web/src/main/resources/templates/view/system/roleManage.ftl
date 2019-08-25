@@ -56,7 +56,7 @@
                         title="编辑角色">
                     <i class="fa fa-edit"></i>
                 </button>
-                <button type="button" class="btn btn-default role-permission-assign" data-toggle="tooltip" data-placement="bottom"
+                <button type="button" class="btn btn-default role-delete" data-toggle="tooltip" data-placement="bottom"
                         title="删除权限">
                     <i class="fa fa-trash"></i>
                 </button>
@@ -86,14 +86,48 @@
                 </div>
                 <!-- table自定义工具条 -->
                 <div id="permissionToolbar" class="btn-group">
-                    <button type="button" class="btn btn-default permission-save" data-toggle="tooltip" data-placement="bottom"
+                    <button type="button" class="btn btn-default role-permission-assign" data-toggle="tooltip" data-placement="bottom"
                             title="保存">
                         <i class="fa fa-save"></i>
                     </button>
-                    <button type="button" class="btn btn-default permission-refresh" data-toggle="tooltip" data-placement="bottom"
+                    <button type="button" class="btn btn-default role-permission-refresh" data-toggle="tooltip" data-placement="bottom"
                             title="刷新">
                         <i class="fa fa-refresh"></i>
                     </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- dialogs -->
+    <div class="modal fade" id="roleModel" tabindex="-1" role="dialog" aria-labelledby="roleModel" aria-hidden="true"
+         data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                    <h4 class="modal-title role-title"></h4>
+                </div>
+                <div class="modal-body">
+                    <form id="roleForm" class="m-t" role="form">
+                        <input type="hidden" id="id" value="">
+                        <div class="form-group">
+                            <label for="name">角色名称</label>
+                            <input type="text" class="form-control" id="name" placeholder="请输入角色名称">
+                        </div>
+                        <div class="form-group">
+                            <label for="code">角色编码</label>
+                            <input type="text" class="form-control" id="code" placeholder="请输入角色编码">
+                        </div>
+                        <div class="form-group">
+                            <label for="description">描述</label>
+                            <input type="text" class="form-control" id="description" placeholder="请输入角色编码">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn btn-cancel">取消</button>
+                    <button type="button" class="btn btn-primary role-modify">确定</button>
                 </div>
             </div>
         </div>
