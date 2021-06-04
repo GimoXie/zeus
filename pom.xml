@@ -36,7 +36,7 @@
         <page-helper.version>1.2.10</page-helper.version>
         <jedis.version>2.9.0</jedis.version>
         <commons-lang3.version>3.7</commons-lang3.version>
-        <httpclient.version>4.5.2</httpclient.version>
+        <httpclient.version>4.5.13</httpclient.version>
         <lombok.version>1.18.2</lombok.version>
         <orika-core.version>1.5.2</orika-core.version>
         <cornerstone.version>0.2.0-alpha</cornerstone.version>
